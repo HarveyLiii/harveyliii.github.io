@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>在 Hexo 中插入数学公式 | Idealisti</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/img/suka-favicon.ico">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/atom-one-light.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/atom-one-light.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Idealisti"><meta name="msapplication-starturl" content="https://idealisti.github.io"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Idealisti"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="在 Hexo 中插入数学公式 | Idealisti"><meta property="og:site_name" content="Idealisti"><meta property="og:type" content="article"><meta property="og:url" content="https://idealisti.github.io/2023/hexo-formulas/"><meta property="og:locale" content="zh-CN"><meta name="description" content="在有些时候，我需要在文章中插入数学公式（例如变量等），这时候会想到使用 $\LaTeX$ 公式。但是 Hexo 和我当前的主题默认没有支持 $\LaTeX$ 公式渲染，因此本文通过增加 Hexo 主题脚本片段的方式实现 $\LaTeX$ 语法高亮。 - Li Yijie - Idealisti"><meta name="keywords" content="Hexo"><meta property="article:published_time" content="2023-04-05T15:45:09.000Z"><meta property="article:modified_time" content="2023-04-05T16:14:05.135Z"><meta property="og:updated_time" content="2023-04-05T16:14:05.135Z"><meta property="article:author" content="Li Yijie"><meta property="article:tag" content="Hexo"><meta name="twitter:card" content="summary">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://idealisti.github.io/2023/hexo-formulas/">
+
+    <meta name="generator" content="Hexo 6.3.0">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://idealisti.github.io/2023/hexo-formulas/",
+    "@type": "BlogPosting",
+    "logo": "https://idealisti.github.io/img/suka-favicon.ico",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://idealisti.github.io/2023/hexo-formulas/"
+    },
+    "headline": "在 Hexo 中插入数学公式 | Idealisti",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://idealisti.github.io/img/suka-favicon.ico"
+    },
+    
+    "datePublished": "2023-04-05T15:45:09.000Z",
+    "dateModified": "2023-04-05T16:14:05.135Z",
+    "author": {
+        "@type": "Person",
+        "name": "Li Yijie",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://idealisti.github.io/img/default_avatar.png"
+        },
+        "description": "Dream big. Start small."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Idealisti",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://idealisti.github.io/img/suka-favicon.ico"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://idealisti.github.io/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "Hexo",
+    "description": "在有些时候，我需要在文章中插入数学公式（例如变量等），这时候会想到使用 $\LaTeX$ 公式。但是 Hexo 和我当前的主题默认没有支持 $\LaTeX$ 公式渲染，因此本文通过增加 Hexo 主题脚本片段的方式实现 $\LaTeX$ 语法高亮。 - Li Yijie - Idealisti"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+</head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">Idealisti</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                Dream big. Start small.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+    
+        <div class="dropdown dropdown-right">
+    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
+    <ul class="menu share-menu">
+
+        <!-- Share Weibo -->
+        
+        <li class="menu-item">
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=Idealisti&url=https://idealisti.github.io&pic=https://idealisti.github.io/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        </li>
+        
+
+        <!-- Share Twitter -->
+        
+        <li class="menu-item">
+            <a href="https://twitter.com/intent/tweet?text=Idealisti&url=https://idealisti.github.io&via=Li Yijie" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+        </li>
+        
+
+        <!-- Share Facebook -->
+        
+        <li class="menu-item">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://idealisti.github.io" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+        </li>
+        
+
+        <!-- Share Google+ -->
+        
+        <li class="menu-item">
+            <a href="https://plus.google.com/share?url=https://idealisti.github.io" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+        </li>
+        
+
+        <!-- Share LinkedIn -->
+        
+        <li class="menu-item">
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://idealisti.github.io&title=在 Hexo 中插入数学公式" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+        </li>
+        
+
+        <!-- Share QQ -->
+        
+        <li class="menu-item">
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=Idealisti&title=在 Hexo 中插入数学公式&summary=&pics=https://idealisti.github.io/img/suka-favicon.ico&url=https://idealisti.github.io" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        </li>
+        
+
+        <!-- Share Telegram -->
+        
+        <li class="menu-item">
+            <a href="https://t.me/share/url?url=https://idealisti.github.io&text=在 Hexo 中插入数学公式" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        </li>
+        
+
+        <!-- QRCode -->
+        
+        <li class="menu-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB3ElEQVR42u3aQa7CMAxF0e5/0zBCAlT7PYcixe7t5CN+SU6lNE7sHI8NrwMUKFCgTlBHckX3vL77aFDcY/UDagzqdNB9NfjecHZP9lvZD6hRqGiQqv+fdfKNd9sBdS+U+zJEOFCgzr5XQdqZaEHdBxUNYnfgZ4u7y1cJoLZHZQv6K/9etpsBtTVKJh2SgKw6/VvWBdTWqGqjUWCOPlfaBzUD5QTUaHFXebAMD2omyt0MOJ2vJOBAzURFg9BN/Ks2ZFugRqDUj7NJVE20bpAGNRPldrRaJIomVVAzUVkQdTcGlc5lQAbVGuVuFLLPKxtWuRkFNQKlDsyoAmPlRUmT+6Dao5zgqxK0cgH3a4IDVBuUKuioxL5TrHQOGoKahVKTm1OcrByssCujoNqinCSpXKCJA17q96BmobJExcpm1DkcKAMyqNao6oZUvQDugeY06wKqPcpJdlSKSqpNOyCDao1yEl1uoHYWdqBmouThPVH8URvYyoIP1AyUs0lUh7vcIB09JKh5qJUB7gRjlTCRGwdQrVHZwKwkNpyDzHbWBdRYVCXxUS1CLQ90UCNQaiKsHK4oV7FAtUOpwrUqADiJEfsADqj2KJWEyIqS6gHcwzeg5qB2ukCBAgXq7XoCbkeQL8WPsKgAAAAASUVORK5CYII=" alr="QRCode">
+        </li>
+        
+
+    </ul>
+</div>
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">在 Hexo 中插入数学公式</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/default_avatar.png" src="/img/suka-lazyload.gif" alt="Li Yijie's Avatar">
+        <span>2023-04-05</span>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=在 Hexo 中插入数学公式&url=https://idealisti.github.io/2023/hexo-formulas/&pic=https://idealisti.github.io/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=在 Hexo 中插入数学公式&url=https://idealisti.github.io/2023/hexo-formulas/&via=Li Yijie" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://idealisti.github.io/2023/hexo-formulas/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=https://idealisti.github.io/2023/hexo-formulas/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://idealisti.github.io/2023/hexo-formulas/&title=Idealisti" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Idealisti&title=Idealisti&summary=&pics=https://idealisti.github.io/img/suka-favicon.ico&url=https://idealisti.github.io/2023/hexo-formulas/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://idealisti.github.io/2023/hexo-formulas/&text=Idealisti" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB3ElEQVR42u3aQa7CMAxF0e5/0zBCAlT7PYcixe7t5CN+SU6lNE7sHI8NrwMUKFCgTlBHckX3vL77aFDcY/UDagzqdNB9NfjecHZP9lvZD6hRqGiQqv+fdfKNd9sBdS+U+zJEOFCgzr5XQdqZaEHdBxUNYnfgZ4u7y1cJoLZHZQv6K/9etpsBtTVKJh2SgKw6/VvWBdTWqGqjUWCOPlfaBzUD5QTUaHFXebAMD2omyt0MOJ2vJOBAzURFg9BN/Ks2ZFugRqDUj7NJVE20bpAGNRPldrRaJIomVVAzUVkQdTcGlc5lQAbVGuVuFLLPKxtWuRkFNQKlDsyoAmPlRUmT+6Dao5zgqxK0cgH3a4IDVBuUKuioxL5TrHQOGoKahVKTm1OcrByssCujoNqinCSpXKCJA17q96BmobJExcpm1DkcKAMyqNao6oZUvQDugeY06wKqPcpJdlSKSqpNOyCDao1yEl1uoHYWdqBmouThPVH8URvYyoIP1AyUs0lUh7vcIB09JKh5qJUB7gRjlTCRGwdQrVHZwKwkNpyDzHbWBdRYVCXxUS1CLQ90UCNQaiKsHK4oV7FAtUOpwrUqADiJEfsADqj2KJWEyIqS6gHcwzeg5qB2ukCBAgXq7XoCbkeQL8WPsKgAAAAASUVORK5CYII=" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%BB%E9%A2%98%E4%BD%BF%E7%94%A8-Mathjax"><span class="post-toc-number">1.</span> <span class="post-toc-text">主题使用 Mathjax</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="post-toc-number">2.</span> <span class="post-toc-text">测试</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="post-toc-number">3.</span> <span class="post-toc-text">参考文章</span></a></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <p>在有些时候，我需要在文章中插入数学公式（例如变量等），这时候会想到使用 $\LaTeX$ 公式。但是 Hexo 和我当前的主题默认没有支持 $\LaTeX$ 公式渲染，因此本文通过增加 Hexo 主题脚本片段的方式实现 $\LaTeX$ 语法高亮。</p>
+<span id="more"></span>
+
+<h2 id="主题使用-Mathjax"><a href="#主题使用-Mathjax" class="headerlink" title="主题使用 Mathjax"></a>主题使用 Mathjax</h2><p>你可以从主题文件的 <code>README.md</code> 确认你的 Hexo 主题是否已经引入了 <code>Mathjax</code>，如果已经引入，那你只要按照说明来开启 <code>Mathjax</code> 支持即可。如果你的主题并不支持 <code>Mathjax</code>，那你可以按照以下步骤使你的 Hexo 支持 <code>Mathjax</code>。</p>
+<ol>
+<li>你需要在 <code>themes/YourThemeName/layout/</code> 下新建文件 <code>mathjax.ejs</code> 文件。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (theme.<span class="property">mathjax</span>.<span class="property">enable</span>)&#123; %&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/x-mathjax-config&quot;</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="title class_">MathJax</span>.<span class="property">Hub</span>.<span class="title class_">Config</span>(&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="attr">tex2jax</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">inlineMath</span>: [ [<span class="string">&#x27;$&#x27;</span>,<span class="string">&#x27;$&#x27;</span>], [<span class="string">&quot;\\(&quot;</span>,<span class="string">&quot;\\)&quot;</span>] ],</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">processEscapes</span>: <span class="literal">true</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">skipTags</span>: [<span class="string">&#x27;script&#x27;</span>, <span class="string">&#x27;noscript&#x27;</span>, <span class="string">&#x27;style&#x27;</span>, <span class="string">&#x27;textarea&#x27;</span>, <span class="string">&#x27;pre&#x27;</span>, <span class="string">&#x27;code&#x27;</span>]</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="title class_">MathJax</span>.<span class="property">Hub</span>.<span class="title class_">Queue</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">var</span> all = <span class="title class_">MathJax</span>.<span class="property">Hub</span>.<span class="title function_">getAllJax</span>(), i;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">for</span>(i=<span class="number">0</span>; i &lt; all.<span class="property">length</span>; i += <span class="number">1</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        all[i].<span class="title class_">SourceElement</span>().<span class="property">parentNode</span>.<span class="property">className</span> += <span class="string">&#x27; has-jax&#x27;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;&lt;%- theme.mathjax.cdn %&gt;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>你需要在 <code>themes/YourThemeName/_config.yml</code> 末尾追加：</li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># MathJax Support</span></span><br><span class="line"><span class="attr">mathjax:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">cdn:</span> <span class="string">https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>为了保障国内网络环境的访问，将原文的CDN修改为<a target="_blank" rel="noopener" href="https://cdn.bytedance.com/">字节跳动静态资源公共库</a>。</p>
+</blockquote>
+<ol start="3">
+<li>修改 <code>themes/YourThemeName/layout/post.ejs</code> 文件，在中间添加：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (theme.<span class="property">mathjax</span>)&#123; %&gt;</span><br><span class="line">  &lt;%- <span class="title function_">partial</span>(<span class="string">&#x27;mathjax&#x27;</span>) %&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+
+<p>至此，大功告成～<br>你最后只需要重新生成一下文章就可以看到你的文章现在已经支持 $\LaTeX$ 公式了。</p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>测试一下你的文章是否已经支持 LaTex 公式：</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">$</span><span class="built_in">$</span> J<span class="built_in">_</span><span class="keyword">\alpha</span>(x) = <span class="keyword">\sum</span><span class="built_in">_</span>&#123;m=0&#125;<span class="built_in">^</span><span class="keyword">\infty</span> <span class="keyword">\frac</span>&#123;(-1)<span class="built_in">^</span>m&#125;&#123;m! <span class="keyword">\Gamma</span> (m + <span class="keyword">\alpha</span> + 1)&#125; &#123;<span class="keyword">\left</span>(&#123; <span class="keyword">\frac</span>&#123;x&#125;&#123;2&#125; &#125;<span class="keyword">\right</span>)&#125;<span class="built_in">^</span>&#123;2m + <span class="keyword">\alpha</span>&#125; <span class="built_in">$</span><span class="built_in">$</span></span><br></pre></td></tr></table></figure>
+
+<p>如果你的文章已经支持那么上面的 LaTex 语法将会有如下显示：</p>
+<p>$$ J_\alpha(x) &#x3D; \sum_{m&#x3D;0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha} $$</p>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a target="_blank" rel="noopener" href="https://blog.xiangfa.org/2020/09/let-hexo-support-latex-formulas/">https://blog.xiangfa.org/2020/09/let-hexo-support-latex-formulas/</a></p>
+
+                    </article>
+                    
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2023-04-06");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2023-04-05T15:45:09.000Z" itemprop="datePublished">2023-04-05</time>
+
+    , 最后修改于&nbsp;<time datetime="2023-04-05T16:14:05.135Z" itemprop="dateModified">2023-04-06</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+
+
+<span class="post-tags-list mt-2">
+
+<a class="post-tags-list-item" href="/tags/Hexo/" rel="tag">#&nbsp;Hexo</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/2023/Online-Judge/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">机试笔记</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script type="text/javascript" src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="https://idealisti.github.io">Idealisti</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+document.getElementById('copyright-year').textContent = new Date().getFullYear();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+<!-- Comment -->
+
+
+<!-- ### Custom Footer ### -->
+
+    </body>
+
+</html>
