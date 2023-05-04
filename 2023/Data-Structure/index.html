@@ -1,436 +1,160 @@
 <!DOCTYPE html>
-
 <html lang="zh-CN">
     <head>
     <meta charset="utf-8">
-    <!--
-        hexo-theme-suka © SukkaW
-        GitHub: https://github.com/SukkaW/hexo-theme-suka
-    -->
 
-    <!-- ### Resource Hint ### -->
-
-    <!-- ## DNS Prefetch ## -->
-    <meta http-equiv="x-dns-prefetch-control" content="on">
-
-<!-- busuanzi -->
-
-    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
-
-
-<!-- comment -->
-
-
-
-
-
-
-
-<!-- analytics -->
-
-
-
-
-
-
-
-    <!-- ## Preload ## -->
     
-    <!-- Busuanzi -->
-    
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
 
-
-
-
-
-
-
-    <!-- ### Meta & Title & Info ### -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <!-- 渲染优化 -->
     <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <!-- Title -->
-    <title>数据结构 | Idealisti</title>
-
-    <!-- Favicons -->
-    <link rel="icon" type="image&#x2F;ico" href="/img/suka-favicon.ico">
-
-    <!-- ### Import File ### -->
-    <link rel="stylesheet" href="/lib/spectre/spectre.min.css"><style>
-    body {
-        background-color: #f8f9fa;
-    }
-
-    a, a:visited {
-        color: #0070ff;
-    }
-
-    a:active, a:focus, a:hover {
-        color: #0070ff;
-        opacity: .75;
-    }
-
-    #post-content a,
-    #post-content a:hover,
-    #post-content a:focus,
-    #post-content a:visited {
-        color: #005eb9;
-        opacity: 1;
-    }
+    <!--icon-->
 
     
-
-    .post-entry .card-body a {
-        color: #0070ff;
-    }
-
-    .avatar {
-        background: #444;
-    }
-
-    .navbar-link,
-    .navbar-link:visited,
-    .timeline .timeline-item .timeline-icon.icon-lg {
-        color: #0070ff;
-    }
-
-    .navbar-link:hover {
-        color: #0070ff;
-        opacity: .8;
-    }
-
-    #search-input .btn,
-    #disqus_click_btn,
-    #disqus-switch-to-direct,
-    #disqus-loadmore-button {
-        background: #727e96;
-        border-color: #727e96;
-        color: #fff;
-    }
-
-    #post-toc a.post-toc-link,
-    #post-toc a.post-toc-link:visited,
-    .share-menu.menu .menu-item>a {
-        color: #727e96;
-    }
-
-    .share-menu.menu .menu-item>a:hover,
-    .share-menu.menu .menu-item>a:focus,
-    .share-menu.menu .menu-item>a:visited {
-        color: #50596c;
-        background: #f8f9fa;
-        opacity: .85;
-    }
-</style><link rel="stylesheet" href="/css/style.min.css">
-
-
-
-
-
-
-
-
-    <!-- Prettify Theme -->
     
-    <link rel="preload" href="/css/highlight/atom-one-light.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/atom-one-light.min.css"></noscript>
-
-
-
-
-
-<script>
-/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
-!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
-</script>
-
-    <!-- ### Site Verification ### -->
+    
+    
     
 
 
-    <meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Idealisti"><meta name="msapplication-starturl" content="https://idealisti.github.io"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Idealisti"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- meta -->
 
-    <!-- ### The Open Graph & Twitter Card Protocol ### -->
-    <meta property="og:title" content="数据结构 | Idealisti"><meta property="og:site_name" content="Idealisti"><meta property="og:type" content="article"><meta property="og:url" content="https://idealisti.github.io/2023/Data-Structure/"><meta property="og:locale" content="zh-CN"><meta name="description" content="我的数据结构笔记。 线性表线性表的结构体定义顺序表结构体定义1234typedef struct &amp;#123;    int data[maxSize];    int length;&amp;#125; Sqlist; - Li Yijie - Idealisti"><meta name="keywords" content="算法"><meta property="article:published_time" content="2023-02-09T16:54:50.000Z"><meta property="article:modified_time" content="2023-04-05T15:47:31.854Z"><meta property="og:updated_time" content="2023-04-05T15:47:31.854Z"><meta property="article:author" content="Li Yijie"><meta property="article:tag" content="算法"><meta name="twitter:card" content="summary">
+
+<title>数据结构 | Idealisti</title>
+
+
+    <meta name="keywords" content="算法">
+
+
+
+
+    <!-- OpenGraph -->
+
 
     
+<link rel="stylesheet" href="/css/style/main.css">
+ 
 
-    <!-- ### Canonical link ### -->
-    <link rel="canonical" href="https://idealisti.github.io/2023/Data-Structure/">
-
-    <meta name="generator" content="Hexo 6.3.0">
-
-    <!-- ### Analytics ### -->
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/atom-one-light.css" media="none" >
+        
+            <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight/atom-one-dark.css" media="none">
+        
     
 
-
-
-
-
-
-
-    <!-- ### Structured Data ### -->
+    
     
 
+    
+    
+<link rel="stylesheet" href="/css/style/dark.css">
 
-
-<script type="application/ld+json">
-{
-    "@context": "http://schema.org",
-    "url": "https://idealisti.github.io/2023/Data-Structure/",
-    "@type": "BlogPosting",
-    "logo": "https://idealisti.github.io/img/suka-favicon.ico",
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://idealisti.github.io/2023/Data-Structure/"
-    },
-    "headline": "数据结构 | Idealisti",
     
-    "image": {
-        "@type": "ImageObject",
-        "url": "https://idealisti.github.io/img/suka-favicon.ico"
-    },
-    
-    "datePublished": "2023-02-09T16:54:50.000Z",
-    "dateModified": "2023-04-05T15:47:31.854Z",
-    "author": {
-        "@type": "Person",
-        "name": "Li Yijie",
-        "image": {
-            "@type": "ImageObject",
-            "url": "https://idealisti.github.io/img/default_avatar.png"
-        },
-        "description": "Dream big. Start small."
-    },
-    "publisher": {
-        "@type": "Organization",
-        "name": "Idealisti",
-        "logo": {
-            "@type": "ImageObject",
-            "url": "https://idealisti.github.io/img/suka-favicon.ico"
-        }
-    },
-    
-    "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://idealisti.github.io/search?s={search_term_string}",
-        "query-input": "required name=search_term_string"
-    },
-    
-    "keywords": "算法",
-    "description": "我的数据结构笔记。 线性表线性表的结构体定义顺序表结构体定义1234typedef struct &amp;amp;#123;    int data[maxSize];    int length;&amp;amp;#125; Sqlist; - Li Yijie - Idealisti"
-}
-</script>
+<script src="/js/darkmode.js"></script>
 
 
 
-    <!-- ### Custom Head ### -->
-    
-</head>
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 6.3.0"></head>
 
     <body>
-            
-
-            <!-- ### Main content ### -->
-            <!-- ## Header ##-->
-<header>
-    <h1 class="header-title text-center"><a href="/">Idealisti</a></h1>
-
-    <p class="text-center header-slogan">
+        <div id="app" tabindex="-1">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">Idealisti</span>
+        </a>
+    </div>
+    <div class="header__right">
         
-            
-                Dream big. Start small.
-            
-        
-    </p>
-
-    <nav class="navbar-section text-center">
-    
-        <a href="/" class="navbar-link">首页</a>
-    
-    
-        <a href="/archives/" class="navbar-link">归档</a>
-    
-    
-        <a href="/search" class="navbar-link">搜索</a>
-    
-    
-    
-        <div class="dropdown dropdown-right">
-    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
-    <ul class="menu share-menu">
-
-        <!-- Share Weibo -->
-        
-        <li class="menu-item">
-            <a href="http://service.weibo.com/share/share.php?appkey=&title=Idealisti&url=https://idealisti.github.io&pic=https://idealisti.github.io/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
-        </li>
-        
-
-        <!-- Share Twitter -->
-        
-        <li class="menu-item">
-            <a href="https://twitter.com/intent/tweet?text=Idealisti&url=https://idealisti.github.io&via=Li Yijie" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
-        </li>
-        
-
-        <!-- Share Facebook -->
-        
-        <li class="menu-item">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://idealisti.github.io" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
-        </li>
-        
-
-        <!-- Share Google+ -->
-        
-        <li class="menu-item">
-            <a href="https://plus.google.com/share?url=https://idealisti.github.io" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
-        </li>
-        
-
-        <!-- Share LinkedIn -->
-        
-        <li class="menu-item">
-            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://idealisti.github.io&title=数据结构" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
-        </li>
-        
-
-        <!-- Share QQ -->
-        
-        <li class="menu-item">
-            <a href="http://connect.qq.com/widget/shareqq/index.html?site=Idealisti&title=数据结构&summary=&pics=https://idealisti.github.io/img/suka-favicon.ico&url=https://idealisti.github.io" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
-        </li>
-        
-
-        <!-- Share Telegram -->
-        
-        <li class="menu-item">
-            <a href="https://t.me/share/url?url=https://idealisti.github.io&text=数据结构" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
-        </li>
-        
-
-        <!-- QRCode -->
-        
-        <li class="menu-item">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB40lEQVR42u2ay27DMAwE/f8/3Z4KuAW1u2x8kOjxxUiiWGOA4mPJ62vD6wIKKKCAKqAucf38fl/76yG3NX9/q/6r9gFqFlRpdI3vK7jVXYIDNQoqMfDSOAvjd5DLfYB6BdQKwm1erQcKqCqQrkBtsAXqdVAqyHaconvOI1kCUNtDJYXDE/fHqxmgtoSyokPhJKsX6hSpH6suQG0N5R7YSQKVo3WBGqhZUCuDdQWoMmJXTLQ8OlBHQUWLGwmcEkPcSwE1AyoV8906t1YdIqDmQbkgqoqM1MCVMwVqFtSnTZ+kSRk3LYEaAZUIqonInx4KmfwBNRrKCV4qOVSOsy1wAHUklDPS5BAkL2adLVAjoJRjdOKZCrCpwAHUXKjuhk7YSIxeZp5AHQulgmUinCkD7gyAATUHSg1HpI40PQBq6AKoOVBJs8glZ66x5BpKQM2CSg0yHdRKhr+iwgGo46Gc0OqK1kTwcEEdqBlQHYEjXd8RRuKADNQxUFYcNcle0hCPHS9QI6CSgWY3IOGSuaQBCdQsqDQ4u6CbFA/qM1CzoLoDy07I+FezHKhXQKWbpqK/FFSAeg1UavxJU7IVkIE6GioNyN3B+GTwBqh5UB2BIjkUbrg5SvKAOhZqpwsooIAC6nZ9A88Kv/84NEh5AAAAAElFTkSuQmCC" alr="QRCode">
-        </li>
-        
-
-    </ul>
-</div>
-    
-    
-</nav>
-</header>
-
-            
-    <!-- ## Post ## -->
-    <div class="post-container">
-    <div id="post-card" class="card">
-        
-        <div class="card-item-container">
-            <div class="card-inner-cell">
-                <!-- # Post Header Info # -->
-                <div class="card-header">
-                    
-    <h1 class="card-title h3 mb-2">数据结构</h1>
-
-
-
-
-<div class="post-header-info">
-    <p class="post-header-info-left text-gray">
-        <img class="author-thumb lazyload" data-src="/img/default_avatar.png" src="/img/suka-lazyload.gif" alt="Li Yijie's Avatar">
-        <span>2023-02-10</span>
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/archives/" class="navbar-menu button">归档</a>
+                
+            </div>
         
         
-            <!-- Busuanzi Post Views -->
-<span id="busuanzi_container_page_pv" hidden>
-    <span class="suka-devide-dot"></span>
-    <span></span>
-    <span id="busuanzi_value_page_pv"></span>
-    <span>Views</span>
-</span>
+        
+
         
         
-    </p>
-    <div class="post-header-info-right">
+    <a href="javaScript:void(0);" id="btn-toggle-dark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </a>
+
+
         
-            <div class="dropdown dropdown-right">
-<a class="dropdown-toggle" tabindex="0">分享本文</a>
-<ul class="menu share-menu">
-    <!-- Share Weibo -->
-    
-    <li class="menu-item">
-        <a href="http://service.weibo.com/share/share.php?appkey=&title=数据结构&url=https://idealisti.github.io/2023/Data-Structure/&pic=https://idealisti.github.io/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
-    </li>
-    
-
-    <!-- Share Twitter -->
-    
-    <li class="menu-item">
-        <a href="https://twitter.com/intent/tweet?text=数据结构&url=https://idealisti.github.io/2023/Data-Structure/&via=Li Yijie" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
-    </li>
-    
-
-    <!-- Share Facebook -->
-    
-    <li class="menu-item">
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https://idealisti.github.io/2023/Data-Structure/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
-    </li>
-    
-
-    <!-- Share Google+ -->
-    
-    <li class="menu-item">
-        <a href="https://plus.google.com/share?url=https://idealisti.github.io/2023/Data-Structure/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
-    </li>
-    
-
-    <!-- Share LinkedIn -->
-    
-    <li class="menu-item">
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://idealisti.github.io/2023/Data-Structure/&title=Idealisti" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
-    </li>
-    
-
-    <!-- Share QQ -->
-    
-    <li class="menu-item">
-        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Idealisti&title=Idealisti&summary=&pics=https://idealisti.github.io/img/suka-favicon.ico&url=https://idealisti.github.io/2023/Data-Structure/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
-    </li>
-    
-
-    <!-- Share Telegram -->
-    
-    <li class="menu-item">
-        <a href="https://t.me/share/url?url=https://idealisti.github.io/2023/Data-Structure/&text=Idealisti" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
-    </li>
-    
-
-    <!-- QRCode -->
-    
-    <li class="menu-item">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB40lEQVR42u2ay27DMAwE/f8/3Z4KuAW1u2x8kOjxxUiiWGOA4mPJ62vD6wIKKKCAKqAucf38fl/76yG3NX9/q/6r9gFqFlRpdI3vK7jVXYIDNQoqMfDSOAvjd5DLfYB6BdQKwm1erQcKqCqQrkBtsAXqdVAqyHaconvOI1kCUNtDJYXDE/fHqxmgtoSyokPhJKsX6hSpH6suQG0N5R7YSQKVo3WBGqhZUCuDdQWoMmJXTLQ8OlBHQUWLGwmcEkPcSwE1AyoV8906t1YdIqDmQbkgqoqM1MCVMwVqFtSnTZ+kSRk3LYEaAZUIqonInx4KmfwBNRrKCV4qOVSOsy1wAHUklDPS5BAkL2adLVAjoJRjdOKZCrCpwAHUXKjuhk7YSIxeZp5AHQulgmUinCkD7gyAATUHSg1HpI40PQBq6AKoOVBJs8glZ66x5BpKQM2CSg0yHdRKhr+iwgGo46Gc0OqK1kTwcEEdqBlQHYEjXd8RRuKADNQxUFYcNcle0hCPHS9QI6CSgWY3IOGSuaQBCdQsqDQ4u6CbFA/qM1CzoLoDy07I+FezHKhXQKWbpqK/FFSAeg1UavxJU7IVkIE6GioNyN3B+GTwBqh5UB2BIjkUbrg5SvKAOhZqpwsooIAC6nZ9A88Kv/84NEh5AAAAAElFTkSuQmCC" alt="QRCode">
-    </li>
-    
-
-</ul>
-</div>
+            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+            </div>
         
     </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        数据结构
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2023/02/" class="post-meta__date button">2023-02-10</a>
+        
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
 </div>
-                </div>
-                <div class="card-body">
-                    
-                        
-                        
-                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8"><span class="post-toc-number">1.</span> <span class="post-toc-text">线性表</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">线性表的结构体定义</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">顺序表结构体定义</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%BB%93%E7%82%B9%E5%AE%9A%E4%B9%89"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">单链表结点定义</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8F%8C%E9%93%BE%E8%A1%A8%E7%BB%93%E7%82%B9%E5%AE%9A%E4%B9%89"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">双链表结点定义</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">顺序表的操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8C%89%E5%85%83%E7%B4%A0%E5%80%BC%E6%9F%A5%E6%89%BE"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">按元素值查找</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE%E5%85%83%E7%B4%A0"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">插入数据元素</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E5%85%83%E7%B4%A0"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">删除数据元素</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">单链表的操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%BB%BA%E7%AB%8B%E5%8D%95%E9%93%BE%E8%A1%A8"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">建立单链表</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8F%92%E5%85%A5%E4%B8%8E%E5%88%A0%E9%99%A4%E7%BB%93%E7%82%B9"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">插入与删除结点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%BD%92%E5%B9%B6"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">归并</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%9F%A5%E6%89%BE"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">查找</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8F%8C%E9%93%BE%E8%A1%A8%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">双链表的操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%BB%BA%E7%AB%8B%E5%8F%8C%E9%93%BE%E8%A1%A8"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">建立双链表</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%9F%A5%E6%89%BE%E7%BB%93%E7%82%B9"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">查找结点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8F%92%E5%85%A5%E7%BB%93%E7%82%B9"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">插入结点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%A0%E9%99%A4%E7%BB%93%E7%82%B9"><span class="post-toc-number">1.4.4.</span> <span class="post-toc-text">删除结点</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">循环链表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%80%86%E7%BD%AE%E9%97%AE%E9%A2%98"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">逆置问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97"><span class="post-toc-number">2.</span> <span class="post-toc-text">栈和队列</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A1%BA%E5%BA%8F%E6%A0%88%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">顺序栈的操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">结构体定义</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E6%A0%88"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">初始化栈</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%A4%E6%96%AD%E6%A0%88%E7%A9%BA"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">判断栈空</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%BF%9B%E6%A0%88"><span class="post-toc-number">2.1.4.</span> <span class="post-toc-text">进栈</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%87%BA%E6%A0%88"><span class="post-toc-number">2.1.5.</span> <span class="post-toc-text">出栈</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%B8%B8%E7%94%A8%E5%86%99%E6%B3%95"><span class="post-toc-number">2.1.6.</span> <span class="post-toc-text">常用写法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%93%BE%E6%A0%88%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">链栈的操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%BB%93%E7%82%B9%E5%AE%9A%E4%B9%89"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">结点定义</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">初始化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%A4%E6%96%AD%E6%A0%88%E7%A9%BA-1"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">判断栈空</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%BF%9B%E6%A0%88-1"><span class="post-toc-number">2.2.4.</span> <span class="post-toc-text">进栈</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%87%BA%E6%A0%88-1"><span class="post-toc-number">2.2.5.</span> <span class="post-toc-text">出栈</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">栈的应用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A1%BA%E5%BA%8F%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">顺序栈的应用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%93%BE%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">链栈的应用</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A1%BA%E5%BA%8F%E9%98%9F"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">顺序队</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89-1"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">结构体定义</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E9%98%9F%E5%88%97"><span class="post-toc-number">2.4.2.</span> <span class="post-toc-text">初始化队列</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%A4%E6%96%AD%E9%98%9F%E7%A9%BA"><span class="post-toc-number">2.4.3.</span> <span class="post-toc-text">判断队空</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%BF%9B%E9%98%9F"><span class="post-toc-number">2.4.4.</span> <span class="post-toc-text">进队</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%87%BA%E9%98%9F"><span class="post-toc-number">2.4.5.</span> <span class="post-toc-text">出队</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%93%BE%E9%98%9F"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">链队</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89-2"><span class="post-toc-number">2.5.1.</span> <span class="post-toc-text">结构体定义</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E9%98%9F%E5%88%97-1"><span class="post-toc-number">2.5.2.</span> <span class="post-toc-text">初始化队列</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%A4%E6%96%AD%E9%98%9F%E7%A9%BA-1"><span class="post-toc-number">2.5.3.</span> <span class="post-toc-text">判断队空</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%85%A5%E9%98%9F"><span class="post-toc-number">2.5.4.</span> <span class="post-toc-text">入队</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%87%BA%E9%98%9F-1"><span class="post-toc-number">2.5.5.</span> <span class="post-toc-text">出队</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%B2"><span class="post-toc-number">3.</span> <span class="post-toc-text">串</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89-3"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">结构体定义</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%AE%9A%E9%95%BF%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">定长顺序存储</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8F%98%E9%95%BF%E5%88%86%E9%85%8D%E5%AD%98%E5%82%A8"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">变长分配存储</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">基本操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%B5%8B%E5%80%BC"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">赋值</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8F%96%E4%B8%B2%E9%95%BF%E5%BA%A6"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">取串长度</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%B8%B2%E6%AF%94%E8%BE%83"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">串比较</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%B8%B2%E8%BF%9E%E6%8E%A5"><span class="post-toc-number">3.2.4.</span> <span class="post-toc-text">串连接</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%B1%82%E5%AD%90%E4%B8%B2"><span class="post-toc-number">3.2.5.</span> <span class="post-toc-text">求子串</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%B8%B2%E6%B8%85%E7%A9%BA"><span class="post-toc-number">3.2.6.</span> <span class="post-toc-text">串清空</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">模式匹配</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%AE%80%E5%8D%95%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">简单模式匹配算法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#KMP%E7%AE%97%E6%B3%95"><span class="post-toc-number">3.3.2.</span> <span class="post-toc-text">KMP算法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#KMP%E7%AE%97%E6%B3%95%E7%9A%84%E6%94%B9%E8%BF%9B"><span class="post-toc-number">3.3.3.</span> <span class="post-toc-text">KMP算法的改进</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A0%91%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="post-toc-number">4.</span> <span class="post-toc-text">树与二叉树</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">二叉树的存储结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8"><span class="post-toc-number">4.1.1.</span> <span class="post-toc-text">顺序存储</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8"><span class="post-toc-number">4.1.2.</span> <span class="post-toc-text">链式存储</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">二叉树的遍历算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="post-toc-number">4.2.1.</span> <span class="post-toc-text">先序遍历</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="post-toc-number">4.2.2.</span> <span class="post-toc-text">中序遍历</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="post-toc-number">4.2.3.</span> <span class="post-toc-text">后序遍历</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86"><span class="post-toc-number">4.2.4.</span> <span class="post-toc-text">层次遍历</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">线索二叉树</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89-4"><span class="post-toc-number">4.3.1.</span> <span class="post-toc-text">结构体定义</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%B8%AD%E5%BA%8F%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="post-toc-number">4.3.2.</span> <span class="post-toc-text">中序线索二叉树</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%91%E5%92%8C%E6%A3%AE%E6%9E%97%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">树和森林与二叉树的转换</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%A0%91%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2"><span class="post-toc-number">4.4.1.</span> <span class="post-toc-text">树与二叉树的相互转换</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%A3%AE%E6%9E%97%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2"><span class="post-toc-number">4.4.2.</span> <span class="post-toc-text">森林与二叉树的相互转换</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%A0%91%E5%92%8C%E6%A3%AE%E6%9E%97%E7%9A%84%E9%81%8D%E5%8E%86"><span class="post-toc-number">4.4.3.</span> <span class="post-toc-text">树和森林的遍历</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B5%AB%E5%A4%AB%E6%9B%BC%E6%A0%91%E5%92%8C%E8%B5%AB%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">赫夫曼树和赫夫曼编码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%9E%84%E9%80%A0%E8%B5%AB%E5%A4%AB%E6%9B%BC%E6%A0%91"><span class="post-toc-number">4.5.1.</span> <span class="post-toc-text">构造赫夫曼树</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%B5%AB%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81"><span class="post-toc-number">4.5.2.</span> <span class="post-toc-text">赫夫曼编码</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9B%BE"><span class="post-toc-number">5.</span> <span class="post-toc-text">图</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">邻接矩阵</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%82%BB%E6%8E%A5%E8%A1%A8"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">邻接表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">图的遍历算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%E9%81%8D%E5%8E%86DFS"><span class="post-toc-number">5.3.1.</span> <span class="post-toc-text">深度优先搜索遍历DFS</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%E9%81%8D%E5%8E%86"><span class="post-toc-number">5.3.2.</span> <span class="post-toc-text">广度优先搜索遍历</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9C%80%E5%B0%8F%EF%BC%88%E4%BB%A3%E4%BB%B7%EF%BC%89%E7%94%9F%E6%88%90%E6%A0%91"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">最小（代价）生成树</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%99%AE%E9%87%8C%E5%A7%86%E7%AE%97%E6%B3%95"><span class="post-toc-number">5.4.1.</span> <span class="post-toc-text">普里姆算法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%85%8B%E9%B2%81%E6%96%AF%E5%8D%A1%E5%B0%94%E7%AE%97%E6%B3%95"><span class="post-toc-number">5.4.2.</span> <span class="post-toc-text">克鲁斯卡尔算法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84"><span class="post-toc-number">5.5.</span> <span class="post-toc-text">最短路径</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%BF%AA%E6%9D%B0%E6%96%AF%E7%89%B9%E6%8B%89%E7%AE%97%E6%B3%95"><span class="post-toc-number">5.5.1.</span> <span class="post-toc-text">迪杰斯特拉算法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B7%E7%AE%97%E6%B3%95"><span class="post-toc-number">5.5.2.</span> <span class="post-toc-text">弗洛伊德算法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F"><span class="post-toc-number">5.6.</span> <span class="post-toc-text">拓扑排序</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84-1"><span class="post-toc-number">5.7.</span> <span class="post-toc-text">最短路径</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="post-toc-number">6.</span> <span class="post-toc-text">排序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8F%92%E5%85%A5%E7%B1%BB%E6%8E%92%E5%BA%8F"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">插入类排序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%9B%B4%E6%8E%A5%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="post-toc-number">6.1.1.</span> <span class="post-toc-text">直接插入排序</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8A%98%E5%8D%8A%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="post-toc-number">6.1.2.</span> <span class="post-toc-text">折半插入排序</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F"><span class="post-toc-number">6.1.3.</span> <span class="post-toc-text">希尔排序</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%A4%E6%8D%A2%E7%B1%BB%E6%8E%92%E5%BA%8F"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">交换类排序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%B5%B7%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="post-toc-number">6.2.1.</span> <span class="post-toc-text">起泡排序</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="post-toc-number">6.2.2.</span> <span class="post-toc-text">快速排序</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%80%89%E6%8B%A9%E7%B1%BB%E6%8E%92%E5%BA%8F"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">选择类排序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%AE%80%E5%8D%95%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="post-toc-number">6.3.1.</span> <span class="post-toc-text">简单选择排序</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="post-toc-number">6.3.2.</span> <span class="post-toc-text">堆排序</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%8C%E8%B7%AF%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="post-toc-number">6.4.</span> <span class="post-toc-text">二路归并排序</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F"><span class="post-toc-number">6.5.</span> <span class="post-toc-text">基数排序</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E6%89%BE-1"><span class="post-toc-number">7.</span> <span class="post-toc-text">查找</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE%E6%B3%95"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">顺序查找法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE%E6%B3%95"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">折半查找法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%EF%BC%88%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91%EF%BC%89"><span class="post-toc-number">7.3.</span> <span class="post-toc-text">二叉排序树（二叉查找树）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="post-toc-number">7.3.1.</span> <span class="post-toc-text">存储结构</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95"><span class="post-toc-number">7.3.2.</span> <span class="post-toc-text">基本算法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%88AVL%E6%A0%91%EF%BC%89"><span class="post-toc-number">7.4.</span> <span class="post-toc-text">平衡二叉树（AVL树）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#B-%E6%A0%91%EF%BC%88B%E6%A0%91%EF%BC%89"><span class="post-toc-number">7.5.</span> <span class="post-toc-text">B-树（B树）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%95%A3%E5%88%97%E8%A1%A8%EF%BC%88Hash%E8%A1%A8%EF%BC%89"><span class="post-toc-number">7.6.</span> <span class="post-toc-text">散列表（Hash表）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="post-toc-number">7.6.1.</span> <span class="post-toc-text">构造方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%86%B2%E7%AA%81%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95"><span class="post-toc-number">7.6.2.</span> <span class="post-toc-text">冲突处理方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="post-toc-number">7.6.3.</span> <span class="post-toc-text">性能分析</span></a></li></ol></li></ol></li></ol></div>
-                        
-                    
-                    <article id="post-content">
-                        <p>我的数据结构笔记。</p>
+
+
+    <aside class="post-side">
+        <div class="post-side__toc">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8"><span class="toc-text">线性表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89"><span class="toc-text">线性表的结构体定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89"><span class="toc-text">顺序表结构体定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%BB%93%E7%82%B9%E5%AE%9A%E4%B9%89"><span class="toc-text">单链表结点定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8C%E9%93%BE%E8%A1%A8%E7%BB%93%E7%82%B9%E5%AE%9A%E4%B9%89"><span class="toc-text">双链表结点定义</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-text">顺序表的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%89%E5%85%83%E7%B4%A0%E5%80%BC%E6%9F%A5%E6%89%BE"><span class="toc-text">按元素值查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE%E5%85%83%E7%B4%A0"><span class="toc-text">插入数据元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E5%85%83%E7%B4%A0"><span class="toc-text">删除数据元素</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-text">单链表的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E5%8D%95%E9%93%BE%E8%A1%A8"><span class="toc-text">建立单链表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E4%B8%8E%E5%88%A0%E9%99%A4%E7%BB%93%E7%82%B9"><span class="toc-text">插入与删除结点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BD%92%E5%B9%B6"><span class="toc-text">归并</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE"><span class="toc-text">查找</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E9%93%BE%E8%A1%A8%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-text">双链表的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E5%8F%8C%E9%93%BE%E8%A1%A8"><span class="toc-text">建立双链表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E7%BB%93%E7%82%B9"><span class="toc-text">查找结点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E7%BB%93%E7%82%B9"><span class="toc-text">插入结点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%BB%93%E7%82%B9"><span class="toc-text">删除结点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8"><span class="toc-text">循环链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%86%E7%BD%AE%E9%97%AE%E9%A2%98"><span class="toc-text">逆置问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97"><span class="toc-text">栈和队列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E6%A0%88%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-text">顺序栈的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89"><span class="toc-text">结构体定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E6%A0%88"><span class="toc-text">初始化栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%A0%88%E7%A9%BA"><span class="toc-text">判断栈空</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E6%A0%88"><span class="toc-text">进栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BA%E6%A0%88"><span class="toc-text">出栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%86%99%E6%B3%95"><span class="toc-text">常用写法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E6%A0%88%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-text">链栈的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E7%82%B9%E5%AE%9A%E4%B9%89"><span class="toc-text">结点定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%A0%88%E7%A9%BA-1"><span class="toc-text">判断栈空</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E6%A0%88-1"><span class="toc-text">进栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BA%E6%A0%88-1"><span class="toc-text">出栈</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-text">栈的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-text">顺序栈的应用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-text">链栈的应用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E9%98%9F"><span class="toc-text">顺序队</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89-1"><span class="toc-text">结构体定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E9%98%9F%E5%88%97"><span class="toc-text">初始化队列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E9%98%9F%E7%A9%BA"><span class="toc-text">判断队空</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E9%98%9F"><span class="toc-text">进队</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BA%E9%98%9F"><span class="toc-text">出队</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E9%98%9F"><span class="toc-text">链队</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89-2"><span class="toc-text">结构体定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E9%98%9F%E5%88%97-1"><span class="toc-text">初始化队列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E9%98%9F%E7%A9%BA-1"><span class="toc-text">判断队空</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A5%E9%98%9F"><span class="toc-text">入队</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BA%E9%98%9F-1"><span class="toc-text">出队</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%B2"><span class="toc-text">串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89-3"><span class="toc-text">结构体定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E9%95%BF%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8"><span class="toc-text">定长顺序存储</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%98%E9%95%BF%E5%88%86%E9%85%8D%E5%AD%98%E5%82%A8"><span class="toc-text">变长分配存储</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-text">基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B5%8B%E5%80%BC"><span class="toc-text">赋值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%96%E4%B8%B2%E9%95%BF%E5%BA%A6"><span class="toc-text">取串长度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%B2%E6%AF%94%E8%BE%83"><span class="toc-text">串比较</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%B2%E8%BF%9E%E6%8E%A5"><span class="toc-text">串连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B1%82%E5%AD%90%E4%B8%B2"><span class="toc-text">求子串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%B2%E6%B8%85%E7%A9%BA"><span class="toc-text">串清空</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D"><span class="toc-text">模式匹配</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95"><span class="toc-text">简单模式匹配算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#KMP%E7%AE%97%E6%B3%95"><span class="toc-text">KMP算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#KMP%E7%AE%97%E6%B3%95%E7%9A%84%E6%94%B9%E8%BF%9B"><span class="toc-text">KMP算法的改进</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-text">树与二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-text">二叉树的存储结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8"><span class="toc-text">顺序存储</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8"><span class="toc-text">链式存储</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95"><span class="toc-text">二叉树的遍历算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-text">先序遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-text">中序遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-text">后序遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86"><span class="toc-text">层次遍历</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-text">线索二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89-4"><span class="toc-text">结构体定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E5%BA%8F%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-text">中序线索二叉树</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%91%E5%92%8C%E6%A3%AE%E6%9E%97%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="toc-text">树和森林与二叉树的转换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%91%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2"><span class="toc-text">树与二叉树的相互转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A3%AE%E6%9E%97%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2"><span class="toc-text">森林与二叉树的相互转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%91%E5%92%8C%E6%A3%AE%E6%9E%97%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-text">树和森林的遍历</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%AB%E5%A4%AB%E6%9B%BC%E6%A0%91%E5%92%8C%E8%B5%AB%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81"><span class="toc-text">赫夫曼树和赫夫曼编码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E8%B5%AB%E5%A4%AB%E6%9B%BC%E6%A0%91"><span class="toc-text">构造赫夫曼树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B5%AB%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81"><span class="toc-text">赫夫曼编码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE"><span class="toc-text">图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5"><span class="toc-text">邻接矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%82%BB%E6%8E%A5%E8%A1%A8"><span class="toc-text">邻接表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95"><span class="toc-text">图的遍历算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%E9%81%8D%E5%8E%86DFS"><span class="toc-text">深度优先搜索遍历DFS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%E9%81%8D%E5%8E%86"><span class="toc-text">广度优先搜索遍历</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%EF%BC%88%E4%BB%A3%E4%BB%B7%EF%BC%89%E7%94%9F%E6%88%90%E6%A0%91"><span class="toc-text">最小（代价）生成树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%AE%E9%87%8C%E5%A7%86%E7%AE%97%E6%B3%95"><span class="toc-text">普里姆算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%8B%E9%B2%81%E6%96%AF%E5%8D%A1%E5%B0%94%E7%AE%97%E6%B3%95"><span class="toc-text">克鲁斯卡尔算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84"><span class="toc-text">最短路径</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%AA%E6%9D%B0%E6%96%AF%E7%89%B9%E6%8B%89%E7%AE%97%E6%B3%95"><span class="toc-text">迪杰斯特拉算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B7%E7%AE%97%E6%B3%95"><span class="toc-text">弗洛伊德算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F"><span class="toc-text">拓扑排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84-1"><span class="toc-text">最短路径</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-text">排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E7%B1%BB%E6%8E%92%E5%BA%8F"><span class="toc-text">插入类排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-text">直接插入排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%98%E5%8D%8A%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-text">折半插入排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F"><span class="toc-text">希尔排序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E6%8D%A2%E7%B1%BB%E6%8E%92%E5%BA%8F"><span class="toc-text">交换类排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B5%B7%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="toc-text">起泡排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-text">快速排序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E7%B1%BB%E6%8E%92%E5%BA%8F"><span class="toc-text">选择类排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-text">简单选择排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="toc-text">堆排序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E8%B7%AF%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="toc-text">二路归并排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F"><span class="toc-text">基数排序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE-1"><span class="toc-text">查找</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE%E6%B3%95"><span class="toc-text">顺序查找法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE%E6%B3%95"><span class="toc-text">折半查找法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%EF%BC%88%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91%EF%BC%89"><span class="toc-text">二叉排序树（二叉查找树）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-text">存储结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95"><span class="toc-text">基本算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%88AVL%E6%A0%91%EF%BC%89"><span class="toc-text">平衡二叉树（AVL树）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-%E6%A0%91%EF%BC%88B%E6%A0%91%EF%BC%89"><span class="toc-text">B-树（B树）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%A3%E5%88%97%E8%A1%A8%EF%BC%88Hash%E8%A1%A8%EF%BC%89"><span class="toc-text">散列表（Hash表）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="toc-text">构造方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%B2%E7%AA%81%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95"><span class="toc-text">冲突处理方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="toc-text">性能分析</span></a></li></ol></li></ol></li></ol>
+        </div>
+    </aside>
+    <a class="btn-toc button" id="btn-toc" tabindex="0">
+        <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z" fill="currentColor"></path>
+        </svg>
+    </a>
+    <div class="toc-menus" id="toc-menus">
+        <div class="toc-title">文章目录</div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8"><span class="toc-text">线性表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89"><span class="toc-text">线性表的结构体定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89"><span class="toc-text">顺序表结构体定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%BB%93%E7%82%B9%E5%AE%9A%E4%B9%89"><span class="toc-text">单链表结点定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8C%E9%93%BE%E8%A1%A8%E7%BB%93%E7%82%B9%E5%AE%9A%E4%B9%89"><span class="toc-text">双链表结点定义</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-text">顺序表的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%89%E5%85%83%E7%B4%A0%E5%80%BC%E6%9F%A5%E6%89%BE"><span class="toc-text">按元素值查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE%E5%85%83%E7%B4%A0"><span class="toc-text">插入数据元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E5%85%83%E7%B4%A0"><span class="toc-text">删除数据元素</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-text">单链表的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E5%8D%95%E9%93%BE%E8%A1%A8"><span class="toc-text">建立单链表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E4%B8%8E%E5%88%A0%E9%99%A4%E7%BB%93%E7%82%B9"><span class="toc-text">插入与删除结点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BD%92%E5%B9%B6"><span class="toc-text">归并</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE"><span class="toc-text">查找</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E9%93%BE%E8%A1%A8%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-text">双链表的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E5%8F%8C%E9%93%BE%E8%A1%A8"><span class="toc-text">建立双链表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E7%BB%93%E7%82%B9"><span class="toc-text">查找结点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E7%BB%93%E7%82%B9"><span class="toc-text">插入结点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%BB%93%E7%82%B9"><span class="toc-text">删除结点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8"><span class="toc-text">循环链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%86%E7%BD%AE%E9%97%AE%E9%A2%98"><span class="toc-text">逆置问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97"><span class="toc-text">栈和队列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E6%A0%88%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-text">顺序栈的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89"><span class="toc-text">结构体定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E6%A0%88"><span class="toc-text">初始化栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%A0%88%E7%A9%BA"><span class="toc-text">判断栈空</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E6%A0%88"><span class="toc-text">进栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BA%E6%A0%88"><span class="toc-text">出栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%86%99%E6%B3%95"><span class="toc-text">常用写法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E6%A0%88%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-text">链栈的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E7%82%B9%E5%AE%9A%E4%B9%89"><span class="toc-text">结点定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%A0%88%E7%A9%BA-1"><span class="toc-text">判断栈空</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E6%A0%88-1"><span class="toc-text">进栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BA%E6%A0%88-1"><span class="toc-text">出栈</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-text">栈的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-text">顺序栈的应用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-text">链栈的应用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E9%98%9F"><span class="toc-text">顺序队</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89-1"><span class="toc-text">结构体定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E9%98%9F%E5%88%97"><span class="toc-text">初始化队列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E9%98%9F%E7%A9%BA"><span class="toc-text">判断队空</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E9%98%9F"><span class="toc-text">进队</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BA%E9%98%9F"><span class="toc-text">出队</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E9%98%9F"><span class="toc-text">链队</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89-2"><span class="toc-text">结构体定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E9%98%9F%E5%88%97-1"><span class="toc-text">初始化队列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E9%98%9F%E7%A9%BA-1"><span class="toc-text">判断队空</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A5%E9%98%9F"><span class="toc-text">入队</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BA%E9%98%9F-1"><span class="toc-text">出队</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%B2"><span class="toc-text">串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89-3"><span class="toc-text">结构体定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E9%95%BF%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8"><span class="toc-text">定长顺序存储</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%98%E9%95%BF%E5%88%86%E9%85%8D%E5%AD%98%E5%82%A8"><span class="toc-text">变长分配存储</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-text">基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B5%8B%E5%80%BC"><span class="toc-text">赋值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%96%E4%B8%B2%E9%95%BF%E5%BA%A6"><span class="toc-text">取串长度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%B2%E6%AF%94%E8%BE%83"><span class="toc-text">串比较</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%B2%E8%BF%9E%E6%8E%A5"><span class="toc-text">串连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B1%82%E5%AD%90%E4%B8%B2"><span class="toc-text">求子串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%B2%E6%B8%85%E7%A9%BA"><span class="toc-text">串清空</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D"><span class="toc-text">模式匹配</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95"><span class="toc-text">简单模式匹配算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#KMP%E7%AE%97%E6%B3%95"><span class="toc-text">KMP算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#KMP%E7%AE%97%E6%B3%95%E7%9A%84%E6%94%B9%E8%BF%9B"><span class="toc-text">KMP算法的改进</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-text">树与二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-text">二叉树的存储结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8"><span class="toc-text">顺序存储</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8"><span class="toc-text">链式存储</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95"><span class="toc-text">二叉树的遍历算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-text">先序遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-text">中序遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-text">后序遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86"><span class="toc-text">层次遍历</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-text">线索二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89-4"><span class="toc-text">结构体定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E5%BA%8F%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-text">中序线索二叉树</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%91%E5%92%8C%E6%A3%AE%E6%9E%97%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="toc-text">树和森林与二叉树的转换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%91%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2"><span class="toc-text">树与二叉树的相互转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A3%AE%E6%9E%97%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2"><span class="toc-text">森林与二叉树的相互转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%91%E5%92%8C%E6%A3%AE%E6%9E%97%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-text">树和森林的遍历</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%AB%E5%A4%AB%E6%9B%BC%E6%A0%91%E5%92%8C%E8%B5%AB%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81"><span class="toc-text">赫夫曼树和赫夫曼编码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E8%B5%AB%E5%A4%AB%E6%9B%BC%E6%A0%91"><span class="toc-text">构造赫夫曼树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B5%AB%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81"><span class="toc-text">赫夫曼编码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE"><span class="toc-text">图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5"><span class="toc-text">邻接矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%82%BB%E6%8E%A5%E8%A1%A8"><span class="toc-text">邻接表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95"><span class="toc-text">图的遍历算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%E9%81%8D%E5%8E%86DFS"><span class="toc-text">深度优先搜索遍历DFS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%E9%81%8D%E5%8E%86"><span class="toc-text">广度优先搜索遍历</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%EF%BC%88%E4%BB%A3%E4%BB%B7%EF%BC%89%E7%94%9F%E6%88%90%E6%A0%91"><span class="toc-text">最小（代价）生成树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%AE%E9%87%8C%E5%A7%86%E7%AE%97%E6%B3%95"><span class="toc-text">普里姆算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%8B%E9%B2%81%E6%96%AF%E5%8D%A1%E5%B0%94%E7%AE%97%E6%B3%95"><span class="toc-text">克鲁斯卡尔算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84"><span class="toc-text">最短路径</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%AA%E6%9D%B0%E6%96%AF%E7%89%B9%E6%8B%89%E7%AE%97%E6%B3%95"><span class="toc-text">迪杰斯特拉算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B7%E7%AE%97%E6%B3%95"><span class="toc-text">弗洛伊德算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F"><span class="toc-text">拓扑排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84-1"><span class="toc-text">最短路径</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-text">排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E7%B1%BB%E6%8E%92%E5%BA%8F"><span class="toc-text">插入类排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-text">直接插入排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%98%E5%8D%8A%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-text">折半插入排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F"><span class="toc-text">希尔排序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E6%8D%A2%E7%B1%BB%E6%8E%92%E5%BA%8F"><span class="toc-text">交换类排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B5%B7%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="toc-text">起泡排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-text">快速排序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E7%B1%BB%E6%8E%92%E5%BA%8F"><span class="toc-text">选择类排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-text">简单选择排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="toc-text">堆排序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E8%B7%AF%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="toc-text">二路归并排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F"><span class="toc-text">基数排序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE-1"><span class="toc-text">查找</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE%E6%B3%95"><span class="toc-text">顺序查找法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE%E6%B3%95"><span class="toc-text">折半查找法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%EF%BC%88%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91%EF%BC%89"><span class="toc-text">二叉排序树（二叉查找树）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-text">存储结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95"><span class="toc-text">基本算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%88AVL%E6%A0%91%EF%BC%89"><span class="toc-text">平衡二叉树（AVL树）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-%E6%A0%91%EF%BC%88B%E6%A0%91%EF%BC%89"><span class="toc-text">B-树（B树）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%A3%E5%88%97%E8%A1%A8%EF%BC%88Hash%E8%A1%A8%EF%BC%89"><span class="toc-text">散列表（Hash表）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="toc-text">构造方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%B2%E7%AA%81%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95"><span class="toc-text">冲突处理方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="toc-text">性能分析</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+
+<article class="post post__with-toc content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <p>我的数据结构笔记。</p>
 <h2 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h2><h3 id="线性表的结构体定义"><a href="#线性表的结构体定义" class="headerlink" title="线性表的结构体定义"></a>线性表的结构体定义</h3><h4 id="顺序表结构体定义"><a href="#顺序表结构体定义" class="headerlink" title="顺序表结构体定义"></a>顺序表结构体定义</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> data[maxSize];</span><br><span class="line">    <span class="type">int</span> length;</span><br><span class="line">&#125; Sqlist;</span><br></pre></td></tr></table></figure>
 
 <span id="more"></span>
@@ -968,166 +692,111 @@
 <p><strong>查找不成功</strong>时的平均查找长度是指在表中找不到待查的表项，但<strong>找到插入位置</strong>的平均比较次数（分母是表长度）。</p>
 <p><strong>装填因子</strong>是关键字个数与表长度的比值。</p>
 
-                    </article>
-                    
+    </div>
+     
+    <div class="post-footer__meta"><p>更新于 2023-04-05</p></div> 
+    <div class="post-entry__tags"><a href="/tags/%E7%AE%97%E6%B3%95/" class="post-tags__link button"># 算法</a></div> 
+</article>
 
 
-    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
-    <script>
-    (function() {
-        var dateUpdate = Date.parse("2023-04-05");
-        var nowDate = new Date();
-        var a = nowDate.getTime();
-        var b = a - dateUpdate;
-        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
-        if (daysUpdateExpire >= 120) {
-            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
-        } else {
-            document.getElementById('date-expire-notification').style.display = 'none';
-        }
-    })();
-    </script>
-
-
-<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2023-02-09T16:54:50.000Z" itemprop="datePublished">2023-02-10</time>
-
-    , 最后修改于&nbsp;<time datetime="2023-04-05T15:47:31.854Z" itemprop="dateModified">2023-04-05</time>
-
-</p>
-<p class="post-footer-info mb-0 pt-2">
-
-
-
-<span class="post-tags-list mt-2">
-
-<a class="post-tags-list-item" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">#&nbsp;算法</a>
-
-</span>
-
-
-</p>
-
-                </div>
-                <div class="post-nav px-2 bg-gray">
-<ul class="pagination">
-    <!-- Prev Nav -->
-    
-        <li class="page-item page-prev">
-            <a href="/2023/Online-Judge/" rel="prev">
-                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
-                <div class="page-item-subtitle">机试笔记</div>
-            </a>
-        </li>
-    
-
-    <!-- Next Nav -->
-    
-        <li class="page-item page-next">
-            <a href="/2023/hello-world/" rel="next">
-                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
-                <div class="page-item-subtitle">Hello World</div>
-            </a>
-        </li>
-    
-</ul>
-</div>
-
-                
-                    <!-- # Comment # -->
-                    
-                
-            </div>
+    <div class="nav">
+        <div class="nav__prev">
+            
+                <a href="/2023/Online-Judge/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            上一篇
+                        </div>
+                        <div class="nav__title">
+                            机试笔记
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/2023/hello-world/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            下一篇
+                        </div>
+                        <div class="nav__title">
+                            Hello World
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
         </div>
     </div>
-</div>
-
-
-  
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-  });
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-<script type="text/javascript" src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 
 
-            <!-- ### Footer ### -->
-            <footer class="text-center">
-    <!-- footer copyright -->
+
+</main>
+
+            <footer class="footer">
     
-        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
-            <a class="footer-copyright-a" href="https://idealisti.github.io">Idealisti</a>
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2023 <a href="/">Idealisti</a>
         </p>
-
-    <!-- footer custom text -->
-    <p class="footer-text mb-0">
     
-    </p>
-    <!-- footer develop info -->
-    <p class="footer-develop mb-0">
-        
-    <!-- Busuanzi User Views -->
-    <span id="busuanzi_container_site_uv" hidden>
-        <span></span>
-        <span id="busuanzi_value_site_uv"></span>
-        <span>Viewers</span>
-        
-            <span>|</span>
-        
-    </span>
-
-
-
-
-        
-        Powered by&nbsp;<!--
-         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
-         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
-    </p>
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
 </footer>
 
+        </div>
+         
 
-        <!-- ### Import File ### -->
-        <!-- ### Footer JS Import ### -->
+ 
 
-<script>
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
 
     
-window.lazyLoadOptions = {
-    elements_selector: ".lazyload",
-    threshold: 50
-};
-document.getElementById('copyright-year').textContent = new Date().getFullYear();
-console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+ 
 
-</script>
+ 
 
-<script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
-    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+ 
 
+ 
 
-<!-- Offset -->
+ 
+
+ 
 
 
 
-
-<!-- Comment -->
-
-
-<!-- ### Custom Footer ### -->
 
     </body>
-
 </html>

@@ -1,436 +1,160 @@
 <!DOCTYPE html>
-
 <html lang="zh-CN">
     <head>
     <meta charset="utf-8">
-    <!--
-        hexo-theme-suka © SukkaW
-        GitHub: https://github.com/SukkaW/hexo-theme-suka
-    -->
 
-    <!-- ### Resource Hint ### -->
-
-    <!-- ## DNS Prefetch ## -->
-    <meta http-equiv="x-dns-prefetch-control" content="on">
-
-<!-- busuanzi -->
-
-    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
-
-
-<!-- comment -->
-
-
-
-
-
-
-
-<!-- analytics -->
-
-
-
-
-
-
-
-    <!-- ## Preload ## -->
     
-    <!-- Busuanzi -->
-    
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
 
-
-
-
-
-
-
-    <!-- ### Meta & Title & Info ### -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <!-- 渲染优化 -->
     <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <!-- Title -->
-    <title>机试笔记 | Idealisti</title>
-
-    <!-- Favicons -->
-    <link rel="icon" type="image&#x2F;ico" href="/img/suka-favicon.ico">
-
-    <!-- ### Import File ### -->
-    <link rel="stylesheet" href="/lib/spectre/spectre.min.css"><style>
-    body {
-        background-color: #f8f9fa;
-    }
-
-    a, a:visited {
-        color: #0070ff;
-    }
-
-    a:active, a:focus, a:hover {
-        color: #0070ff;
-        opacity: .75;
-    }
-
-    #post-content a,
-    #post-content a:hover,
-    #post-content a:focus,
-    #post-content a:visited {
-        color: #005eb9;
-        opacity: 1;
-    }
+    <!--icon-->
 
     
-
-    .post-entry .card-body a {
-        color: #0070ff;
-    }
-
-    .avatar {
-        background: #444;
-    }
-
-    .navbar-link,
-    .navbar-link:visited,
-    .timeline .timeline-item .timeline-icon.icon-lg {
-        color: #0070ff;
-    }
-
-    .navbar-link:hover {
-        color: #0070ff;
-        opacity: .8;
-    }
-
-    #search-input .btn,
-    #disqus_click_btn,
-    #disqus-switch-to-direct,
-    #disqus-loadmore-button {
-        background: #727e96;
-        border-color: #727e96;
-        color: #fff;
-    }
-
-    #post-toc a.post-toc-link,
-    #post-toc a.post-toc-link:visited,
-    .share-menu.menu .menu-item>a {
-        color: #727e96;
-    }
-
-    .share-menu.menu .menu-item>a:hover,
-    .share-menu.menu .menu-item>a:focus,
-    .share-menu.menu .menu-item>a:visited {
-        color: #50596c;
-        background: #f8f9fa;
-        opacity: .85;
-    }
-</style><link rel="stylesheet" href="/css/style.min.css">
-
-
-
-
-
-
-
-
-    <!-- Prettify Theme -->
     
-    <link rel="preload" href="/css/highlight/atom-one-light.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/atom-one-light.min.css"></noscript>
-
-
-
-
-
-<script>
-/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
-!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
-</script>
-
-    <!-- ### Site Verification ### -->
+    
+    
     
 
 
-    <meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Idealisti"><meta name="msapplication-starturl" content="https://idealisti.github.io"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Idealisti"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- meta -->
 
-    <!-- ### The Open Graph & Twitter Card Protocol ### -->
-    <meta property="og:title" content="机试笔记 | Idealisti"><meta property="og:site_name" content="Idealisti"><meta property="og:type" content="article"><meta property="og:url" content="https://idealisti.github.io/2023/Online-Judge/"><meta property="og:locale" content="zh-CN"><meta name="description" content="我习惯的格式化风格： 12&amp;quot;C_Cpp.clang_format_style&amp;quot;:&amp;quot;&amp;#123; BasedOnStyle: Chromium, IndentWidth: 4, ColumnLimit: 0 &amp;#125;&amp;quot; - Li Yijie - Idealisti"><meta name="keywords" content="算法"><meta property="article:published_time" content="2023-03-25T15:20:20.000Z"><meta property="article:modified_time" content="2023-04-05T15:26:31.944Z"><meta property="og:updated_time" content="2023-04-05T15:26:31.944Z"><meta property="article:author" content="Li Yijie"><meta property="article:tag" content="算法"><meta name="twitter:card" content="summary">
+
+<title>机试笔记 | Idealisti</title>
+
+
+    <meta name="keywords" content="算法">
+
+
+
+
+    <!-- OpenGraph -->
+
 
     
+<link rel="stylesheet" href="/css/style/main.css">
+ 
 
-    <!-- ### Canonical link ### -->
-    <link rel="canonical" href="https://idealisti.github.io/2023/Online-Judge/">
-
-    <meta name="generator" content="Hexo 6.3.0">
-
-    <!-- ### Analytics ### -->
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/atom-one-light.css" media="none" >
+        
+            <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight/atom-one-dark.css" media="none">
+        
     
 
-
-
-
-
-
-
-    <!-- ### Structured Data ### -->
+    
     
 
+    
+    
+<link rel="stylesheet" href="/css/style/dark.css">
 
-
-<script type="application/ld+json">
-{
-    "@context": "http://schema.org",
-    "url": "https://idealisti.github.io/2023/Online-Judge/",
-    "@type": "BlogPosting",
-    "logo": "https://idealisti.github.io/img/suka-favicon.ico",
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://idealisti.github.io/2023/Online-Judge/"
-    },
-    "headline": "机试笔记 | Idealisti",
     
-    "image": {
-        "@type": "ImageObject",
-        "url": "https://idealisti.github.io/img/suka-favicon.ico"
-    },
-    
-    "datePublished": "2023-03-25T15:20:20.000Z",
-    "dateModified": "2023-04-05T15:26:31.944Z",
-    "author": {
-        "@type": "Person",
-        "name": "Li Yijie",
-        "image": {
-            "@type": "ImageObject",
-            "url": "https://idealisti.github.io/img/default_avatar.png"
-        },
-        "description": "Dream big. Start small."
-    },
-    "publisher": {
-        "@type": "Organization",
-        "name": "Idealisti",
-        "logo": {
-            "@type": "ImageObject",
-            "url": "https://idealisti.github.io/img/suka-favicon.ico"
-        }
-    },
-    
-    "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://idealisti.github.io/search?s={search_term_string}",
-        "query-input": "required name=search_term_string"
-    },
-    
-    "keywords": "算法",
-    "description": "我习惯的格式化风格： 12&amp;amp;quot;C_Cpp.clang_format_style&amp;amp;quot;:&amp;amp;quot;&amp;amp;#123; BasedOnStyle: Chromium, IndentWidth: 4, ColumnLimit: 0 &amp;amp;#125;&amp;amp;quot; - Li Yijie - Idealisti"
-}
-</script>
+<script src="/js/darkmode.js"></script>
 
 
 
-    <!-- ### Custom Head ### -->
-    
-</head>
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 6.3.0"></head>
 
     <body>
-            
-
-            <!-- ### Main content ### -->
-            <!-- ## Header ##-->
-<header>
-    <h1 class="header-title text-center"><a href="/">Idealisti</a></h1>
-
-    <p class="text-center header-slogan">
+        <div id="app" tabindex="-1">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">Idealisti</span>
+        </a>
+    </div>
+    <div class="header__right">
         
-            
-                Dream big. Start small.
-            
-        
-    </p>
-
-    <nav class="navbar-section text-center">
-    
-        <a href="/" class="navbar-link">首页</a>
-    
-    
-        <a href="/archives/" class="navbar-link">归档</a>
-    
-    
-        <a href="/search" class="navbar-link">搜索</a>
-    
-    
-    
-        <div class="dropdown dropdown-right">
-    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
-    <ul class="menu share-menu">
-
-        <!-- Share Weibo -->
-        
-        <li class="menu-item">
-            <a href="http://service.weibo.com/share/share.php?appkey=&title=Idealisti&url=https://idealisti.github.io&pic=https://idealisti.github.io/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
-        </li>
-        
-
-        <!-- Share Twitter -->
-        
-        <li class="menu-item">
-            <a href="https://twitter.com/intent/tweet?text=Idealisti&url=https://idealisti.github.io&via=Li Yijie" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
-        </li>
-        
-
-        <!-- Share Facebook -->
-        
-        <li class="menu-item">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://idealisti.github.io" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
-        </li>
-        
-
-        <!-- Share Google+ -->
-        
-        <li class="menu-item">
-            <a href="https://plus.google.com/share?url=https://idealisti.github.io" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
-        </li>
-        
-
-        <!-- Share LinkedIn -->
-        
-        <li class="menu-item">
-            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://idealisti.github.io&title=机试笔记" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
-        </li>
-        
-
-        <!-- Share QQ -->
-        
-        <li class="menu-item">
-            <a href="http://connect.qq.com/widget/shareqq/index.html?site=Idealisti&title=机试笔记&summary=&pics=https://idealisti.github.io/img/suka-favicon.ico&url=https://idealisti.github.io" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
-        </li>
-        
-
-        <!-- Share Telegram -->
-        
-        <li class="menu-item">
-            <a href="https://t.me/share/url?url=https://idealisti.github.io&text=机试笔记" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
-        </li>
-        
-
-        <!-- QRCode -->
-        
-        <li class="menu-item">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB10lEQVR42u3bu47EMAxD0fz/T++2g4VNUjspYuammSIPnwEEO5Kc6+eBxwUKFChQC9Qljs9rVterZ6j7tuOAqkEtg27wwL/PWJ2LxgFVhdoN5IJzhdhdo8YB9U7UCrIbXAU8KFCrQVb3ugkY1LtQuwfuBnSBrIBfvyWAejwqeYG74/e2bAbUo1G26GAW3DRhvbXqAurRKBWISQFDLdLp80F1otziu1uAXVKanAPVidoFsAzMYOF2CQSoPtRukCRwvwn4+CUP1JGotHD/n4lVvfyB6kS5CxUgKfRPJlBQHSh1wxStJtKoeQmqAqUmRxWwyYaISZMSVB9q2jia4GWy4LpYoI5DueTBBfcuwNMkBFQnKlmQ46ZPOKnKyRNUBUo1o93EmRTXkmIcqE6UK4a5opmaRF1zElQHatIkksWJsEgrCx+galCuIZkUVtMNzXIjBqhqVJJEJJtx1II8DnRQx6GmBdjJOVdMA9WDckda7HDJqfvToHpQadHCfYiRFGFtYgKqBqUCPG0WJQUM1TwA1YeafnAx2YCTFNZAvQuVbIJImgM24QD1OlSyAKdN7fHXIKCOQ7liabJwp83J0a4gUEeiJhua02bldPMNqB7Ukw5QoECB+jh+AdgHD770JqphAAAAAElFTkSuQmCC" alr="QRCode">
-        </li>
-        
-
-    </ul>
-</div>
-    
-    
-</nav>
-</header>
-
-            
-    <!-- ## Post ## -->
-    <div class="post-container">
-    <div id="post-card" class="card">
-        
-        <div class="card-item-container">
-            <div class="card-inner-cell">
-                <!-- # Post Header Info # -->
-                <div class="card-header">
-                    
-    <h1 class="card-title h3 mb-2">机试笔记</h1>
-
-
-
-
-<div class="post-header-info">
-    <p class="post-header-info-left text-gray">
-        <img class="author-thumb lazyload" data-src="/img/default_avatar.png" src="/img/suka-lazyload.gif" alt="Li Yijie's Avatar">
-        <span>2023-03-25</span>
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/archives/" class="navbar-menu button">归档</a>
+                
+            </div>
         
         
-            <!-- Busuanzi Post Views -->
-<span id="busuanzi_container_page_pv" hidden>
-    <span class="suka-devide-dot"></span>
-    <span></span>
-    <span id="busuanzi_value_page_pv"></span>
-    <span>Views</span>
-</span>
+        
+
         
         
-    </p>
-    <div class="post-header-info-right">
+    <a href="javaScript:void(0);" id="btn-toggle-dark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </a>
+
+
         
-            <div class="dropdown dropdown-right">
-<a class="dropdown-toggle" tabindex="0">分享本文</a>
-<ul class="menu share-menu">
-    <!-- Share Weibo -->
-    
-    <li class="menu-item">
-        <a href="http://service.weibo.com/share/share.php?appkey=&title=机试笔记&url=https://idealisti.github.io/2023/Online-Judge/&pic=https://idealisti.github.io/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
-    </li>
-    
-
-    <!-- Share Twitter -->
-    
-    <li class="menu-item">
-        <a href="https://twitter.com/intent/tweet?text=机试笔记&url=https://idealisti.github.io/2023/Online-Judge/&via=Li Yijie" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
-    </li>
-    
-
-    <!-- Share Facebook -->
-    
-    <li class="menu-item">
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https://idealisti.github.io/2023/Online-Judge/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
-    </li>
-    
-
-    <!-- Share Google+ -->
-    
-    <li class="menu-item">
-        <a href="https://plus.google.com/share?url=https://idealisti.github.io/2023/Online-Judge/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
-    </li>
-    
-
-    <!-- Share LinkedIn -->
-    
-    <li class="menu-item">
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://idealisti.github.io/2023/Online-Judge/&title=Idealisti" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
-    </li>
-    
-
-    <!-- Share QQ -->
-    
-    <li class="menu-item">
-        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Idealisti&title=Idealisti&summary=&pics=https://idealisti.github.io/img/suka-favicon.ico&url=https://idealisti.github.io/2023/Online-Judge/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
-    </li>
-    
-
-    <!-- Share Telegram -->
-    
-    <li class="menu-item">
-        <a href="https://t.me/share/url?url=https://idealisti.github.io/2023/Online-Judge/&text=Idealisti" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
-    </li>
-    
-
-    <!-- QRCode -->
-    
-    <li class="menu-item">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB10lEQVR42u3bu47EMAxD0fz/T++2g4VNUjspYuammSIPnwEEO5Kc6+eBxwUKFChQC9Qljs9rVterZ6j7tuOAqkEtg27wwL/PWJ2LxgFVhdoN5IJzhdhdo8YB9U7UCrIbXAU8KFCrQVb3ugkY1LtQuwfuBnSBrIBfvyWAejwqeYG74/e2bAbUo1G26GAW3DRhvbXqAurRKBWISQFDLdLp80F1otziu1uAXVKanAPVidoFsAzMYOF2CQSoPtRukCRwvwn4+CUP1JGotHD/n4lVvfyB6kS5CxUgKfRPJlBQHSh1wxStJtKoeQmqAqUmRxWwyYaISZMSVB9q2jia4GWy4LpYoI5DueTBBfcuwNMkBFQnKlmQ46ZPOKnKyRNUBUo1o93EmRTXkmIcqE6UK4a5opmaRF1zElQHatIkksWJsEgrCx+galCuIZkUVtMNzXIjBqhqVJJEJJtx1II8DnRQx6GmBdjJOVdMA9WDckda7HDJqfvToHpQadHCfYiRFGFtYgKqBqUCPG0WJQUM1TwA1YeafnAx2YCTFNZAvQuVbIJImgM24QD1OlSyAKdN7fHXIKCOQ7liabJwp83J0a4gUEeiJhua02bldPMNqB7Ukw5QoECB+jh+AdgHD770JqphAAAAAElFTkSuQmCC" alt="QRCode">
-    </li>
-    
-
-</ul>
-</div>
+            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+            </div>
         
     </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        机试笔记
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2023/03/" class="post-meta__date button">2023-03-25</a>
+        
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
 </div>
-                </div>
-                <div class="card-body">
-                    
-                        
-                        
-                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80"><span class="post-toc-number">1.</span> <span class="post-toc-text">语言基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%95%B0%E7%BB%84"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">数组</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">字符数组的输入输出</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#string-h-%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">string.h 头文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#sscanf-%E4%B8%8E-sprintf"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">sscanf 与 sprintf</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">结构体</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E8%AE%BF%E9%97%AE"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">结构体的定义与访问</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">结构体的初始化</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%A5%E9%97%A8%E6%A8%A1%E6%8B%9F"><span class="post-toc-number">2.</span> <span class="post-toc-text">入门模拟</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%97%A5%E6%9C%9F%E5%A4%84%E7%90%86"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">日期处理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">进制转换</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AE%97%E6%B3%95%E5%88%9D%E6%AD%A5"><span class="post-toc-number">3.</span> <span class="post-toc-text">算法初步</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">排序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">快速排序</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#sort-%E5%87%BD%E6%95%B0"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">sort() 函数</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B4%AA%E5%BF%83"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">贪心</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%AE%80%E5%8D%95%E8%B4%AA%E5%BF%83"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">简单贪心</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8C%BA%E9%97%B4%E8%B4%AA%E5%BF%83"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">区间贪心</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%8C%E5%88%86"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">二分</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">二分查找</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%87%BD%E6%95%B0%E4%BC%B0%E8%AE%A1"><span class="post-toc-number">3.3.2.</span> <span class="post-toc-text">函数估计</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98"><span class="post-toc-number">4.</span> <span class="post-toc-text">数学问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E4%B8%8E%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">最大公约数与最小公倍数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%86%E6%95%B0"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">分数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%86%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%8C%96%E7%AE%80"><span class="post-toc-number">4.2.1.</span> <span class="post-toc-text">分数的表示与化简</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%86%E6%95%B0%E7%9A%84%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97"><span class="post-toc-number">4.2.2.</span> <span class="post-toc-text">分数的四则运算</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%86%E6%95%B0%E7%9A%84%E8%BE%93%E5%87%BA"><span class="post-toc-number">4.2.3.</span> <span class="post-toc-text">分数的输出</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%B4%A0%E6%95%B0"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">素数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A4%A7%E6%95%B4%E6%95%B0"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">大整数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%AE%9A%E4%B9%89%E5%A4%A7%E6%95%B4%E6%95%B0%E7%BB%93%E6%9E%84%E4%BD%93"><span class="post-toc-number">4.4.1.</span> <span class="post-toc-text">定义大整数结构体</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%BE%93%E5%85%A5%E5%A4%A7%E6%95%B4%E6%95%B0"><span class="post-toc-number">4.4.2.</span> <span class="post-toc-text">输入大整数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%AF%94%E8%BE%83%E4%B8%A4%E6%95%B0%E5%A4%A7%E5%B0%8F"><span class="post-toc-number">4.4.3.</span> <span class="post-toc-text">比较两数大小</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%A4%A7%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97"><span class="post-toc-number">4.4.4.</span> <span class="post-toc-text">大整数运算</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#STL"><span class="post-toc-number">5.</span> <span class="post-toc-text">STL</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#vector"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">vector</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#set"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">set</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#string"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">string</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#map"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">map</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#stack"><span class="post-toc-number">5.5.</span> <span class="post-toc-text">stack</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#queue"><span class="post-toc-number">5.6.</span> <span class="post-toc-text">queue</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#algorithm-%E4%B8%8B%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="post-toc-number">5.7.</span> <span class="post-toc-text">algorithm 下的常用函数</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97"><span class="post-toc-number">6.</span> <span class="post-toc-text">栈与队列</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A0%91"><span class="post-toc-number">7.</span> <span class="post-toc-text">树</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E4%B8%8E%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">二叉树的存储结构与基本操作</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">二叉树的遍历</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%90%9C%E7%B4%A2"><span class="post-toc-number">8.</span> <span class="post-toc-text">搜索</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#DFS"><span class="post-toc-number">8.1.</span> <span class="post-toc-text">DFS</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#BFS"><span class="post-toc-number">8.2.</span> <span class="post-toc-text">BFS</span></a></li></ol></li></ol></div>
-                        
-                    
-                    <article id="post-content">
-                        <p>我习惯的格式化风格：</p>
+
+
+    <aside class="post-side">
+        <div class="post-side__toc">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80"><span class="toc-text">语言基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-text">数组</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="toc-text">字符数组的输入输出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#string-h-%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-text">string.h 头文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sscanf-%E4%B8%8E-sprintf"><span class="toc-text">sscanf 与 sprintf</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text">结构体</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E8%AE%BF%E9%97%AE"><span class="toc-text">结构体的定义与访问</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">结构体的初始化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A5%E9%97%A8%E6%A8%A1%E6%8B%9F"><span class="toc-text">入门模拟</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F%E5%A4%84%E7%90%86"><span class="toc-text">日期处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="toc-text">进制转换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%88%9D%E6%AD%A5"><span class="toc-text">算法初步</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-text">排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-text">快速排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sort-%E5%87%BD%E6%95%B0"><span class="toc-text">sort() 函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%AA%E5%BF%83"><span class="toc-text">贪心</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E8%B4%AA%E5%BF%83"><span class="toc-text">简单贪心</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%BA%E9%97%B4%E8%B4%AA%E5%BF%83"><span class="toc-text">区间贪心</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%88%86"><span class="toc-text">二分</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE"><span class="toc-text">二分查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E4%BC%B0%E8%AE%A1"><span class="toc-text">函数估计</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98"><span class="toc-text">数学问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E4%B8%8E%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0"><span class="toc-text">最大公约数与最小公倍数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%95%B0"><span class="toc-text">分数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%8C%96%E7%AE%80"><span class="toc-text">分数的表示与化简</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%95%B0%E7%9A%84%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97"><span class="toc-text">分数的四则运算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%95%B0%E7%9A%84%E8%BE%93%E5%87%BA"><span class="toc-text">分数的输出</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A0%E6%95%B0"><span class="toc-text">素数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E6%95%B4%E6%95%B0"><span class="toc-text">大整数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E5%A4%A7%E6%95%B4%E6%95%B0%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text">定义大整数结构体</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E5%A4%A7%E6%95%B4%E6%95%B0"><span class="toc-text">输入大整数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E4%B8%A4%E6%95%B0%E5%A4%A7%E5%B0%8F"><span class="toc-text">比较两数大小</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%A7%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97"><span class="toc-text">大整数运算</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STL"><span class="toc-text">STL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vector"><span class="toc-text">vector</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set"><span class="toc-text">set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#string"><span class="toc-text">string</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#map"><span class="toc-text">map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stack"><span class="toc-text">stack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#queue"><span class="toc-text">queue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#algorithm-%E4%B8%8B%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="toc-text">algorithm 下的常用函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97"><span class="toc-text">栈与队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91"><span class="toc-text">树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E4%B8%8E%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-text">二叉树的存储结构与基本操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-text">二叉树的遍历</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2"><span class="toc-text">搜索</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DFS"><span class="toc-text">DFS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFS"><span class="toc-text">BFS</span></a></li></ol></li></ol>
+        </div>
+    </aside>
+    <a class="btn-toc button" id="btn-toc" tabindex="0">
+        <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z" fill="currentColor"></path>
+        </svg>
+    </a>
+    <div class="toc-menus" id="toc-menus">
+        <div class="toc-title">文章目录</div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80"><span class="toc-text">语言基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-text">数组</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="toc-text">字符数组的输入输出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#string-h-%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-text">string.h 头文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sscanf-%E4%B8%8E-sprintf"><span class="toc-text">sscanf 与 sprintf</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text">结构体</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E8%AE%BF%E9%97%AE"><span class="toc-text">结构体的定义与访问</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">结构体的初始化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A5%E9%97%A8%E6%A8%A1%E6%8B%9F"><span class="toc-text">入门模拟</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F%E5%A4%84%E7%90%86"><span class="toc-text">日期处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="toc-text">进制转换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%88%9D%E6%AD%A5"><span class="toc-text">算法初步</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-text">排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-text">快速排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sort-%E5%87%BD%E6%95%B0"><span class="toc-text">sort() 函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%AA%E5%BF%83"><span class="toc-text">贪心</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E8%B4%AA%E5%BF%83"><span class="toc-text">简单贪心</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%BA%E9%97%B4%E8%B4%AA%E5%BF%83"><span class="toc-text">区间贪心</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%88%86"><span class="toc-text">二分</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE"><span class="toc-text">二分查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E4%BC%B0%E8%AE%A1"><span class="toc-text">函数估计</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98"><span class="toc-text">数学问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E4%B8%8E%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0"><span class="toc-text">最大公约数与最小公倍数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%95%B0"><span class="toc-text">分数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%8C%96%E7%AE%80"><span class="toc-text">分数的表示与化简</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%95%B0%E7%9A%84%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97"><span class="toc-text">分数的四则运算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%95%B0%E7%9A%84%E8%BE%93%E5%87%BA"><span class="toc-text">分数的输出</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A0%E6%95%B0"><span class="toc-text">素数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E6%95%B4%E6%95%B0"><span class="toc-text">大整数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E5%A4%A7%E6%95%B4%E6%95%B0%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text">定义大整数结构体</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E5%A4%A7%E6%95%B4%E6%95%B0"><span class="toc-text">输入大整数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E4%B8%A4%E6%95%B0%E5%A4%A7%E5%B0%8F"><span class="toc-text">比较两数大小</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%A7%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97"><span class="toc-text">大整数运算</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STL"><span class="toc-text">STL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vector"><span class="toc-text">vector</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set"><span class="toc-text">set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#string"><span class="toc-text">string</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#map"><span class="toc-text">map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stack"><span class="toc-text">stack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#queue"><span class="toc-text">queue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#algorithm-%E4%B8%8B%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="toc-text">algorithm 下的常用函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97"><span class="toc-text">栈与队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91"><span class="toc-text">树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E4%B8%8E%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-text">二叉树的存储结构与基本操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-text">二叉树的遍历</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2"><span class="toc-text">搜索</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DFS"><span class="toc-text">DFS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFS"><span class="toc-text">BFS</span></a></li></ol></li></ol>
+    </div>
+
+
+<article class="post post__with-toc content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <p>我习惯的格式化风格：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;C_Cpp.clang_format_style&quot;</span><span class="punctuation">:</span></span><br><span class="line"><span class="string">&quot;&#123; BasedOnStyle: Chromium, IndentWidth: 4, ColumnLimit: 0 &#125;&quot;</span></span><br></pre></td></tr></table></figure>
 
 <span id="more"></span>
@@ -767,166 +491,161 @@
 <p>求起点 $S$ 到终点 $T$ 的最少步数。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn = <span class="number">500</span>;</span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"><span class="type">bool</span> inq[maxn][maxn] = &#123;<span class="literal">false</span>&#125;, maze[maxn][maxn] = &#123;<span class="number">1</span>&#125;;</span><br><span class="line"><span class="type">int</span> dx[<span class="number">4</span>] = &#123;<span class="number">-1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>&#125;;</span><br><span class="line"><span class="type">int</span> dy[<span class="number">4</span>] = &#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">1</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">    <span class="type">int</span> x, y;  <span class="comment">// 坐标</span></span><br><span class="line">    <span class="type">int</span> step;  <span class="comment">// 步数</span></span><br><span class="line">&#125; s, t, node;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">isValid</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; <span class="number">0</span> || x &gt;= n || y &lt; <span class="number">0</span> || y &gt;= m)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (inq[x][y] || maze[x][y])</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">BFS</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    queue&lt;Node&gt; q;</span><br><span class="line">    q.<span class="built_in">push</span>(s);  <span class="comment">// 起点入队</span></span><br><span class="line">    <span class="keyword">while</span> (!q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        Node top = q.<span class="built_in">front</span>();  <span class="comment">// 取出队首</span></span><br><span class="line">        q.<span class="built_in">pop</span>();               <span class="comment">// 队首出队</span></span><br><span class="line">        <span class="keyword">if</span> (top.x == t.x &amp;&amp; top.y == t.y) &#123;</span><br><span class="line">            <span class="keyword">return</span> top.step;  <span class="comment">// 到达终点，返回步数</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;  <span class="comment">// 四个方向</span></span><br><span class="line">            <span class="type">int</span> newX = top.x + dx[i];</span><br><span class="line">            <span class="type">int</span> newY = top.y + dy[i];</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">isValid</span>(newX, newY)) &#123;  <span class="comment">// 如果该相邻位置有效</span></span><br><span class="line">                <span class="comment">// 设置一个坐标为 (newX, newY) 的 Node node</span></span><br><span class="line">                node.x = newX, node.y = newY;</span><br><span class="line">                node.step = top.step + <span class="number">1</span>;  <span class="comment">// 步数为当前队首加1</span></span><br><span class="line">                q.<span class="built_in">push</span>(node);              <span class="comment">// 并将其入队</span></span><br><span class="line">                inq[newX][newY] = <span class="literal">true</span>;    <span class="comment">// 标记该位置入队</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;  <span class="comment">// 无法到达终点t时返回-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; m; j++)</span><br><span class="line">            cin &gt;&gt; maze[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">    s.x = s.y = s.step = <span class="number">0</span>;    <span class="comment">// 左上角为起点</span></span><br><span class="line">    t.x = n - <span class="number">1</span>, t.y = m - <span class="number">1</span>;  <span class="comment">// 右下角为终点</span></span><br><span class="line">    cout &lt;&lt; <span class="built_in">BFS</span>() &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-                    </article>
-                    
+    </div>
+     
+    <div class="post-footer__meta"><p>更新于 2023-05-05</p></div> 
+    <div class="post-entry__tags"><a href="/tags/%E7%AE%97%E6%B3%95/" class="post-tags__link button"># 算法</a></div> 
+</article>
 
 
-    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
-    <script>
-    (function() {
-        var dateUpdate = Date.parse("2023-04-05");
-        var nowDate = new Date();
-        var a = nowDate.getTime();
-        var b = a - dateUpdate;
-        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
-        if (daysUpdateExpire >= 120) {
-            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
-        } else {
-            document.getElementById('date-expire-notification').style.display = 'none';
-        }
-    })();
-    </script>
-
-
-<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2023-03-25T15:20:20.000Z" itemprop="datePublished">2023-03-25</time>
-
-    , 最后修改于&nbsp;<time datetime="2023-04-05T15:26:31.944Z" itemprop="dateModified">2023-04-05</time>
-
-</p>
-<p class="post-footer-info mb-0 pt-2">
-
-
-
-<span class="post-tags-list mt-2">
-
-<a class="post-tags-list-item" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">#&nbsp;算法</a>
-
-</span>
-
-
-</p>
-
-                </div>
-                <div class="post-nav px-2 bg-gray">
-<ul class="pagination">
-    <!-- Prev Nav -->
-    
-        <li class="page-item page-prev">
-            <a href="/2023/hexo-formulas/" rel="prev">
-                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
-                <div class="page-item-subtitle">在 Hexo 中插入数学公式</div>
-            </a>
-        </li>
-    
-
-    <!-- Next Nav -->
-    
-        <li class="page-item page-next">
-            <a href="/2023/Data-Structure/" rel="next">
-                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
-                <div class="page-item-subtitle">数据结构</div>
-            </a>
-        </li>
-    
-</ul>
-</div>
-
-                
-                    <!-- # Comment # -->
-                    
-                
-            </div>
+    <div class="nav">
+        <div class="nav__prev">
+            
+                <a href="/2023/hexo-formulas/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            上一篇
+                        </div>
+                        <div class="nav__title">
+                            在 Hexo 中插入数学公式
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/2023/Data-Structure/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            下一篇
+                        </div>
+                        <div class="nav__title">
+                            数据结构
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
         </div>
     </div>
-</div>
-
-
-  
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-  });
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-<script type="text/javascript" src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 
 
-            <!-- ### Footer ### -->
-            <footer class="text-center">
-    <!-- footer copyright -->
+
+</main>
+
+            <footer class="footer">
     
-        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
-            <a class="footer-copyright-a" href="https://idealisti.github.io">Idealisti</a>
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2023 <a href="/">Idealisti</a>
         </p>
-
-    <!-- footer custom text -->
-    <p class="footer-text mb-0">
     
-    </p>
-    <!-- footer develop info -->
-    <p class="footer-develop mb-0">
-        
-    <!-- Busuanzi User Views -->
-    <span id="busuanzi_container_site_uv" hidden>
-        <span></span>
-        <span id="busuanzi_value_site_uv"></span>
-        <span>Viewers</span>
-        
-            <span>|</span>
-        
-    </span>
-
-
-
-
-        
-        Powered by&nbsp;<!--
-         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
-         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
-    </p>
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
 </footer>
 
+        </div>
+         
 
-        <!-- ### Import File ### -->
-        <!-- ### Footer JS Import ### -->
+ 
 
-<script>
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
 
     
-window.lazyLoadOptions = {
-    elements_selector: ".lazyload",
-    threshold: 50
-};
-document.getElementById('copyright-year').textContent = new Date().getFullYear();
-console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+ 
 
-</script>
-
-<script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
-    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+ 
 
 
-<!-- Offset -->
+    <script>
+        if (typeof MathJax === 'undefined') {
+            window.MathJax = {
+                loader: {
+                    source: {
+                        '[tex]/amsCd': '[tex]/amscd',
+                        '[tex]/AMScd': '[tex]/amscd'
+                    }
+                },
+                tex: {
+                    inlineMath: {'[+]': [['$', '$']]},
+                    tags: 'ams'
+                },
+                options: {
+                    renderActions: {
+                        findScript: [10, doc => {
+                            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                                const display = !!node.type.match(/; *mode=display/);
+                                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                                const text = document.createTextNode('');
+                                node.parentNode.replaceChild(text, node);
+                                math.start = {node: text, delim: '', n: 0};
+                                math.end = {node: text, delim: '', n: 0};
+                                doc.math.push(math);
+                            });
+                        }, '', false],
+                        insertedScript: [200, () => {
+                            document.querySelectorAll('mjx-container').forEach(node => {
+                                let target = node.parentNode;
+                                if (target.nodeName.toLowerCase() === 'li') {
+                                    target.parentNode.classList.add('has-jax');
+                                }
+                            });
+                        }, '', false]
+                    }
+                }
+            };
+            (function () {
+                var script = document.createElement('script');
+                script.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
+                script.defer = true;
+                document.head.appendChild(script);
+            })();
+        } else {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+        }
+    </script>
+ 
+
+ 
+
+ 
+
+ 
 
 
 
-
-<!-- Comment -->
-
-
-<!-- ### Custom Footer ### -->
 
     </body>
-
 </html>

@@ -1,421 +1,235 @@
 <!DOCTYPE html>
-
 <html lang="zh-CN">
     <head>
     <meta charset="utf-8">
-    <!--
-        hexo-theme-suka © SukkaW
-        GitHub: https://github.com/SukkaW/hexo-theme-suka
-    -->
 
-    <!-- ### Resource Hint ### -->
-
-    <!-- ## DNS Prefetch ## -->
-    <meta http-equiv="x-dns-prefetch-control" content="on">
-
-<!-- busuanzi -->
-
-    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
-
-
-<!-- comment -->
-
-
-
-
-
-
-
-<!-- analytics -->
-
-
-
-
-
-
-
-    <!-- ## Preload ## -->
     
-    <!-- Busuanzi -->
-    
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
 
-
-
-
-
-
-
-    <!-- ### Meta & Title & Info ### -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <!-- 渲染优化 -->
     <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <!-- Title -->
-    <title>标签: 算法 | Idealisti</title>
-
-    <!-- Favicons -->
-    <link rel="icon" type="image&#x2F;ico" href="/img/suka-favicon.ico">
-
-    <!-- ### Import File ### -->
-    <link rel="stylesheet" href="/lib/spectre/spectre.min.css"><style>
-    body {
-        background-color: #f8f9fa;
-    }
-
-    a, a:visited {
-        color: #0070ff;
-    }
-
-    a:active, a:focus, a:hover {
-        color: #0070ff;
-        opacity: .75;
-    }
-
-    #post-content a,
-    #post-content a:hover,
-    #post-content a:focus,
-    #post-content a:visited {
-        color: #005eb9;
-        opacity: 1;
-    }
+    <!--icon-->
 
     
-
-    .post-entry .card-body a {
-        color: #0070ff;
-    }
-
-    .avatar {
-        background: #444;
-    }
-
-    .navbar-link,
-    .navbar-link:visited,
-    .timeline .timeline-item .timeline-icon.icon-lg {
-        color: #0070ff;
-    }
-
-    .navbar-link:hover {
-        color: #0070ff;
-        opacity: .8;
-    }
-
-    #search-input .btn,
-    #disqus_click_btn,
-    #disqus-switch-to-direct,
-    #disqus-loadmore-button {
-        background: #727e96;
-        border-color: #727e96;
-        color: #fff;
-    }
-
-    #post-toc a.post-toc-link,
-    #post-toc a.post-toc-link:visited,
-    .share-menu.menu .menu-item>a {
-        color: #727e96;
-    }
-
-    .share-menu.menu .menu-item>a:hover,
-    .share-menu.menu .menu-item>a:focus,
-    .share-menu.menu .menu-item>a:visited {
-        color: #50596c;
-        background: #f8f9fa;
-        opacity: .85;
-    }
-</style><link rel="stylesheet" href="/css/style.min.css">
-
-
-
-
-
-
-
-
-    <!-- Prettify Theme -->
+    
+    
+    
     
 
 
+    <!-- meta -->
 
 
-<script>
-/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
-!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
-</script>
-
-    <!-- ### Site Verification ### -->
-    
+<title>标签：算法 | Idealisti</title>
 
 
-    <meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Idealisti"><meta name="msapplication-starturl" content="https://idealisti.github.io"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Idealisti"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-    <!-- ### The Open Graph & Twitter Card Protocol ### -->
-    <meta property="og:title" content="标签: 算法 | Idealisti"><meta property="og:site_name" content="Idealisti"><meta property="og:type" content="website"><meta property="og:url" content="https://idealisti.github.io/tags/%E7%AE%97%E6%B3%95/"><meta property="og:locale" content="zh-CN"><meta name="description" content="Li Yijie - Idealisti">
+
+
+    <!-- OpenGraph -->
+
 
     
+<link rel="stylesheet" href="/css/style/main.css">
+ 
 
-    <!-- ### Canonical link ### -->
-    <link rel="canonical" href="https://idealisti.github.io/tags/%E7%AE%97%E6%B3%95/">
-
-    <meta name="generator" content="Hexo 6.3.0">
-
-    <!-- ### Analytics ### -->
+    
+    
     
 
-
-
-
-
-
-
-    <!-- ### Structured Data ### -->
     
-
-
-
-
-    <!-- ### Custom Head ### -->
     
-</head>
+<link rel="stylesheet" href="/css/style/dark.css">
+
+    
+<script src="/js/darkmode.js"></script>
+
+
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 6.3.0"></head>
 
     <body>
-            
-
-            <!-- ### Main content ### -->
-            <!-- ## Header ##-->
-<header>
-    <h1 class="header-title text-center"><a href="/">Idealisti</a></h1>
-
-    <p class="text-center header-slogan">
-        
-            
-                Dream big. Start small.
-            
-        
-    </p>
-
-    <nav class="navbar-section text-center">
-    
-        <a href="/" class="navbar-link">首页</a>
-    
-    
-        <a href="/archives/" class="navbar-link">归档</a>
-    
-    
-        <a href="/search" class="navbar-link">搜索</a>
-    
-    
-    
-        <div class="dropdown dropdown-right">
-    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
-    <ul class="menu share-menu">
-
-        <!-- Share Weibo -->
-        
-        <li class="menu-item">
-            <a href="http://service.weibo.com/share/share.php?appkey=&title=Idealisti&url=https://idealisti.github.io&pic=https://idealisti.github.io/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
-        </li>
-        
-
-        <!-- Share Twitter -->
-        
-        <li class="menu-item">
-            <a href="https://twitter.com/intent/tweet?text=Idealisti&url=https://idealisti.github.io&via=Li Yijie" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
-        </li>
-        
-
-        <!-- Share Facebook -->
-        
-        <li class="menu-item">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://idealisti.github.io" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
-        </li>
-        
-
-        <!-- Share Google+ -->
-        
-        <li class="menu-item">
-            <a href="https://plus.google.com/share?url=https://idealisti.github.io" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
-        </li>
-        
-
-        <!-- Share LinkedIn -->
-        
-        <li class="menu-item">
-            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://idealisti.github.io&title=" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
-        </li>
-        
-
-        <!-- Share QQ -->
-        
-        <li class="menu-item">
-            <a href="http://connect.qq.com/widget/shareqq/index.html?site=Idealisti&title=&summary=&pics=https://idealisti.github.io/img/suka-favicon.ico&url=https://idealisti.github.io" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
-        </li>
-        
-
-        <!-- Share Telegram -->
-        
-        <li class="menu-item">
-            <a href="https://t.me/share/url?url=https://idealisti.github.io&text=" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
-        </li>
-        
-
-        <!-- QRCode -->
-        
-        <li class="menu-item">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB3ElEQVR42u2aQZKDMAwE+f+ns9cUa2vahAMW7UsOOFZTJUtopOPzwHUIJZRQQg2gjmJ9P/93wGT/eQ+1I1QvqKHTnQ5MgCPD52fRjlCtoGaHVc9WLgCyI9QroM6GR04/ugCzc4QSCiVSkMyFeh9UlWRnAZIk66XEL1QbqFQ43PV7azUj1GOhougAPvyqwFg5/2XVRahHQ6WPOCJijM6g56CILtRWUFXAq4rRCrS6IKPzhOoFlUSKtG8WVEvjsxcRqh1U9efqMsxegIiwMaILtSVUlVSJkLEikmFHF2pbqGoTaTaSwEjFEKH6QFVifRL8VwTcGKyFagVVGb1SfK4UtEL1haLFJ3VukqiF6ge1EhiJc98qcAi1LRRpSJMhnZ8HvIRqAZWCZiosU5FBHF6oXlBJ4EgCWuXsSeAQqi8UbRaRARsilv30lSDU46HoH0hD+4o4IlRvqCTCp4EbUlSUCV2oFlA0IV9tZl+eChJqW6i0iMiamtfppYTqBXWlgEQGgACLRTOhtoNacdDUaCRJfWkqSKhtoVZF06oISEM7eMpaqJZQtEGZxDY0cC/Uq6CocEEHD4XqD5USciXKrgw3486oUFtD0eEaWhTQ4gKpLkJtB/WkJZRQQgn1tf4AufY/juSOekYAAAAASUVORK5CYII=" alr="QRCode">
-        </li>
-        
-
-    </ul>
-</div>
-    
-    
-</nav>
-</header>
-
-            <div class="container">
-    <div class="main-container">
-        <main>
-            <!-- # Title # -->
-            <h2 class="page-title">标签 : 算法</h2>
-            <!-- # Post List # -->
-            <div class="post-stream-container">
-                
-                    <article class="post-entry container px-0 card">
-        <div class="columns col-gapless">
-            
-                <div class="column col-12">
-                    
-    <h2 class="h5 mb-0 card-header"><a class="card-title" href="/2023/Online-Judge/" rel="bookmark">机试笔记</a></h2>
-
-
-<p class="mb-0 card-body">
-    
-        我习惯的格式化风格：
-12&quot;C_Cpp.clang_format_style&quot;:&quot;&#123; BasedOnStyle: Chromium, IndentWidth: 4, ColumnLimit: 0 &#125;&quot;
-    <a href="/2023/Online-Judge/">阅读全文</a>
-</p>
-
-
-
-
-    <!-- Date & Category -->
-    <div class="card-footer post-entry-info text-gray">
-        <img class="author-thumb lazyload" data-src="/img/default_avatar.png" src="/img/suka-lazyload.gif" alt="Li Yijie's Avatar">
-        <time>2023-03-25</time>
-        
-        
+        <div id="app" tabindex="-1">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">Idealisti</span>
+        </a>
     </div>
-
-                </div>
-            
-        </div>
-</article>
-
+    <div class="header__right">
+        
+            <div class="navbar__menus">
                 
-                    <article class="post-entry container px-0 card">
-        <div class="columns col-gapless">
-            
-                <div class="column col-12">
-                    
-    <h2 class="h5 mb-0 card-header"><a class="card-title" href="/2023/Data-Structure/" rel="bookmark">数据结构</a></h2>
-
-
-<p class="mb-0 card-body">
-    
-        我的数据结构笔记。
-线性表线性表的结构体定义顺序表结构体定义1234typedef struct &#123;    int data[maxSize];    int length;&#125; Sqlist;
-    <a href="/2023/Data-Structure/">阅读全文</a>
-</p>
-
-
-
-
-    <!-- Date & Category -->
-    <div class="card-footer post-entry-info text-gray">
-        <img class="author-thumb lazyload" data-src="/img/default_avatar.png" src="/img/suka-lazyload.gif" alt="Li Yijie's Avatar">
-        <time>2023-02-10</time>
-        
-        
-    </div>
-
-                </div>
-            
-        </div>
-</article>
-
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/archives/" class="navbar-menu button">归档</a>
                 
             </div>
-        </main>
+        
+        
         
 
+        
+        
+    <a href="javaScript:void(0);" id="btn-toggle-dark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </a>
+
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+            </div>
+        
     </div>
+</header>
+
+
+    <div class="cover">
+        <div class="cover__logo">
+            
+                <h1>Idealisti</h1>
+            
+        </div>
+        
+        
+            <div class="cover__intro">
+                <p>Dream big, start small.</p>
+ 
+            </div>
+        
+    </div>
+
+            
+
+    
+        <main class="main">
+            
+    <div class="post-list">
+        
+            
+                <div class='post-entry content-card'>
+                    <div class="post-entry__header"></div>
+<div class="post-entry__content">
+    <h2 class="post-entry__title">
+        机试笔记
+    </h2>
+    
+        <p>我习惯的格式化风格：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;C_Cpp.clang_format_style&quot;</span><span class="punctuation">:</span></span><br><span class="line"><span class="string">&quot;&#123; BasedOnStyle: Chromium, IndentWidth: 4, ColumnLimit: 0 &#125;&quot;</span></span><br></pre></td></tr></table></figure>
+    
 </div>
-            <!-- ### Footer ### -->
-            <footer class="text-center">
-    <!-- footer copyright -->
+<div class="post-entry__meta">
+    <a href="/archives/2023/03/" class="post-meta__date button">2023-03-25</a>
     
-        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
-            <a class="footer-copyright-a" href="https://idealisti.github.io">Idealisti</a>
+ 
+</div>
+<div class="post-entry__tags"><a href="/tags/%E7%AE%97%E6%B3%95/" class="post-tags__link button"># 算法</a></div> 
+<a href="/2023/Online-Judge/" class="post-entry__link">机试笔记</a>
+                </div>
+            
+                <div class='post-entry content-card'>
+                    <div class="post-entry__header"></div>
+<div class="post-entry__content">
+    <h2 class="post-entry__title">
+        数据结构
+    </h2>
+    
+        <p>我的数据结构笔记。</p>
+<h2 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h2><h3 id="线性表的结构体定义"><a href="#线性表的结构体定义" class="headerlink" title="线性表的结构体定义"></a>线性表的结构体定义</h3><h4 id="顺序表结构体定义"><a href="#顺序表结构体定义" class="headerlink" title="顺序表结构体定义"></a>顺序表结构体定义</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> data[maxSize];</span><br><span class="line">    <span class="type">int</span> length;</span><br><span class="line">&#125; Sqlist;</span><br></pre></td></tr></table></figure>
+    
+</div>
+<div class="post-entry__meta">
+    <a href="/archives/2023/02/" class="post-meta__date button">2023-02-10</a>
+    
+ 
+</div>
+<div class="post-entry__tags"><a href="/tags/%E7%AE%97%E6%B3%95/" class="post-tags__link button"># 算法</a></div> 
+<a href="/2023/Data-Structure/" class="post-entry__link">数据结构</a>
+                </div>
+            
+        
+    </div>
+    
+
+
+        </main>
+    
+
+
+            <footer class="footer">
+    
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2023 <a href="/">Idealisti</a>
         </p>
-
-    <!-- footer custom text -->
-    <p class="footer-text mb-0">
     
-    </p>
-    <!-- footer develop info -->
-    <p class="footer-develop mb-0">
-        
-    <!-- Busuanzi User Views -->
-    <span id="busuanzi_container_site_uv" hidden>
-        <span></span>
-        <span id="busuanzi_value_site_uv"></span>
-        <span>Viewers</span>
-        
-            <span>|</span>
-        
-    </span>
-
-
-
-
-        
-        Powered by&nbsp;<!--
-         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
-         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
-    </p>
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
 </footer>
 
+        </div>
+         
 
-        <!-- ### Import File ### -->
-        <!-- ### Footer JS Import ### -->
+ 
 
-<script>
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
 
     
-window.lazyLoadOptions = {
-    elements_selector: ".lazyload",
-    threshold: 50
-};
-document.getElementById('copyright-year').textContent = new Date().getFullYear();
-console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+ 
 
-</script>
+ 
 
-<script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
-    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+ 
 
+ 
 
-<!-- Offset -->
+ 
+
+ 
 
 
 
-
-<!-- Comment -->
-
-
-<!-- ### Custom Footer ### -->
 
     </body>
-
 </html>
