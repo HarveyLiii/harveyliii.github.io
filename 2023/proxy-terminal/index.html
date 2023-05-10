@@ -158,9 +158,9 @@
     <div class="post__content">
         <p>以本机安装<code>Clash</code>为例，代理端口为<code>7890</code>，即代理地址为 <a href="http://127.0.0.1:7890。">http://127.0.0.1:7890。</a></p>
 <p>如果使用<code>Clash for Windows</code>，在主界面按此按钮，开启终端即可。</p>
-<p><img src="https://s2.loli.net/2023/05/10/lfqyt34HGsbo6ew.png"></p>
 <span id="more"></span>
 
+<p><img src="https://s2.loli.net/2023/05/10/lfqyt34HGsbo6ew.png"></p>
 <h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><p>设置代理</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">http代理</span></span><br><span class="line">git config --global http.proxy http://127.0.0.1:7890</span><br><span class="line">git config --global https.proxy http://127.0.0.1:7890</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">socks5代理(可选)</span></span><br><span class="line">git config --global http.proxy &quot;socks5://127.0.0.1:7890&quot;</span><br><span class="line">git config --global https.proxy &quot;socks5://127.0.0.1:7890&quot;</span><br></pre></td></tr></table></figure>
 
