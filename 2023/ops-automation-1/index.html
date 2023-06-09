@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    
+    
+    
+    
+    
+
+
+    <!-- meta -->
+
+
+<title>自动化运维（一）：Shell编程基础 | Idealisti</title>
+
+
+    <meta name="keywords" content="自动化运维, Linux, Shell">
+
+
+
+
+    <!-- OpenGraph -->
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/atom-one-light.css" media="none" >
+        
+            <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight/atom-one-dark.css" media="none">
+        
+    
+
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/style/dark.css">
+
+    
+<script src="/js/darkmode.js"></script>
+
+
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+    <body>
+        <div id="app" tabindex="-1">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">Idealisti</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/archives/" class="navbar-menu button">归档</a>
+                
+            </div>
+        
+        
+        
+
+        
+        
+    <a href="javaScript:void(0);" id="btn-toggle-dark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </a>
+
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        自动化运维（一）：Shell编程基础
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2023/06/" class="post-meta__date button">2023-06-09</a>
+        
+    <span class="separate-dot"></span><a href="/categories/%E7%9F%A5%E8%A7%81/" class="button">知见</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+    <aside class="post-side">
+        <div class="post-side__toc">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-text">实验环境准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%9B%BA%E5%AE%9AIP%E8%AE%BE%E7%BD%AE"><span class="toc-text">虚拟机固定IP设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E8%8A%82%E7%82%B9%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-text">集群节点基础环境配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VSCode-%E9%85%8D%E7%BD%AE"><span class="toc-text">VSCode 配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-text">Python 虚拟环境搭建</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#echo-%E5%91%BD%E4%BB%A4"><span class="toc-text">echo 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E6%A0%BC%E5%8E%8B%E7%BC%A9"><span class="toc-text">空格压缩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E9%80%89%E9%A1%B9"><span class="toc-text">常用选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E5%B8%A6%E9%A2%9C%E8%89%B2%E7%9A%84%E5%AD%97%E7%AC%A6"><span class="toc-text">输出带颜色的字符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-text">变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">${}</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#declare-%E4%B8%8E-set"><span class="toc-text">declare 与 set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#96-96-%E4%B8%8E"><span class="toc-text">&#96;&#96; 与 $()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-text">数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E9%95%BF%E5%BA%A6"><span class="toc-text">数组的定义与长度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#-1"><span class="toc-text">$(())</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-text">数组的遍历</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E8%B0%83%E7%94%A8"><span class="toc-text">函数的定义与调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E4%BC%A0%E5%8F%82"><span class="toc-text">函数传参</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-text">函数的返回值</span></a></li></ol></li></ol>
+        </div>
+    </aside>
+    <a class="btn-toc button" id="btn-toc" tabindex="0">
+        <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z" fill="currentColor"></path>
+        </svg>
+    </a>
+    <div class="toc-menus" id="toc-menus">
+        <div class="toc-title">文章目录</div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-text">实验环境准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%9B%BA%E5%AE%9AIP%E8%AE%BE%E7%BD%AE"><span class="toc-text">虚拟机固定IP设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E8%8A%82%E7%82%B9%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-text">集群节点基础环境配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VSCode-%E9%85%8D%E7%BD%AE"><span class="toc-text">VSCode 配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-text">Python 虚拟环境搭建</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#echo-%E5%91%BD%E4%BB%A4"><span class="toc-text">echo 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E6%A0%BC%E5%8E%8B%E7%BC%A9"><span class="toc-text">空格压缩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E9%80%89%E9%A1%B9"><span class="toc-text">常用选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E5%B8%A6%E9%A2%9C%E8%89%B2%E7%9A%84%E5%AD%97%E7%AC%A6"><span class="toc-text">输出带颜色的字符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-text">变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">${}</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#declare-%E4%B8%8E-set"><span class="toc-text">declare 与 set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#96-96-%E4%B8%8E"><span class="toc-text">&#96;&#96; 与 $()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-text">数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E9%95%BF%E5%BA%A6"><span class="toc-text">数组的定义与长度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#-1"><span class="toc-text">$(())</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-text">数组的遍历</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E8%B0%83%E7%94%A8"><span class="toc-text">函数的定义与调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E4%BC%A0%E5%8F%82"><span class="toc-text">函数传参</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-text">函数的返回值</span></a></li></ol></li></ol>
+    </div>
+
+
+<article class="post post__with-toc content-card">
+    <div class="post__header">
+     
+     
+    
+        <div class="post-thumbnail" style="background-image: url('https://s2.loli.net/2023/06/09/VWelPiIf8gnsUoO.png');"></div>
+    
+</div>
+    <div class="post__content">
+        <h2 id="实验环境准备"><a href="#实验环境准备" class="headerlink" title="实验环境准备"></a>实验环境准备</h2><h3 id="虚拟机固定IP设置"><a href="#虚拟机固定IP设置" class="headerlink" title="虚拟机固定IP设置"></a>虚拟机固定IP设置</h3><p>使用 VMware 创建4个虚拟机，每个虚拟机添加3块30G的虚拟盘。首先在虚机中给每个主机加上固定IP，控制节点修改如下：</p>
+<figure class="highlight shellsession"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat /etc/sysconfig/network-scripts/ifcfg-ens160</span><br><span class="line">TYPE=Ethernet</span><br><span class="line">PROXY_METHOD=none</span><br><span class="line">BROWSER_ONLY=no</span><br><span class="line">BOOTPROTO=static    # 静态分配</span><br><span class="line">DEFROUTE=yes</span><br><span class="line">IPV4_FAILURE_FATAL=no</span><br><span class="line">IPV6INIT=yes</span><br><span class="line">IPV6_AUTOCONF=yes</span><br><span class="line">IPV6_DEFROUTE=yes</span><br><span class="line">IPV6_FAILURE_FATAL=no</span><br><span class="line">IPV6_ADDR_GEN_MODE=eui64</span><br><span class="line">NAME=ens160</span><br><span class="line">UUID=cdea53bc-a032-4987-b69a-b01c55f67950</span><br><span class="line">DEVICE=ens160</span><br><span class="line">ONBOOT=yes    # 改为yes</span><br><span class="line">IPADDR=192.168.26.140    # 以下为新增</span><br><span class="line">PREFIX=24</span><br><span class="line">GATEWAY=192.168.26.2</span><br><span class="line">DNS1=114.114.114.114</span><br><span class="line">[root@localhost ~]# nmcli connection down ens160</span><br><span class="line">[root@localhost ~]# nmcli connection up ens160    # 重启网络（也可以用nmtui）</span><br></pre></td></tr></table></figure>
+
+<h3 id="集群节点基础环境配置"><a href="#集群节点基础环境配置" class="headerlink" title="集群节点基础环境配置"></a>集群节点基础环境配置</h3><p>依次修改其他三台虚拟机，分配内网IP为141~143，并给每台主机进行命名，方便通过主机名访问节点：</p>
+<figure class="highlight shellsession"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat /etc/hosts</span><br><span class="line">127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4</span><br><span class="line">::1         localhost localhost.localdomain localhost6 localhost6.localdomain6</span><br><span class="line"></span><br><span class="line">192.168.26.140  center</span><br><span class="line">192.168.26.141  sp-1</span><br><span class="line">192.168.26.142  sp-2</span><br><span class="line">192.168.26.143  sp-3</span><br></pre></td></tr></table></figure>
+
+<p>为了之后的多节点操作，需要将这个<code>/etc/hosts</code>文件下发到受控节点<code>sp-1</code>~&#96;sp-3&#96;上。先通过 Ansible 完成这样的多节点操作，后续再深入了解。</p>
+<figure class="highlight shellsession"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# dnf install epel-release</span><br><span class="line">[root@localhost ~]# dnf makecache    # 刷新缓存</span><br><span class="line">[root@localhost ~]# dnf install ansible</span><br><span class="line">[root@localhost ~]# ansible --version</span><br><span class="line">ansible [core 2.14.2]</span><br><span class="line">  config file = /etc/ansible/ansible.cfg</span><br><span class="line">  configured module search path = [&#x27;/root/.ansible/plugins/modules&#x27;, &#x27;/usr/share/ansible/plugins/modules&#x27;]</span><br><span class="line">  ansible python module location = /usr/lib/python3.11/site-packages/ansible</span><br><span class="line">  ansible collection location = /root/.ansible/collections:/usr/share/ansible/collections</span><br><span class="line">  executable location = /usr/bin/ansible</span><br><span class="line">  python version = 3.11.2 (main, Feb 18 2023, 08:12:16) [GCC 8.5.0 20210514 (Red Hat 8.5.0-18)] (/usr/bin/python3.11)</span><br><span class="line">  jinja version = 3.1.2</span><br><span class="line">  libyaml = True</span><br></pre></td></tr></table></figure>
+
+<p>新建一个目录<code>autoops</code>，在其中准备配置文件和 hosts 文件。</p>
+<blockquote>
+<p><code>/etc/ansible/ansible.cfg</code>中有如下说明：</p>
+<p>Since Ansible 2.12 (core):<br>To generate an example config file (a “disabled” one with all default settings, commented out):<br>              $ ansible-config init –disabled &gt; ansible.cfg</p>
+</blockquote>
+<figure class="highlight shellsession"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost autoops]# ansible-config init --disabled &gt; ansible.cfg</span><br><span class="line"></span><br><span class="line">[root@localhost autoops]# cat hosts</span><br><span class="line">[master]  # 指定组，下面是对应组内的主机</span><br><span class="line">center</span><br><span class="line"></span><br><span class="line">[nodes]   # 指定组，下面是对应组内的主机</span><br><span class="line">sp-[1:3]</span><br><span class="line"></span><br><span class="line">[master:vars]  # 指定组变量，下面是组变量，组内节点共享变量</span><br><span class="line">ansible_connection=local</span><br><span class="line"></span><br><span class="line">[nodes:vars]   # 指定组变量</span><br><span class="line">ansible_ssh_pass=YourPassword   # 指定远程ssh连接密码，使用时去掉注释</span><br><span class="line"></span><br><span class="line">[root@localhost autoops]# ansible --version</span><br><span class="line">ansible [core 2.14.2]</span><br><span class="line">  config file = /root/autoops/ansible.cfg    # 确认配置文件</span><br><span class="line">  configured module search path = [&#x27;/root/.ansible/plugins/modules&#x27;, &#x27;/usr/share/ansible/plugins/modules&#x27;]</span><br><span class="line">  ansible python module location = /usr/lib/python3.11/site-packages/ansible</span><br><span class="line">  ansible collection location = /root/.ansible/collections:/usr/share/ansible/collections</span><br><span class="line">  executable location = /usr/bin/ansible</span><br><span class="line">  python version = 3.11.2 (main, Feb 18 2023, 08:12:16) [GCC 8.5.0 20210514 (Red Hat 8.5.0-18)] (/usr/bin/python3.11)</span><br><span class="line">  jinja version = 3.1.2</span><br><span class="line">  libyaml = True</span><br></pre></td></tr></table></figure>
+
+<p>第一次尝试连接所有节点，受控节点报错：</p>
+<figure class="highlight shellsession"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost autoops]# ansible all -i hosts -m ping</span><br><span class="line">sp-1 | FAILED! =&gt; &#123;</span><br><span class="line">    &quot;msg&quot;: &quot;Using a SSH password instead of a key is not possible because Host Key checking is enabled and sshpass does not support this.  Please add this host&#x27;s fingerprint to your known_hosts file to manage this host.&quot;</span><br><span class="line">&#125;</span><br><span class="line">sp-2 | FAILED! =&gt; &#123;</span><br><span class="line">    &quot;msg&quot;: &quot;Using a SSH password instead of a key is not possible because Host Key checking is enabled and sshpass does not support this.  Please add this host&#x27;s fingerprint to your known_hosts file to manage this host.&quot;</span><br><span class="line">&#125;</span><br><span class="line">sp-3 | FAILED! =&gt; &#123;</span><br><span class="line">    &quot;msg&quot;: &quot;Using a SSH password instead of a key is not possible because Host Key checking is enabled and sshpass does not support this.  Please add this host&#x27;s fingerprint to your known_hosts file to manage this host.&quot;</span><br><span class="line">&#125;</span><br><span class="line">center | SUCCESS =&gt; &#123;</span><br><span class="line">    &quot;ansible_facts&quot;: &#123;</span><br><span class="line">        &quot;discovered_interpreter_python&quot;: &quot;/usr/libexec/platform-python&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;changed&quot;: false,</span><br><span class="line">    &quot;ping&quot;: &quot;pong&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于 sshd 服务在初次连接时会要求用户接受一次对方主机的指纹信息，需要输入 yes 确认。例如，正常的第一次SSH远程连接过程是这样的：</p>
+<figure class="highlight shellsession"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost autoops]# ssh sp-1</span><br><span class="line">The authenticity of host &#x27;sp-1 (192.168.26.141)&#x27; can&#x27;t be established.</span><br><span class="line">ECDSA key fingerprint is SHA256:8IrsRv/9KyqKu8mK0tdN8p5QXIB3hrs6+SmwwKdjsrI.</span><br><span class="line">Are you sure you want to continue connecting (yes/no/[fingerprint])? yes</span><br><span class="line">Warning: Permanently added &#x27;sp-1,192.168.26.141&#x27; (ECDSA) to the list of known hosts.</span><br></pre></td></tr></table></figure>
+
+<p>在配置文件中将修改以下参数，设置成默认不需要SSH协议的指纹验证，无需重启服务：</p>
+<figure class="highlight shellsession"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost autoops]# vi ansible.cfg</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">(boolean) Set this to <span class="string">&quot;False&quot;</span> <span class="keyword">if</span> you want to avoid host key checking by the underlying tools Ansible uses to connect to the host</span></span><br><span class="line">host_key_checking=False</span><br><span class="line">[root@localhost autoops]# ansible all -i hosts -m ping</span><br><span class="line">center | SUCCESS =&gt; &#123;</span><br><span class="line">    &quot;ansible_facts&quot;: &#123;</span><br><span class="line">        &quot;discovered_interpreter_python&quot;: &quot;/usr/libexec/platform-python&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;changed&quot;: false,</span><br><span class="line">    &quot;ping&quot;: &quot;pong&quot;</span><br><span class="line">&#125;</span><br><span class="line">sp-1 | SUCCESS =&gt; &#123;</span><br><span class="line">    &quot;ansible_facts&quot;: &#123;</span><br><span class="line">        &quot;discovered_interpreter_python&quot;: &quot;/usr/libexec/platform-python&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;changed&quot;: false,</span><br><span class="line">    &quot;ping&quot;: &quot;pong&quot;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">其余略</span></span><br></pre></td></tr></table></figure>
+
+<p>接下来是下发文件以及对所有节点进行改名操作：</p>
+<figure class="highlight shellsession"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost autoops]# ansible nodes -i hosts -m copy -a &quot;src=/etc/hosts dest=/etc/hosts&quot;</span><br><span class="line">sp-2 | CHANGED =&gt; &#123;</span><br><span class="line">    &quot;ansible_facts&quot;: &#123;</span><br><span class="line">        &quot;discovered_interpreter_python&quot;: &quot;/usr/libexec/platform-python&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;changed&quot;: true,</span><br><span class="line">    &quot;checksum&quot;: &quot;d55b6c38d88db076cac42dcfe03fdd979ca9ed34&quot;,</span><br><span class="line">    &quot;dest&quot;: &quot;/etc/hosts&quot;,</span><br><span class="line">    &quot;gid&quot;: 0,</span><br><span class="line">    &quot;group&quot;: &quot;root&quot;,</span><br><span class="line">    &quot;md5sum&quot;: &quot;c85a4c67b0df03cfae33928f975e7eed&quot;,</span><br><span class="line">    &quot;mode&quot;: &quot;0644&quot;,</span><br><span class="line">    &quot;owner&quot;: &quot;root&quot;,</span><br><span class="line">    &quot;secontext&quot;: &quot;unconfined_u:object_r:net_conf_t:s0&quot;,</span><br><span class="line">    &quot;size&quot;: 245,</span><br><span class="line">    &quot;src&quot;: &quot;/root/.ansible/tmp/ansible-tmp-1685295184.8170862-2271-210696309543931/source&quot;,</span><br><span class="line">    &quot;state&quot;: &quot;file&quot;,</span><br><span class="line">    &quot;uid&quot;: 0</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">其余略</span></span><br><span class="line">[root@localhost autoops]# ansible all -i hosts -m hostname -a &quot;name=&#123;&#123; inventory_hostname &#125;&#125;&quot;</span><br><span class="line">center | CHANGED =&gt; &#123;</span><br><span class="line">    &quot;ansible_facts&quot;: &#123;</span><br><span class="line">        &quot;ansible_domain&quot;: &quot;&quot;,</span><br><span class="line">        &quot;ansible_fqdn&quot;: &quot;center&quot;,</span><br><span class="line">        &quot;ansible_hostname&quot;: &quot;center&quot;,</span><br><span class="line">        &quot;ansible_nodename&quot;: &quot;center&quot;,</span><br><span class="line">        &quot;discovered_interpreter_python&quot;: &quot;/usr/libexec/platform-python&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;changed&quot;: true,</span><br><span class="line">    &quot;name&quot;: &quot;center&quot;</span><br><span class="line">&#125;</span><br><span class="line">sp-2 | CHANGED =&gt; &#123;</span><br><span class="line">    &quot;ansible_facts&quot;: &#123;</span><br><span class="line">        &quot;ansible_domain&quot;: &quot;&quot;,</span><br><span class="line">        &quot;ansible_fqdn&quot;: &quot;sp-2&quot;,</span><br><span class="line">        &quot;ansible_hostname&quot;: &quot;sp-2&quot;,</span><br><span class="line">        &quot;ansible_nodename&quot;: &quot;sp-2&quot;,</span><br><span class="line">        &quot;discovered_interpreter_python&quot;: &quot;/usr/libexec/platform-python&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;changed&quot;: true,</span><br><span class="line">    &quot;name&quot;: &quot;sp-2&quot;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">其余略</span></span><br></pre></td></tr></table></figure>
+
+<p>断开 shell 重连，可以发现节点的重命名已经生效。通过 Ansible 可以批量查看所有的节点的主机名：</p>
+<figure class="highlight shellsession"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@center autoops]# ansible all -i hosts -m shell -a &quot;hostname&quot;</span><br><span class="line">center | CHANGED | rc=0 &gt;&gt;</span><br><span class="line">center</span><br><span class="line">sp-1 | CHANGED | rc=0 &gt;&gt;</span><br><span class="line">sp-1</span><br><span class="line">sp-2 | CHANGED | rc=0 &gt;&gt;</span><br><span class="line">sp-2</span><br><span class="line">sp-3 | CHANGED | rc=0 &gt;&gt;</span><br><span class="line">sp-3</span><br></pre></td></tr></table></figure>
+
+<h3 id="VSCode-配置"><a href="#VSCode-配置" class="headerlink" title="VSCode 配置"></a>VSCode 配置</h3><p>在 VSCode 中安装 Python 和 SFTP (@Natizyskunk) 插件。按 ctrl+shift+p 弹出的框中选择SFTP配置。</p>
+<p><img src="http://szimg.mukewang.com/61cc0f4409542dad15760844.png"></p>
+<p>在当前打开的目录下会生成一个<code>.vscode</code>目录，同时在该目录中会生成一个<code>sftp.json</code>配置文件，默认内容如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;My Server&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;host&quot;</span><span class="punctuation">:</span> <span class="string">&quot;localhost&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;protocol&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sftp&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;port&quot;</span><span class="punctuation">:</span> <span class="number">22</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;username&quot;</span><span class="punctuation">:</span> <span class="string">&quot;username&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;remotePath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;uploadOnSave&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;useTempFile&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;openSsh&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>要将本地代码映射到 center 节点，修改配置内容：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;本地虚拟机&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;host&quot;</span><span class="punctuation">:</span> <span class="string">&quot;192.168.26.140&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;protocol&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sftp&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;port&quot;</span><span class="punctuation">:</span> <span class="number">22</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;username&quot;</span><span class="punctuation">:</span> <span class="string">&quot;root&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;password&quot;</span><span class="punctuation">:</span> <span class="string">&quot;YourPassword&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;remotePath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/root/autoops/imooc-ops&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;passive&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;interactiveAuth&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;uploadOnSave&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;syncMode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;update&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;ignore&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;**/.vscode/**&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;**/.git/**&quot;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>右键SFTP插件的相关选项，可以实现目录同步以及上传或者下载目录。</p>
+<p><img src="http://szimg.mukewang.com/61cc0f87093a095f07810785.png"></p>
+<p>选择Upload Folder会将整个目录下的文件上传到远端服务器上的对应目录。执行该操作后的结果如下：</p>
+<figure class="highlight shellsession"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@center autoops]# ls    # 会自动创建目录</span><br><span class="line">ansible.cfg  hosts  imooc-ops</span><br></pre></td></tr></table></figure>
+
+<h3 id="Python-虚拟环境搭建"><a href="#Python-虚拟环境搭建" class="headerlink" title="Python 虚拟环境搭建"></a>Python 虚拟环境搭建</h3><p>安装<a target="_blank" rel="noopener" href="https://github.com/pyenv/pyenv/wiki#suggested-build-environment">依赖环境</a>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf install make gcc patch zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel libuuid-devel gdbm-devel</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://github.com/pyenv/pyenv/">Pyenv</a> 的安装配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">curl https://pyenv.run | bash</span><br><span class="line"><span class="comment"># 设置环境变量</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export PYENV_ROOT=&quot;$HOME/.pyenv&quot;&#x27;</span> &gt;&gt; ~/.bashrc</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;command -v pyenv &gt;/dev/null || export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.bashrc</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(pyenv init -)&quot;&#x27;</span> &gt;&gt; ~/.bashrc</span><br><span class="line"><span class="comment"># 重启shell</span></span><br><span class="line"><span class="built_in">exec</span> <span class="string">&quot;<span class="variable">$SHELL</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>构建虚拟环境：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列出可用版本</span></span><br><span class="line">pyenv install -l</span><br><span class="line"><span class="comment"># 安装3.8.16版本</span></span><br><span class="line">pyenv install 3.8.16</span><br><span class="line"><span class="comment"># 创建一个3.8.16版本的虚拟环境, 命名为imooc-ops</span></span><br><span class="line">pyenv virtualenv 3.8.16 imooc-ops</span><br><span class="line"><span class="comment"># 列出虚拟环境</span></span><br><span class="line">pyenv virtualenvs</span><br><span class="line"><span class="comment"># 激活imooc-ops环境</span></span><br><span class="line">pyenv activate imooc-ops</span><br><span class="line"><span class="comment"># 关闭环境</span></span><br><span class="line">pyenv deactivate</span><br></pre></td></tr></table></figure>
+
+<h2 id="echo-命令"><a href="#echo-命令" class="headerlink" title="echo 命令"></a>echo 命令</h2><h3 id="空格压缩"><a href="#空格压缩" class="headerlink" title="空格压缩"></a>空格压缩</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;hello,      world&quot;</span></span><br><span class="line"><span class="built_in">echo</span>  hello,        world,        你好  <span class="comment"># 长段空格会压缩成1个空格</span></span><br><span class="line"><span class="comment"># 结果是 hello, world, 你好</span></span><br><span class="line">var1=<span class="string">&quot;a  b          c      d&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$var1</span>      <span class="comment"># 只保留1个空格</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$var1</span>&quot;</span>    <span class="comment"># 保持长段空格</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="常用选项"><a href="#常用选项" class="headerlink" title="常用选项"></a>常用选项</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -n</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;hello&quot;</span>      <span class="comment"># 默认输出的最后会有一个换行符</span></span><br><span class="line"><span class="built_in">echo</span> -n <span class="string">&quot;hello&quot;</span>   <span class="comment"># 不要加默认的换行符</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span>        <span class="comment"># 输出一个换行符</span></span><br><span class="line"><span class="built_in">echo</span> -n <span class="string">&quot;please input your name: &quot;</span></span><br><span class="line"><span class="built_in">read</span> name   <span class="comment"># 输入读到name变量</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;hello, <span class="variable">$name</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># -e</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;hello\nwor\tld&quot;</span>        <span class="comment"># 转义并没有被解释</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;hello\nwor\tld&quot;</span>     <span class="comment"># 允许转义</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="输出带颜色的字符"><a href="#输出带颜色的字符" class="headerlink" title="输出带颜色的字符"></a>输出带颜色的字符</h3><p>使用ANSI转义序列。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\033[31mhello\033[0m&quot;</span>    <span class="comment"># 输出红色hello</span></span><br><span class="line"><span class="comment"># 各种文本颜色</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\033[30m 黑色字 \033[0m&quot;</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\033[31m 红色字 \033[0m&quot;</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\033[32m 绿色字 \033[0m&quot;</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\033[33m 黄色字 \033[0m&quot;</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\033[34m 蓝色字 \033[0m&quot;</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\033[35m 紫色字 \033[0m&quot;</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\033[36m 青色字 \033[0m&quot;</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\033[37m 白色字 \033[0m&quot;</span></span><br><span class="line"><span class="comment"># 40m 到 47m 代表不同的背景颜色，使用方式同上</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><h3 id=""><a href="#" class="headerlink" title="${}"></a>${}</h3><p><code>$&#123;&#125;</code>用于对变量进行操作。例如，<code>$&#123;var&#125;</code>可以用于替换变量<code>var</code>的值。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var1=hello</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$var1</span></span><br><span class="line">var1_xyz=abc</span><br><span class="line"><span class="comment"># 期望：输出$var1_xyz=hello_xyz</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;输出\$var1_xyz=<span class="variable">$var1_xyz</span>&quot;</span></span><br><span class="line"><span class="comment"># 实际：输出$var1_xyz=abc</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;继续输出: <span class="variable">$&#123;var1&#125;</span>_xyz&quot;</span>    <span class="comment"># 成功</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="declare-与-set"><a href="#declare-与-set" class="headerlink" title="declare 与 set"></a>declare 与 set</h3><p><code>declare</code>命令用于声明和设置变量的属性。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var2=123    <span class="comment"># 直接给变量赋值</span></span><br><span class="line"><span class="comment"># declare 显示声明变量</span></span><br><span class="line"><span class="comment"># -i 指定整型  -r 只读变量 -a 指定数组  -f 指定函数名   </span></span><br><span class="line"><span class="built_in">declare</span> -i var3</span><br><span class="line">var3=xyz            <span class="comment"># 赋值语句失败</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;\$var3=<span class="variable">$var3</span>&quot;</span> <span class="comment"># var3解释为0</span></span><br><span class="line"></span><br><span class="line">var3=245    <span class="comment"># 赋值成功</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;\$var3=<span class="variable">$var3</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">declare</span> -r var4=abc   <span class="comment"># 只读变量，需声明时赋值</span></span><br><span class="line"><span class="comment"># var4=xyz    失败，shell报错</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$var4</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@center chap01]# declare    # 显示当前系统中已定义的全部变量信息</span><br><span class="line">[root@center chap01]# var1=hello</span><br><span class="line">[root@center chap01]# declare | grep ^var1=</span><br><span class="line">var1=hello</span><br><span class="line">[root@center chap01]# var2=123</span><br><span class="line">[root@center chap01]# declare | grep ^var2=</span><br><span class="line">var2=123</span><br></pre></td></tr></table></figure>
+
+<p><code>set</code>命令用于设置或修改 shell 的运行时选项。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@center chap01]# set    # 与declare类似，也可以列出shell中定义的变量</span><br><span class="line">[root@center chap01]# unset var1    # 删除已定义的变量</span><br><span class="line">[root@center chap01]# declare | grep ^var1=        # 没有输出</span><br></pre></td></tr></table></figure>
+
+<h3 id="96-96-与"><a href="#96-96-与" class="headerlink" title="&#96;&#96; 与 $()"></a>&#96;&#96; 与 $()</h3><p>反引号用于执行命令并将其输出插入到命令行中。</p>
+<p><code>$()</code>将命令的输出作为字符串返回。建议使用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_IP_1=`<span class="built_in">cat</span> /etc/hosts | grep \`hostname\` | awk <span class="string">&#x27;&#123;print $1&#125;&#x27;</span>`</span><br><span class="line">LOCAL_IP_2=$(<span class="built_in">cat</span> /etc/hosts | grep $(hostname) | awk <span class="string">&#x27;&#123;print $1&#125;&#x27;</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;\$LOCAL_IP_1=<span class="variable">$LOCAL_IP_1</span>, \$LOCAL_IP_2=<span class="variable">$LOCAL_IP_2</span>&quot;</span></span><br><span class="line"><span class="comment"># 二者输出一致</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="数组的定义与长度"><a href="#数组的定义与长度" class="headerlink" title="数组的定义与长度"></a>数组的定义与长度</h3><p>使用<code>$&#123;array[@]&#125;</code>或<code>$&#123;array[*]&#125;</code>表示整个数组。<code>$&#123;array[i]&#125;</code>表示第i个元素。数组变量前加<code>#</code>表示数组或其中某个元素的长度。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">arr1=(xx    xyz    <span class="string">&quot;hello,      world&quot;</span>      1234   20.0    <span class="string">&quot;你好&quot;</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;数组arr1的长度: <span class="variable">$&#123;#arr1[@]&#125;</span>&quot;</span>    <span class="comment"># 获取数组长度</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;数组arr1的长度: <span class="variable">$&#123;#arr1[*]&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$&#123;#arr1&#125;</span>&quot;</span>   <span class="comment"># 不写索引表示首元素，长度为2</span></span><br><span class="line"></span><br><span class="line">len=<span class="variable">$&#123;#arr1[@]&#125;</span></span><br><span class="line">last=`<span class="built_in">expr</span> <span class="variable">$len</span> - 1` <span class="comment"># 末元素的索引</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;arr1的最后一个元素: <span class="variable">$&#123;arr1[$last]&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 另一种定义方式</span></span><br><span class="line">arr2[0]=abc</span><br><span class="line">arr2[1]=xyz</span><br><span class="line">arr2[2]=<span class="string">&quot;世界，你好&quot;</span></span><br><span class="line">arr2[3]=1234</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;arr2数组内容: <span class="variable">$&#123;arr2[@]&#125;</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;数组arr2的长度: <span class="variable">$&#123;#arr2[@]&#125;</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="-1"><a href="#-1" class="headerlink" title="$(())"></a>$(())</h3><p><code>$(())</code> 是 Shell 中的一种算术扩展方式，可以用于执行数学运算。它的基本语法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$((expression))</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>expression</code> 是一个数学表达式，可以包含数字、变量、算术运算符和括号等元素，Shell 会对这个表达式进行求值，并将结果输出到标准输出。</p>
+<p>可以使用的算术运算符包括：</p>
+<ul>
+<li><code>+</code>：加法</li>
+<li><code>-</code>：减法</li>
+<li><code>*</code>：乘法</li>
+<li><code>/</code>：除法</li>
+<li><code>%</code>：取模</li>
+<li><code>**</code>：幂运算</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a=2</span><br><span class="line">b=3</span><br><span class="line">c=4</span><br><span class="line">d=$((a + b * c))</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$d</span>   <span class="comment"># 输出 14</span></span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，<code>$(())</code> 只能用于整数运算，如果进行浮点数运算，可能会得到不准确的结果。如果需要进行浮点数运算，可以考虑使用 <code>bc</code> 命令。</p>
+<h3 id="数组的遍历"><a href="#数组的遍历" class="headerlink" title="数组的遍历"></a>数组的遍历</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一种方式</span></span><br><span class="line">len_2=<span class="variable">$&#123;#arr2[@]&#125;</span></span><br><span class="line"><span class="comment"># last_2=`expr $len_2 - 1` 或</span></span><br><span class="line">last_2=$((len_2-<span class="number">1</span>))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `<span class="built_in">seq</span> 0 <span class="variable">$last_2</span>`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="comment"># pos=`expr $i + 1` 或</span></span><br><span class="line">    pos=$((i+<span class="number">1</span>))   <span class="comment"># 序号，令其从1开始</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;arr2中第<span class="variable">$&#123;pos&#125;</span>个元素为: <span class="variable">$&#123;arr2[$i]&#125;</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 第二种方式</span></span><br><span class="line">count=1</span><br><span class="line"><span class="keyword">for</span> ele <span class="keyword">in</span> <span class="string">&quot;<span class="variable">$&#123;arr1[@]&#125;</span>&quot;</span> <span class="comment"># 必须加引号，否则 hello world 拆成两个元素</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;arr1中第<span class="variable">$&#123;count&#125;</span>个元素为: <span class="variable">$&#123;ele&#125;</span>&quot;</span></span><br><span class="line">    <span class="comment"># count=`expr $count + 1` 或 count=$((count+1)) 或</span></span><br><span class="line">    ((count++)) <span class="comment"># 自增运算</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="函数的定义与调用"><a href="#函数的定义与调用" class="headerlink" title="函数的定义与调用"></a>函数的定义与调用</h3><p>Shell 中函数不设返回类型、函数参数。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义</span></span><br><span class="line"><span class="function"><span class="title">xyz</span></span>() &#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;hello, function xyz!&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 调用</span></span><br><span class="line">xyz</span><br></pre></td></tr></table></figure>
+
+<h3 id="函数传参"><a href="#函数传参" class="headerlink" title="函数传参"></a>函数传参</h3><p>使用<strong>位置参数</strong>向定义的函数传参。</p>
+<p>位置参数是指在执行脚本时传递给脚本的参数，按照顺序分配到特殊变量 <code>$1</code>、<code>$2</code>、<code>$3</code> 等中。其中，<code>$1</code> 表示第一个参数，<code>$2</code> 表示第二个参数，以此类推。</p>
+<p>例如，如果你执行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./myscript.sh arg1 arg2 arg3</span><br></pre></td></tr></table></figure>
+
+<p>那么在 <code>myscript.sh</code> 脚本中，<code>$1</code> 的值将是 <code>arg1</code>，<code>$2</code> 的值将是 <code>arg2</code>，<code>$3</code> 的值将是 <code>arg3</code>。</p>
+<p>需要注意的是，<code>$0</code> 表示脚本的名称，<code>$#</code> 表示传递给脚本的参数个数，<code>$*</code> 表示所有参数的值，<code>$@</code> 表示所有参数的值（但是每个参数都被双引号包围）。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">xyz_with_params</span></span>() &#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;函数传入参数个数为：<span class="variable">$#</span>&quot;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> `<span class="built_in">seq</span> 1 <span class="variable">$#</span>`    </span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;第<span class="variable">$&#123;i&#125;</span>个位置参数: <span class="variable">$1</span>&quot;</span>     </span><br><span class="line">        <span class="built_in">shift</span>   <span class="comment"># 向左移动参数</span></span><br><span class="line">    <span class="keyword">done</span></span><br><span class="line">&#125;</span><br><span class="line">xyz_with_params abc xyz 123</span><br></pre></td></tr></table></figure>
+
+<p><code>shift</code>能够将命令接收到的参数逐个向左移动一位，即原本的<code>$3</code>变量会覆盖<code>$2</code>变量，原本的<code>$2</code>变量会覆盖<code>$1</code>变量。这样我们只需要每执行一次<code>shift</code>命令后调用<code>$1</code>变量，就能够实现对全部参数的处理工作了。</p>
+<h3 id="函数的返回值"><a href="#函数的返回值" class="headerlink" title="函数的返回值"></a>函数的返回值</h3><p>函数可以返回一个状态码<code>$?</code>。在大多数 Unix&#x2F;Linux 系统中，命令的状态码范围是 0 到 255。其中，状态码 0 表示命令执行成功，非 0 的状态码表示命令执行失败。如果状态码超出了这个范围，它将对 256 取余数，截断为 0 到 255 之间的值。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">xyz_with_return</span></span>() &#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;设置返回值 1000&quot;</span></span><br><span class="line">    <span class="built_in">return</span> 1000</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">xyz_with_return</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;函数返回值: $?&quot;</span>   <span class="comment"># 返回232</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> xyz_with_return  <span class="comment"># 注意该判断与其他语言中的区别</span></span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;返回值零，成功&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;返回值非零，失败&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+<p>To be continued…</p>
+
+    </div>
+    
+    <div class="post__license">
+        <p>
+            <strong>本文作者：</strong>liyijie
+        </p>
+        <p>
+            <strong>本文链接：</strong><a href="https://idealisti.github.io/2023/ops-automation-1/">https://idealisti.github.io/2023/ops-automation-1/</a>
+        </p>
+        
+            <strong>
+                <p>文章默认以 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享</a> 授权。</p>
+
+            </strong>
+        
+    </div>
+
+ 
+    <div class="post-footer__meta"><p>更新于 2023-06-09</p></div> 
+    <div class="post-entry__tags"><a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/" class="post-tags__link button"># 自动化运维</a><a href="/tags/Linux/" class="post-tags__link button"># Linux</a><a href="/tags/Shell/" class="post-tags__link button"># Shell</a></div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/2023/proxy-terminal/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            下一篇
+                        </div>
+                        <div class="nav__title">
+                            终端常用代理设置
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
+</main>
+
+            <footer class="footer">
+    
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2023 <a href="/">Idealisti</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+    
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
+</html>
