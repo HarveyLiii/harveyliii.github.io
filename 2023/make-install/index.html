@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    
+    
+    
+    
+    
+
+
+    <!-- meta -->
+
+
+<title>编译安装与CMake相关 | Idealisti</title>
+
+
+    <meta name="keywords" content="Linux">
+
+
+
+
+    <!-- OpenGraph -->
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/atom-one-light.css" media="none" >
+        
+            <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight/atom-one-dark.css" media="none">
+        
+    
+
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/style/dark.css">
+
+    
+<script src="/js/darkmode.js"></script>
+
+
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+    <body>
+        <div id="app" tabindex="-1">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">Idealisti</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/archives/" class="navbar-menu button">归档</a>
+                
+            </div>
+        
+        
+        
+
+        
+        
+    <a href="javaScript:void(0);" id="btn-toggle-dark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </a>
+
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        编译安装与CMake相关
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2023/09/" class="post-meta__date button">2023-09-25</a>
+        
+    <span class="separate-dot"></span><a href="/categories/%E5%B7%A7%E8%AE%B0/" class="button">巧记</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+    <aside class="post-side">
+        <div class="post-side__toc">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F"><span class="toc-text">Linux软件安装方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E9%97%B4%E8%81%94%E7%B3%BB"><span class="toc-text">概念间联系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GCC"><span class="toc-text">GCC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Makefile"><span class="toc-text">Makefile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Make"><span class="toc-text">Make</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CMakeLists"><span class="toc-text">CMakeLists</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CMake"><span class="toc-text">CMake</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#x2F-configure-%E6%88%96-Autotools"><span class="toc-text">.&#x2F;configure 或 Autotools</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B"><span class="toc-text">编译安装过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol>
+        </div>
+    </aside>
+    <a class="btn-toc button" id="btn-toc" tabindex="0">
+        <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z" fill="currentColor"></path>
+        </svg>
+    </a>
+    <div class="toc-menus" id="toc-menus">
+        <div class="toc-title">文章目录</div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F"><span class="toc-text">Linux软件安装方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E9%97%B4%E8%81%94%E7%B3%BB"><span class="toc-text">概念间联系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GCC"><span class="toc-text">GCC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Makefile"><span class="toc-text">Makefile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Make"><span class="toc-text">Make</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CMakeLists"><span class="toc-text">CMakeLists</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CMake"><span class="toc-text">CMake</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#x2F-configure-%E6%88%96-Autotools"><span class="toc-text">.&#x2F;configure 或 Autotools</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B"><span class="toc-text">编译安装过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol>
+    </div>
+
+
+<article class="post post__with-toc content-card">
+    <div class="post__header">
+     
+     
+    
+        <div class="post-thumbnail" style="background-image: url('https://s2.loli.net/2023/09/25/OR7N8ZnP1HBQmjl.jpg');"></div>
+    
+</div>
+    <div class="post__content">
+        <p>在数据库系统课程的实验使用 MiniOB，首先需要搭建环境进行编译和调试。正好借此机会梳理一下编译安装的过程和要点，留作笔记。</p>
+<span id="more"></span>
+
+<p>虽然前段工作自封为运维工程师，但是生产环境的安装、特别是编译安装软件并不是工作重点。业余时间自学了一些系统运维知识，当时没用，后来还是派上了一些用处。</p>
+<p><em>既然指望本职之余自学了，那学啥不行？难道我学得不够多？</em> 鸡哥算了算了。这就去学，好好学。</p>
+<p>从几种安装方式说起，再具体讨论一下编译安装，以及 GCC、Make、CMake、Makefile、CMakelists 的关系。</p>
+<h2 id="Linux软件安装方式"><a href="#Linux软件安装方式" class="headerlink" title="Linux软件安装方式"></a>Linux软件安装方式</h2><ol>
+<li><p>包管理器（Package Manager）：</p>
+<ul>
+<li><p>APT（Advanced Package Tool）：用于 Debian 和 Ubuntu 等基于 Debian 的发行版。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>DNF（Dandified YUM）：用于红帽系发行版（RHEL、Fedora 和 CentOS等），替代了YUM（Yellowdog Updater, Modified）。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf install &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Pacman：用于 Arch Linux。也是我最喜欢的桌面版 Linux。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S &lt;package_name&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>顺便一提，macOS 上也有包管理器 Homebrew。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编译源代码</p>
+<p>这需要下载源代码并手动编译。通常下载一个压缩包，解包后进入目录，建议先读一下<code>README</code>之类的说明文件。常见的编译工具包括<code>make</code>、<code>gcc</code>和<code>cmake</code>。这个过程可以提供更多的灵活性，但通常更复杂一些。后文详细介绍。</p>
+</li>
+<li><p>二进制</p>
+<p>下载预编译的二进制文件，然后手动安装。这通常涉及将文件复制到适当的位置，并进行一些配置，例如将包含可执行的主程序文件所在目录添加进<code>PATH</code>环境变量。</p>
+</li>
+</ol>
+<p>此外还有容器化技术（Docker）等，在此不表。</p>
+<h2 id="概念间联系"><a href="#概念间联系" class="headerlink" title="概念间联系"></a>概念间联系</h2><h3 id="GCC"><a href="#GCC" class="headerlink" title="GCC"></a>GCC</h3><p>GCC 全称是 GNU Compiler Collection，是一个编译套件。我们可以通过 gcc&#x2F;g++ 来编译目标项目。但是当项目结构复杂时，通过 gcc&#x2F;g++ 命令直接编译会出现非常多不便之处，于是出现了<code>Makefile</code>。</p>
+<h3 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h3><p><code>Makefile</code>文本文件来描述项目的构建规则和依赖关系，其中包含了一系列的规则（有条理的 gcc&#x2F;g++ 编译命令），每个规则指定了如何编译和链接项目中的文件。这样就不需要在终端输入 gcc&#x2F;g++ 命令来编译项目了。</p>
+<h3 id="Make"><a href="#Make" class="headerlink" title="Make"></a>Make</h3><p>Make 是一个<strong>编译工具</strong>。简单地说吧，Make 工具就是“读取”并执行<code>Makefile</code>文件中的编译指令，从而进行项目编译。</p>
+<h3 id="CMakeLists"><a href="#CMakeLists" class="headerlink" title="CMakeLists"></a>CMakeLists</h3><p>对于小型项目或者具有简单编译规则的项目，可以手动编写<code>Makefile</code>。当项目非常庞大时，手写<code>Makefile</code>就是一件非常恐怖的事情了。这时候就有 CMakeLists 来拯救开发者了。可以通过<code>CMakeLists.txt</code>文本文件，使用更简单的写法，来交给 CMake 生成对应的<code>Makefile</code>文件。 </p>
+<h3 id="CMake"><a href="#CMake" class="headerlink" title="CMake"></a>CMake</h3><p>CMake 是一个<strong>编译配置工具</strong>。CMake使用<code>CMakeLists.txt</code>文件来描述项目的结构和依赖关系，然后根据这个文件生成适合于目标构建系统的<code>Makefile</code>或项目文件。</p>
+<h3 id="x2F-configure-或-Autotools"><a href="#x2F-configure-或-Autotools" class="headerlink" title=".&#x2F;configure 或 Autotools"></a>.&#x2F;configure 或 Autotools</h3><p>部分项目使用<code>configure</code>可执行脚本文件（而非通过<code>CMakeLists.txt</code>使用<code>cmake</code>）来生成<code>Makefile</code>。<code>./configure</code> 命令使用 GNU Autotools 工具。与 CMake 类似，Autotools 也是一个<strong>编译配置工具</strong>。可以简单地理解为 Autotools 的<code>./configure</code>命令与 CMake 的<code>cmake ..</code>命令是同级的，开发者可以根据项目需求和个人偏好选择其中之一。近年来，CMake 有取代 Autotools 的趋势。</p>
+<p><img src="https://s2.loli.net/2023/09/25/UbvML3SE8AWdgs5.png"></p>
+<h2 id="编译安装过程"><a href="#编译安装过程" class="headerlink" title="编译安装过程"></a>编译安装过程</h2><p>编写程序的主要步骤有</p>
+<ol>
+<li>Edit: 使用<strong>编辑器编写</strong>源代码，如<code>.c</code>，<code>.cc</code>，<code>.cpp</code>等文件。</li>
+<li>Compile: 使用<strong>编译器编译</strong>源代码生成目标文件，如<code>.o</code>，<code>.a</code>（Linux 静态库），<code>.so</code>（Linux 共享库）等文件。</li>
+<li>Link: 使用<strong>链接器链接</strong>目标代码生成可执行文件，如<code>.exe</code>（Windows），<code>.out</code>（Unix）等文件。</li>
+</ol>
+<p>编译和安装软件的一般步骤如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+
+<p>前两步不难理解，就是创建一个<code>build</code>子目录，并把对应项目的编译文件放在其中。这样，编译过程会在这个单独的目录中进行，以防止源代码和生成的文件混淆。</p>
+<p>第3步<code>cmake ..</code>命令告诉 CMake 在上级目录中查找<code>CMakeLists.txt</code>文件，并由此生成<code>Makefile</code>。</p>
+<blockquote>
+<p>或者在 Autotools 的项目中，以上步骤使用<code>./configure</code>。</p>
+</blockquote>
+<p>第4步<code>make</code>用来执行实际的编译步骤，根据<code>Makefile</code>文件中的规则编译和链接源代码，生成可执行文件或库。</p>
+<p>第5步<code>make install</code>会将编译生成的文件安装到系统目录中，以便在系统中全局使用该软件。这通常包括可执行文件、库文件和其他必要的资源。比如从 github 下载一个依赖库的安装包，解压后经过上面几步，该依赖库的对应头文件和库文件就安装到系统中了。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_34710558/article/details/51225789">make、cmake、make install、configure_ustbming的博客-CSDN博客</a><br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/184a33eddf93">GCC、Make、CMake、Makefile、CMakelists的关系 - 简书</a><br><a target="_blank" rel="noopener" href="https://linux.cn/article-13419-1.html">软件开发|抛弃 Autotools 向 CMake 迈进吧</a></p>
+
+    </div>
+    
+    <div class="post__license">
+        <p>
+            <strong>本文作者：</strong>liyijie
+        </p>
+        <p>
+            <strong>本文链接：</strong><a href="https://liyijie.cn/2023/make-install/">https://liyijie.cn/2023/make-install/</a>
+        </p>
+        
+            <strong>
+                <p>文章默认以 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享</a> 授权。</p>
+
+            </strong>
+        
+    </div>
+
+ 
+    <div class="post-footer__meta"><p>更新于 2023-09-25</p></div> 
+    <div class="post-entry__tags"><a href="/tags/Linux/" class="post-tags__link button"># Linux</a></div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/2023/ops-automation-1/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            下一篇
+                        </div>
+                        <div class="nav__title">
+                            自动化运维（一）：Shell编程基础
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
+</main>
+
+            <footer class="footer">
+    
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2023 <a href="/">Idealisti</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+    
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
+</html>
