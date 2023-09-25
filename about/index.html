@@ -122,7 +122,7 @@
         关于
     </h1>
     <div class="post-title__meta">
-        <a href="/archives/2023/09/" class="post-meta__date button">2023-09-25</a>
+        <a href="/archives/2023/09/" class="post-meta__date button">2023-09-26</a>
         
  
         
@@ -139,7 +139,7 @@
 
     <aside class="post-side">
         <div class="post-side__toc">
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Me"><span class="toc-text">Me</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Contact"><span class="toc-text">Contact</span></a></li></ol>
         </div>
     </aside>
     <a class="btn-toc button" id="btn-toc" tabindex="0">
@@ -149,19 +149,39 @@
     </a>
     <div class="toc-menus" id="toc-menus">
         <div class="toc-title">文章目录</div>
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Me"><span class="toc-text">Me</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Contact"><span class="toc-text">Contact</span></a></li></ol>
     </div>
 
 
 <article class="post post__with-toc content-card">
     <div class="post__header"></div>
     <div class="post__content">
-        <p>In construction…</p>
+        <p>Hi there! 欢迎～</p>
+<h2 id="Me"><a href="#Me" class="headerlink" title="Me"></a>Me</h2><p>AI Student</p>
+<ul>
+<li><p>Status<br>华东师范大学数据科学与工程学院（DaSE）修炼中。</p>
+</li>
+<li><p>Major<br><strong>经济学</strong>&amp;<strong>计算机</strong>双修研究生。二者于我类似世界观与方法论的关系。虽有一定机缘巧合，但也算在计划之中。<br>技术进步是经济增长的引擎。根据内生增长理论，罗默模型中的总生产函数描述的是，资本存量$K$和劳动$L_Y$如何利用创意存量$A$，结合在一起生产出$Y$的：</p>
+<p>$$Y&#x3D;K^\alpha\left(AL_Y\right)^{1-\alpha}$$</p>
+<p>其中$A$的增长是内生化的：有更多的研究者就可以产生出更多的新创意。</p>
+<p>$$\dot{A}&#x3D;\bar{\theta}L_A$$</p>
+<p>我希望能够在技术层面有所长进，做好一个$L_A$，为国家与个人突破当前瓶颈做一次努力。</p>
+</li>
+<li><p>Research Interest<br>深度学习、自然语言处理。</p>
+</li>
+<li><p>Hobby<br>吃。</p>
+</li>
+<li><p>Game<br><del>守望先锋</del>，算了不玩了。</p>
+</li>
+</ul>
+<h2 id="Contact"><a href="#Contact" class="headerlink" title="Contact"></a>Contact</h2><ul>
+<li>Email: <a href="mailto:&#55;&#x31;&#50;&#54;&#53;&#x39;&#48;&#x33;&#x30;&#49;&#50;&#x40;&#115;&#x74;&#x75;&#x2e;&#101;&#x63;&#110;&#117;&#46;&#101;&#100;&#117;&#46;&#99;&#110;">&#55;&#x31;&#50;&#54;&#53;&#x39;&#48;&#x33;&#x30;&#49;&#50;&#x40;&#115;&#x74;&#x75;&#x2e;&#101;&#x63;&#110;&#117;&#46;&#101;&#100;&#117;&#46;&#99;&#110;</a></li>
+</ul>
 
     </div>
     
  
-    <div class="post-footer__meta"><p>更新于 2023-09-25</p></div> 
+    <div class="post-footer__meta"><p>更新于 2023-09-26</p></div> 
     <div class="post-entry__tags"></div> 
 </article>
 
@@ -217,6 +237,56 @@
 
  
 
+
+    <script>
+        if (typeof MathJax === 'undefined') {
+            window.MathJax = {
+                loader: {
+                    source: {
+                        '[tex]/amsCd': '[tex]/amscd',
+                        '[tex]/AMScd': '[tex]/amscd'
+                    }
+                },
+                tex: {
+                    inlineMath: {'[+]': [['$', '$']]},
+                    tags: 'ams'
+                },
+                options: {
+                    renderActions: {
+                        findScript: [10, doc => {
+                            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                                const display = !!node.type.match(/; *mode=display/);
+                                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                                const text = document.createTextNode('');
+                                node.parentNode.replaceChild(text, node);
+                                math.start = {node: text, delim: '', n: 0};
+                                math.end = {node: text, delim: '', n: 0};
+                                doc.math.push(math);
+                            });
+                        }, '', false],
+                        insertedScript: [200, () => {
+                            document.querySelectorAll('mjx-container').forEach(node => {
+                                let target = node.parentNode;
+                                if (target.nodeName.toLowerCase() === 'li') {
+                                    target.parentNode.classList.add('has-jax');
+                                }
+                            });
+                        }, '', false]
+                    }
+                }
+            };
+            (function () {
+                var script = document.createElement('script');
+                script.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
+                script.defer = true;
+                document.head.appendChild(script);
+            })();
+        } else {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+        }
+    </script>
  
 
  
