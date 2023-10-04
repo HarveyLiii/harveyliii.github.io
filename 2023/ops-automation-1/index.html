@@ -166,7 +166,10 @@
     
 </div>
     <div class="post__content">
-        <h2 id="实验环境准备"><a href="#实验环境准备" class="headerlink" title="实验环境准备"></a>实验环境准备</h2><h3 id="虚拟机固定IP设置"><a href="#虚拟机固定IP设置" class="headerlink" title="虚拟机固定IP设置"></a>虚拟机固定IP设置</h3><p>使用 VMware 创建4个虚拟机，每个虚拟机添加3块30G的虚拟盘。首先在虚机中给每个主机加上固定IP，控制节点修改如下：</p>
+        <p>更新：在可预见的将来，我大抵是不会继续干运维了。Shell还是很有用的，不过该系列先这样～</p>
+<span id="more"></span>
+
+<h2 id="实验环境准备"><a href="#实验环境准备" class="headerlink" title="实验环境准备"></a>实验环境准备</h2><h3 id="虚拟机固定IP设置"><a href="#虚拟机固定IP设置" class="headerlink" title="虚拟机固定IP设置"></a>虚拟机固定IP设置</h3><p>使用 VMware 创建4个虚拟机，每个虚拟机添加3块30G的虚拟盘。首先在虚机中给每个主机加上固定IP，控制节点修改如下：</p>
 <figure class="highlight shellsession"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat /etc/sysconfig/network-scripts/ifcfg-ens160</span><br><span class="line">TYPE=Ethernet</span><br><span class="line">PROXY_METHOD=none</span><br><span class="line">BROWSER_ONLY=no</span><br><span class="line">BOOTPROTO=static    # 静态分配</span><br><span class="line">DEFROUTE=yes</span><br><span class="line">IPV4_FAILURE_FATAL=no</span><br><span class="line">IPV6INIT=yes</span><br><span class="line">IPV6_AUTOCONF=yes</span><br><span class="line">IPV6_DEFROUTE=yes</span><br><span class="line">IPV6_FAILURE_FATAL=no</span><br><span class="line">IPV6_ADDR_GEN_MODE=eui64</span><br><span class="line">NAME=ens160</span><br><span class="line">UUID=cdea53bc-a032-4987-b69a-b01c55f67950</span><br><span class="line">DEVICE=ens160</span><br><span class="line">ONBOOT=yes    # 改为yes</span><br><span class="line">IPADDR=192.168.26.140    # 以下为新增</span><br><span class="line">PREFIX=24</span><br><span class="line">GATEWAY=192.168.26.2</span><br><span class="line">DNS1=114.114.114.114</span><br><span class="line">[root@localhost ~]# nmcli connection down ens160</span><br><span class="line">[root@localhost ~]# nmcli connection up ens160    # 重启网络（也可以用nmtui）</span><br></pre></td></tr></table></figure>
 
 <h3 id="集群节点基础环境配置"><a href="#集群节点基础环境配置" class="headerlink" title="集群节点基础环境配置"></a>集群节点基础环境配置</h3><p>依次修改其他三台虚拟机，分配内网IP为141~143，并给每台主机进行命名，方便通过主机名访问节点：</p>
@@ -611,7 +614,7 @@
     </div>
 
  
-    <div class="post-footer__meta"><p>更新于 2023-06-26</p></div> 
+    <div class="post-footer__meta"><p>更新于 2023-10-04</p></div> 
     <div class="post-entry__tags"><a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/" class="post-tags__link button"># 自动化运维</a><a href="/tags/Linux/" class="post-tags__link button"># Linux</a><a href="/tags/Shell/" class="post-tags__link button"># Shell</a></div> 
 </article>
 
