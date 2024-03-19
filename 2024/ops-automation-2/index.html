@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    
+    
+    
+    
+    
+
+
+    <!-- meta -->
+
+
+<title>自动化运维（二）：Python | Harvey Li</title>
+
+
+    <meta name="keywords" content="Linux, 自动化运维, Shell">
+
+
+
+
+    <!-- OpenGraph -->
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/atom-one-light.css" media="none" >
+        
+            <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight/atom-one-dark.css" media="none">
+        
+    
+
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/style/dark.css">
+
+    
+<script src="/js/darkmode.js"></script>
+
+
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+    <body>
+        <div id="app" tabindex="-1">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">Harvey Li</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/archives/" class="navbar-menu button">归档</a>
+                
+                    <a href="/about/" class="navbar-menu button">关于</a>
+                
+            </div>
+        
+        
+        
+
+        
+        
+    <a href="javaScript:void(0);" id="btn-toggle-dark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </a>
+
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+                    <a href="/about/" class="dropdown-menu button">关于</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        自动化运维（二）：Python
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2024/03/" class="post-meta__date button">2024-03-19</a>
+        
+    <span class="separate-dot"></span><a href="/categories/%E7%9F%A5%E8%A7%81/" class="button">知见</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+    <aside class="post-side">
+        <div class="post-side__toc">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%AD%94%E6%B3%95%E6%96%B9%E6%B3%95"><span class="toc-text">常见魔法方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#repr-%E4%B8%8E-str"><span class="toc-text">__repr__()与__str__()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#len"><span class="toc-text">__len__()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#contains"><span class="toc-text">__contains__()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getitem-%E4%B8%8E-setitem"><span class="toc-text">__getitem__()与__setitem__()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pymysql"><span class="toc-text">Pymysql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Requests"><span class="toc-text">Requests</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#getattr-%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8"><span class="toc-text">getattr()典型应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E6%89%93%E5%8D%B0"><span class="toc-text">日志打印</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E7%BB%93%E6%9E%9C"><span class="toc-text">返回结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Django%E6%BA%90%E7%A0%81%E4%B8%AD%E7%9A%84%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8"><span class="toc-text">Django源码中的典型应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Psutil"><span class="toc-text">Psutil</span></a></li></ol>
+        </div>
+    </aside>
+    <a class="btn-toc button" id="btn-toc" tabindex="0">
+        <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z" fill="currentColor"></path>
+        </svg>
+    </a>
+    <div class="toc-menus" id="toc-menus">
+        <div class="toc-title">文章目录</div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%AD%94%E6%B3%95%E6%96%B9%E6%B3%95"><span class="toc-text">常见魔法方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#repr-%E4%B8%8E-str"><span class="toc-text">__repr__()与__str__()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#len"><span class="toc-text">__len__()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#contains"><span class="toc-text">__contains__()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getitem-%E4%B8%8E-setitem"><span class="toc-text">__getitem__()与__setitem__()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pymysql"><span class="toc-text">Pymysql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Requests"><span class="toc-text">Requests</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#getattr-%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8"><span class="toc-text">getattr()典型应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E6%89%93%E5%8D%B0"><span class="toc-text">日志打印</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E7%BB%93%E6%9E%9C"><span class="toc-text">返回结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Django%E6%BA%90%E7%A0%81%E4%B8%AD%E7%9A%84%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8"><span class="toc-text">Django源码中的典型应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Psutil"><span class="toc-text">Psutil</span></a></li></ol>
+    </div>
+
+
+<article class="post post__with-toc content-card">
+    <div class="post__header">
+     
+     
+    
+        <div class="post-thumbnail" style="background-image: url('https://s2.loli.net/2023/06/09/VWelPiIf8gnsUoO.png');"></div>
+    
+</div>
+    <div class="post__content">
+        <h2 id="常见魔法方法"><a href="#常见魔法方法" class="headerlink" title="常见魔法方法"></a>常见魔法方法</h2><p>考虑下面的类A，定义在<code>test.py</code>文件中：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, data, ds</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.data = data</span><br><span class="line">        self.ds = ds</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__str__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;对象: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(self.name)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__repr__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;对象: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(self.data)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__len__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(self.data)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__contains__</span>(<span class="params">self, key</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;得到判断的key = %s&#x27;</span> % key)</span><br><span class="line">        <span class="keyword">return</span> key <span class="keyword">in</span> self.ds</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__setitem__</span>(<span class="params">self, key, val</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;进入__setitem__()方法: &lt;%s, %s&gt;&#x27;</span> % (key, val))</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(key, <span class="built_in">int</span>):</span><br><span class="line">            <span class="comment"># 如果是数字，操作self.data</span></span><br><span class="line">            <span class="keyword">if</span> key &gt;= <span class="built_in">len</span>(self.data):</span><br><span class="line">                self.data.append(val)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                self.data[key] = val</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># 如果是其他，操作self.ds</span></span><br><span class="line">            self.ds[key] = val</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__getitem__</span>(<span class="params">self, key</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;进入__getitem__()方法: %s&#x27;</span> % key)</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(key, <span class="built_in">int</span>) <span class="keyword">and</span> key &lt; <span class="built_in">len</span>(self.data):</span><br><span class="line">            <span class="keyword">return</span> self.data[key]</span><br><span class="line">        <span class="keyword">elif</span> key <span class="keyword">in</span> self.ds:</span><br><span class="line">            <span class="keyword">return</span> self.ds[key]</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br></pre></td></tr></table></figure>
+
+<p>实例化A类得到a对象：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> test <span class="keyword">import</span> A</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = A(<span class="string">&#x27;harvey&#x27;</span>, [<span class="string">&#x27;abc&#x27;</span>, <span class="string">&#x27;xxxx&#x27;</span>, <span class="string">&#x27;xyz&#x27;</span>], &#123;<span class="string">&#x27;k1&#x27;</span>: <span class="string">&#x27;v1&#x27;</span>, <span class="string">&#x27;k2&#x27;</span>: <span class="string">&#x27;v2&#x27;</span>, <span class="string">&#x27;k3&#x27;</span>: <span class="string">&#x27;v3&#x27;</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="repr-与-str"><a href="#repr-与-str" class="headerlink" title="__repr__()与__str__()"></a><code>__repr__()</code>与<code>__str__()</code></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line">对象: [<span class="string">&#x27;abc&#x27;</span>, <span class="string">&#x27;xxxx&#x27;</span>, <span class="string">&#x27;xyz&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(A)</span><br><span class="line">&lt;<span class="keyword">class</span> <span class="string">&#x27;test.A&#x27;</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(a)</span><br><span class="line">对象: harvey</span><br></pre></td></tr></table></figure>
+
+<p><code>__repr__()</code>和<code>__str__()</code>分别改变了对象a在交互模式下以及<code>print()</code>函数的输出结果。在交互模式下直接输出对象<code>a</code>，将搜索对象中的<code>__repr__()</code>方法，并将该方法的返回值作为输出。如果是使用<code>print()</code>函数打印输出，那么Python解释器会先查找对象中的 <code>__str__()</code>方法，将其返回结果作为输出打印，如果没有<code>__str__()</code>方法，会继续查找<code>__repr__()</code>方法的返回值输出。如果都没有，则打印默认的输出。</p>
+<h3 id="len"><a href="#len" class="headerlink" title="__len__()"></a><code>__len__()</code></h3><p><code>__len__()</code>方法用于支持<code>len(对象)</code>操作。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(a)</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>对一个自定义的类，如果它没有 <code>__len__()</code>方法，就无法使用<code>len(A对象)</code>语句。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(a)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">TypeError: <span class="built_in">object</span> of <span class="built_in">type</span> <span class="string">&#x27;A&#x27;</span> has no <span class="built_in">len</span>()</span><br></pre></td></tr></table></figure>
+
+<h3 id="contains"><a href="#contains" class="headerlink" title="__contains__()"></a><code>__contains__()</code></h3><p>定义魔法方法<code>__contains__()</code>后，该类的对象将支持 <code>for key in xxx</code> 这样的语句：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;k1&#x27;</span> <span class="keyword">in</span> a</span><br><span class="line">得到判断的key = k1</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;kx&#x27;</span> <span class="keyword">in</span> a</span><br><span class="line">得到判断的key = kx</span><br><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="getitem-与-setitem"><a href="#getitem-与-setitem" class="headerlink" title="__getitem__()与__setitem__()"></a><code>__getitem__()</code>与<code>__setitem__()</code></h3><p>让对象可以使用索引方式调用。使用表达式<code>A对象[1]</code> 或者 <code>A对象[&#39;k1&#39;]</code>时，将自动进入<code>__getitem__()</code>魔法方法中；当使用赋值语句 <code>A对象[&#39;kx&#39;] = &#39;xxxxx&#39;</code>时，将进入 <code>__setitem__()</code>方法处理：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a[<span class="number">1</span>]</span><br><span class="line">进入__getitem__()方法: <span class="number">1</span></span><br><span class="line"><span class="string">&#x27;xxxx&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a[<span class="number">2</span>]</span><br><span class="line">进入__getitem__()方法: <span class="number">2</span></span><br><span class="line"><span class="string">&#x27;xyz&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a[<span class="number">3</span>] <span class="comment"># 超出self.data的索引范围，返回为None</span></span><br><span class="line">进入__getitem__()方法: <span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a[<span class="string">&#x27;k1&#x27;</span>]</span><br><span class="line">进入__getitem__()方法: k1</span><br><span class="line"><span class="string">&#x27;v1&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a[<span class="string">&#x27;k2&#x27;</span>]</span><br><span class="line">进入__getitem__()方法: k2</span><br><span class="line"><span class="string">&#x27;v2&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a[<span class="string">&#x27;kx&#x27;</span>]</span><br><span class="line">进入__getitem__()方法: kx</span><br><span class="line"><span class="comment"># 调用__setitem__()方法</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a[<span class="number">1</span>] = <span class="string">&#x27;hello&#x27;</span></span><br><span class="line">进入__setitem__()方法: &lt;<span class="number">1</span>, hello&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.data</span><br><span class="line">[<span class="string">&#x27;abc&#x27;</span>, <span class="string">&#x27;hello&#x27;</span>, <span class="string">&#x27;xyz&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a[<span class="number">10</span>] = <span class="string">&#x27;末尾添加&#x27;</span></span><br><span class="line">进入__setitem__()方法: &lt;<span class="number">10</span>, 末尾添加&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.data</span><br><span class="line">[<span class="string">&#x27;abc&#x27;</span>, <span class="string">&#x27;hello&#x27;</span>, <span class="string">&#x27;xyz&#x27;</span>, <span class="string">&#x27;末尾添加&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a[<span class="string">&#x27;kx&#x27;</span>] = <span class="string">&#x27;vx&#x27;</span></span><br><span class="line">进入__setitem__()方法: &lt;kx, vx&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.ds</span><br><span class="line">&#123;<span class="string">&#x27;k1&#x27;</span>: <span class="string">&#x27;v1&#x27;</span>, <span class="string">&#x27;k2&#x27;</span>: <span class="string">&#x27;v2&#x27;</span>, <span class="string">&#x27;k3&#x27;</span>: <span class="string">&#x27;v3&#x27;</span>, <span class="string">&#x27;kx&#x27;</span>: <span class="string">&#x27;vx&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Pymysql"><a href="#Pymysql" class="headerlink" title="Pymysql"></a>Pymysql</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 pip install pymysql</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pymysql.connections <span class="keyword">import</span> Connection</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建连接</span></span><br><span class="line">conn = Connection(host=<span class="string">&#x27;192.168.26.1&#x27;</span>, port=<span class="number">3306</span>, user=<span class="string">&#x27;root&#x27;</span>, password=<span class="string">&#x27;admin&#x27;</span>, database=<span class="string">&#x27;hive&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取游标</span></span><br><span class="line">cursor = conn.cursor()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;cursor object = &#123;&#125; &#x27;</span>.<span class="built_in">format</span>(cursor))</span><br><span class="line"><span class="comment"># cursor object = &lt;pymysql.cursors.Cursor object at 0xffffab408880&gt; </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行操作（SQL）</span></span><br><span class="line">res = cursor.execute(<span class="string">&#x27;select * from tbls&#x27;</span>)  <span class="comment"># Returns: Number of affected rows.</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;受影响行数:&#x27;</span>, res)  <span class="comment"># 返回一个int</span></span><br><span class="line"><span class="comment">## 逐行获取</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;第1条结果：&#x27;</span>, cursor.fetchone())  <span class="comment"># 游标前进1行</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;第2条结果：&#x27;</span>, cursor.fetchone())</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;取后5条数据：&#x27;</span>, cursor.fetchmany(<span class="number">5</span>))  <span class="comment"># 游标前进5行</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;取剩余数据：&#x27;</span>, cursor.fetchall())  <span class="comment"># 游标移动到末尾 len(self._rows)</span></span><br><span class="line"><span class="comment">## 获取全部</span></span><br><span class="line">res = cursor.execute(<span class="string">&#x27;select * from tbls&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;获取全部结果：&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(cursor._rows))  <span class="comment"># cursor._rows元组</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭连接</span></span><br><span class="line">cursor.close()</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Requests"><a href="#Requests" class="headerlink" title="Requests"></a>Requests</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># urllib3的简单使用</span></span><br><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urlparse</span><br><span class="line"><span class="keyword">import</span> urllib3</span><br><span class="line"></span><br><span class="line">test_url = <span class="string">&#x27;HTTP://192.168.26.140:80&#x27;</span></span><br><span class="line">parsed = urlparse(test_url)</span><br><span class="line"><span class="comment"># ParseResult(scheme=&#x27;http&#x27;, netloc=&#x27;192.168.26.140:80&#x27;, path=&#x27;&#x27;, params=&#x27;&#x27;, query=&#x27;&#x27;, fragment=&#x27;&#x27;)</span></span><br><span class="line">req_url = parsed.geturl()  <span class="comment"># 重新解析以规范格式</span></span><br><span class="line"><span class="comment"># &#x27;https://192.168.26.140:80&#x27;</span></span><br><span class="line">pool_manager = urllib3.PoolManager()</span><br><span class="line">conn = pool_manager.connection_from_url(req_url)</span><br><span class="line">resp = conn.urlopen(<span class="string">&#x27;GET&#x27;</span>, req_url)</span><br><span class="line"><span class="comment"># &lt;urllib3.response.HTTPResponse object at 0xffff80284b50&gt;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;请求状态码=<span class="subst">&#123;resp.status&#125;</span>，请求结果=<span class="subst">&#123;resp.data&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># request</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">response = requests.get(test_url)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;requests请求结果: <span class="subst">&#123;response.status_code&#125;</span>, <span class="subst">&#123;response.text&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>文档：<a href="">https://requests.readthedocs.io/projects/cn/zh-cn/latest/user/quickstart.html</a></p>
+<h2 id="getattr-典型应用"><a href="#getattr-典型应用" class="headerlink" title="getattr()典型应用"></a><code>getattr()</code>典型应用</h2><h3 id="日志打印"><a href="#日志打印" class="headerlink" title="日志打印"></a>日志打印</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">print_log</span>(<span class="params">msg, level=<span class="string">&quot;debug&quot;</span></span>):</span><br><span class="line">    level = level.lower()</span><br><span class="line">    <span class="keyword">if</span> level == <span class="string">&quot;debug&quot;</span>:</span><br><span class="line">        logging.debug(msg)</span><br><span class="line">    <span class="keyword">elif</span> level == <span class="string">&quot;info&quot;</span>:</span><br><span class="line">        logging.info(msg)</span><br><span class="line">    <span class="keyword">elif</span> level == <span class="string">&quot;warning&quot;</span>:</span><br><span class="line">        logging.warning(msg)</span><br><span class="line">    <span class="keyword">elif</span> level == <span class="string">&quot;error&quot;</span>:</span><br><span class="line">        logging.error(msg)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 默认只打印warning以及之上级别的日志，这里修改为打印debug之上的日志</span></span><br><span class="line">logging.basicConfig(level=logging.DEBUG)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;开始你的打印&#x27;</span>)</span><br><span class="line">print_log(<span class="string">&#x27;DEBUG，测试&#x27;</span>)</span><br><span class="line">print_log(<span class="string">&#x27;INFO,  测试&#x27;</span>, level=<span class="string">&#x27;info&#x27;</span>)</span><br><span class="line">print_log(<span class="string">&#x27;WARN,  测试&#x27;</span>, level=<span class="string">&#x27;warning&#x27;</span>)</span><br><span class="line">print_log(<span class="string">&#x27;ERROR,  测试&#x27;</span>, level=<span class="string">&#x27;error&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@center ~]# python test.py </span><br><span class="line">开始你的打印</span><br><span class="line">DEBUG:root:DEBUG，测试</span><br><span class="line">INFO:root:INFO,  测试</span><br><span class="line">WARNING:root:WARN,  测试</span><br><span class="line">ERROR:root:ERROR,  测试</span><br></pre></td></tr></table></figure>
+
+<p>以上代码非常浪费<code>if...else</code>，观感不好。但注意到，这里传入的<code>level</code>值与<code>logging</code>的属性名是一致的，此时就可以使用<code>getattr()</code>函数来回去要对应调用的日志打印函数。这样就可以大幅简化<code>if</code>语句：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">print_log_new</span>(<span class="params">msg, level=<span class="string">&quot;debug&quot;</span></span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        log_func = <span class="built_in">getattr</span>(logging, level)</span><br><span class="line">        log_func(msg)</span><br><span class="line">    <span class="keyword">except</span> AttributeError:</span><br><span class="line">        <span class="built_in">print</span>(msg)</span><br><span class="line"></span><br><span class="line">logging.basicConfig(level=logging.DEBUG)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;开始你的打印&#x27;</span>)</span><br><span class="line">print_log_new(<span class="string">&#x27;DEBUG，测试&#x27;</span>)</span><br><span class="line">print_log_new(<span class="string">&#x27;INFO,  测试&#x27;</span>, level=<span class="string">&#x27;info&#x27;</span>)</span><br><span class="line">print_log_new(<span class="string">&#x27;WARN,  测试&#x27;</span>, level=<span class="string">&#x27;warning&#x27;</span>)</span><br><span class="line">print_log_new(<span class="string">&#x27;ERROR,  测试&#x27;</span>, level=<span class="string">&#x27;error&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>也能取得一样的结果。</p>
+<h3 id="返回结果"><a href="#返回结果" class="headerlink" title="返回结果"></a>返回结果</h3><p>主动设置能符合<code>getattr()</code>操作的语句，可以简化后续的语句。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Result</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">set_success_result</span>(<span class="params">self, data</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;设置成功结果&#x27;</span>)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">set_failure_result</span>(<span class="params">self, data</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;设置失败结果&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">handle</span>(<span class="params">flag=<span class="literal">False</span></span>):</span><br><span class="line">    <span class="keyword">if</span> flag:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span>, <span class="string">&quot;hello&quot;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span>, <span class="string">&quot;world&quot;</span></span><br><span class="line"></span><br><span class="line">result = Result()</span><br><span class="line">ret, data = handle(<span class="literal">False</span>)</span><br><span class="line"><span class="keyword">if</span> ret:</span><br><span class="line">    result.set_success_result(data)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    result.set_failure_result(data)</span><br></pre></td></tr></table></figure>
+
+<p>处理函数<code>handle()</code>的传入参数为true时，表示处理正确，希望能调用Result对象的<code>set_success_result()</code>方法封装结果并返回（这里用一个print代替操作）；当传入参数为false时，表示处理错误，希望能调用Result对象的<code>set_failure_result()</code>方法封装结果并返回。后面有出现了对返回结果的判断，然后才决定调用哪个方法。</p>
+<p>注意到，不同结果的方法名只有一点细微的差别，都叫<code>set_xxx_result()</code>。那么只需要<code>handler()</code>方法返回这个不同的值，就可以不加判断了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">handle_new</span>(<span class="params">flag=<span class="literal">False</span></span>):</span><br><span class="line">    <span class="keyword">if</span> flag:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>, <span class="string">&quot;hello&quot;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;failure&quot;</span>, <span class="string">&quot;world&quot;</span></span><br><span class="line"></span><br><span class="line">ret, data = handle_new(<span class="literal">True</span>)</span><br><span class="line">callback = <span class="built_in">getattr</span>(result, <span class="string">f&quot;set_<span class="subst">&#123;ret&#125;</span>_result&quot;</span>) <span class="comment"># 通过getattr()获取对应的方法</span></span><br><span class="line">callback(data)  <span class="comment"># 调用结果</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Django源码中的典型应用"><a href="#Django源码中的典型应用" class="headerlink" title="Django源码中的典型应用"></a>Django源码中的典型应用</h3><p>Django 的一个非常经典的视图类的实现，如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="keyword">from</span> django.views <span class="keyword">import</span> View</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HelloView</span>(<span class="title class_ inherited__">View</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get</span>(<span class="params">self, request, *args, **kwargs</span>):  </span><br><span class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">&#x27;get\n&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">post</span>(<span class="params">self, request, *args, **kwargs</span>):  </span><br><span class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">&#x27;post\n&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">put</span>(<span class="params">self, request, *args, **kwargs</span>):  </span><br><span class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">&#x27;put\n&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">delete</span>(<span class="params">self, request, *args, **kwargs</span>):  </span><br><span class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">&#x27;delete\n&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 注意，给CBV加上@csrf_exempt注解，需要加到dispatch方法上，后续会详解介绍这个函数的作用</span></span><br><span class="line"><span class="meta">    @csrf_exempt</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">dispatch</span>(<span class="params">self, request, *args, **kwargs</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">super</span>(HelloView, self).dispatch(request, *args, **kwargs)</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;admin/&#x27;</span>, admin.site.urls),</span><br><span class="line">    path(<span class="string">&#x27;hello/&#x27;</span>, HelloView.as_view()),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>只需理解，当客户端的HTTP请求（路径为<code>hello/</code>）为GET请求时，处理的视图方法为<code>HelloView</code>类中定义的<code>get()</code>方法，而同一路径的PUT请求对应着<code>HelloView</code>类中定义的<code>put()</code>方法。那Django框架内部是如何做到这一点的呢？Django中View类的源码，内容如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">View</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Intentionally simple parent class for all views. Only implements</span></span><br><span class="line"><span class="string">    dispatch-by-method and simple sanity checking.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    http_method_names = [<span class="string">&#x27;get&#x27;</span>, <span class="string">&#x27;post&#x27;</span>, <span class="string">&#x27;put&#x27;</span>, <span class="string">&#x27;patch&#x27;</span>, <span class="string">&#x27;delete&#x27;</span>, <span class="string">&#x27;head&#x27;</span>, <span class="string">&#x27;options&#x27;</span>, <span class="string">&#x27;trace&#x27;</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># ...</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @classonlymethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">as_view</span>(<span class="params">cls, **initkwargs</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;Main entry point for a request-response process.&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">for</span> key <span class="keyword">in</span> initkwargs:</span><br><span class="line">            <span class="keyword">if</span> key <span class="keyword">in</span> cls.http_method_names:</span><br><span class="line">                <span class="keyword">raise</span> TypeError(</span><br><span class="line">                    <span class="string">&#x27;The method name %s is not accepted as a keyword argument &#x27;</span></span><br><span class="line">                    <span class="string">&#x27;to %s().&#x27;</span> % (key, cls.__name__)</span><br><span class="line">                )</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">hasattr</span>(cls, key):</span><br><span class="line">                <span class="keyword">raise</span> TypeError(<span class="string">&quot;%s() received an invalid keyword %r. as_view &quot;</span></span><br><span class="line">                                <span class="string">&quot;only accepts arguments that are already &quot;</span></span><br><span class="line">                                <span class="string">&quot;attributes of the class.&quot;</span> % (cls.__name__, key))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">view</span>(<span class="params">request, *args, **kwargs</span>):</span><br><span class="line">            self = cls(**initkwargs)</span><br><span class="line">            self.setup(request, *args, **kwargs)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">hasattr</span>(self, <span class="string">&#x27;request&#x27;</span>):</span><br><span class="line">                <span class="keyword">raise</span> AttributeError(</span><br><span class="line">                    <span class="string">&quot;%s instance has no &#x27;request&#x27; attribute. Did you override &quot;</span></span><br><span class="line">                    <span class="string">&quot;setup() and forget to call super()?&quot;</span> % cls.__name__</span><br><span class="line">                )</span><br><span class="line">            <span class="keyword">return</span> self.dispatch(request, *args, **kwargs)</span><br><span class="line">        view.view_class = cls</span><br><span class="line">        view.view_initkwargs = initkwargs</span><br><span class="line"></span><br><span class="line">        <span class="comment"># take name and docstring from class</span></span><br><span class="line">        update_wrapper(view, cls, updated=())</span><br><span class="line"></span><br><span class="line">        <span class="comment"># and possible attributes set by decorators</span></span><br><span class="line">        <span class="comment"># like csrf_exempt from dispatch</span></span><br><span class="line">        update_wrapper(view, cls.dispatch, assigned=())</span><br><span class="line">        <span class="keyword">return</span> view</span><br><span class="line"></span><br><span class="line">    <span class="comment"># ...</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">dispatch</span>(<span class="params">self, request, *args, **kwargs</span>):</span><br><span class="line">        <span class="comment"># Try to dispatch to the right method; if a method doesn&#x27;t exist,</span></span><br><span class="line">        <span class="comment"># defer to the error handler. Also defer to the error handler if the</span></span><br><span class="line">        <span class="comment"># request method isn&#x27;t on the approved list.</span></span><br><span class="line">        <span class="keyword">if</span> request.method.lower() <span class="keyword">in</span> self.http_method_names:  <span class="comment"># 最核心的部分</span></span><br><span class="line">            handler = <span class="built_in">getattr</span>(self, request.method.lower(), self.http_method_not_allowed)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            handler = self.http_method_not_allowed</span><br><span class="line">        <span class="keyword">return</span> handler(request, *args, **kwargs)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># ...</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的源码中非常多地方用到了<code>hasattr()</code>、<code>getattr()</code>函数，其中实现请求自动映射方法的最关键地方是<code>dispatch()</code>方法中使用的<code>getattr()</code>语句，它将请求的方式值（如GET、POST、PUT等）转成小写后，然后获取视图对象中该请求的方法<code>handler</code>，然后使用该<code>handler</code>去处理对应的请求，这就是Django中对<code>getattr()</code>函数的一个典型应用场景。</p>
+<h2 id="Psutil"><a href="#Psutil" class="headerlink" title="Psutil"></a>Psutil</h2><p>…</p>
+
+    </div>
+    
+    <div class="post__license">
+        <p>
+            <strong>本文作者：</strong>liyijie
+        </p>
+        <p>
+            <strong>本文链接：</strong><a href="https://liyijie.cn/2024/ops-automation-2/">https://liyijie.cn/2024/ops-automation-2/</a>
+        </p>
+        
+            <strong>
+                <p>文章默认以 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享</a> 授权。</p>
+
+            </strong>
+        
+    </div>
+
+ 
+    <div class="post-footer__meta"><p>更新于 2024-03-19</p></div> 
+    <div class="post-entry__tags"><a href="/tags/Linux/" class="post-tags__link button"># Linux</a><a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/" class="post-tags__link button"># 自动化运维</a><a href="/tags/Shell/" class="post-tags__link button"># Shell</a></div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/2024/SQL-commands/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            下一篇
+                        </div>
+                        <div class="nav__title">
+                            SQL常用命令
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
+</main>
+
+            <footer class="footer">
+    
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2024 <a href="/">Harvey Li</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+    
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
+</html>
