@@ -361,7 +361,7 @@
 <p><img src="https://github.com/datawhalechina/wonderful-sql/raw/main/img/ch05/ch0504.png"></p>
 <p><img src="https://github.com/datawhalechina/wonderful-sql/raw/main/img/ch05/ch0505.png"></p>
 <h4 id="计算移动平均"><a href="#计算移动平均" class="headerlink" title="计算移动平均"></a>计算移动平均</h4><p>窗口函数就是将表以窗口为单位进行分割，并在其中排序或聚合的函数。实际上，还可以指定更加详细的汇总范围，称为<strong>框架</strong> (frame)。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">&lt;</span>窗口函数<span class="operator">&gt;</span> <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="operator">&lt;</span>排序用列名<span class="operator">&gt;</span></span><br><span class="line">                 <span class="keyword">ROWS</span> n PRECEDING )  </span><br><span class="line">                 </span><br><span class="line"><span class="operator">&lt;</span>窗口函数<span class="operator">&gt;</span> <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="operator">&lt;</span>排序用列名<span class="operator">&gt;</span></span><br><span class="line">                 <span class="keyword">ROWS</span> <span class="keyword">BETWEEN</span> n PRECEDING <span class="keyword">AND</span> m FOLLOWING)</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">&lt;</span>窗口函数<span class="operator">&gt;</span> <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="operator">&lt;</span>排序用列名<span class="operator">&gt;</span></span><br><span class="line">                 <span class="keyword">ROWS</span> n PRECEDING )  </span><br><span class="line"></span><br><span class="line"><span class="operator">&lt;</span>窗口函数<span class="operator">&gt;</span> <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="operator">&lt;</span>排序用列名<span class="operator">&gt;</span></span><br><span class="line">                 <span class="keyword">ROWS</span> <span class="keyword">BETWEEN</span> n PRECEDING <span class="keyword">AND</span> m FOLLOWING)</span><br></pre></td></tr></table></figure>
 
 <p><code>PRECEDING</code>将框架指定为“截止到之前 n 行”，加上自身行；</p>
 <p><code>FOLLOWING</code>将框架指定为“截止到之后 m 行”，加上自身行。</p>
@@ -415,7 +415,7 @@
     </div>
 
  
-    <div class="post-footer__meta"><p>更新于 2024-03-19</p></div> 
+    <div class="post-footer__meta"><p>更新于 2024-03-20</p></div> 
     <div class="post-entry__tags"><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-tags__link button"># 数据库</a><a href="/tags/SQL/" class="post-tags__link button"># SQL</a></div> 
 </article>
 
