@@ -64,7 +64,7 @@
 
     <!-- custom head -->
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 8.1.2"></head>
 
     <body>
         <div id="app" tabindex="-1">
@@ -228,7 +228,7 @@
 <h3 id="输出带颜色的字符"><a href="#输出带颜色的字符" class="headerlink" title="输出带颜色的字符"></a>输出带颜色的字符</h3><p>使用ANSI转义序列。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\033[31mhello\033[0m&quot;</span>    <span class="comment"># 输出红色hello</span></span><br><span class="line"><span class="comment"># 各种文本颜色</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\033[30m 黑色字 \033[0m&quot;</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\033[31m 红色字 \033[0m&quot;</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\033[32m 绿色字 \033[0m&quot;</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\033[33m 黄色字 \033[0m&quot;</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\033[34m 蓝色字 \033[0m&quot;</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\033[35m 紫色字 \033[0m&quot;</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\033[36m 青色字 \033[0m&quot;</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\033[37m 白色字 \033[0m&quot;</span></span><br><span class="line"><span class="comment"># 40m 到 47m 代表不同的背景颜色，使用方式同上</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><h3 id=""><a href="#" class="headerlink" title="${}"></a>${}</h3><p><code>$&#123;&#125;</code>用于对变量进行操作。例如，<code>$&#123;var&#125;</code>可以用于替换变量<code>var</code>的值。</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><h3 id=""><a href="#" class="headerlink" title="${}"></a>${}</h3><p><code>${}</code>用于对变量进行操作。例如，<code>${var}</code>可以用于替换变量<code>var</code>的值。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var1=hello</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$var1</span></span><br><span class="line">var1_xyz=abc</span><br><span class="line"><span class="comment"># 期望：输出$var1_xyz=hello_xyz</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;输出\$var1_xyz=<span class="variable">$var1_xyz</span>&quot;</span></span><br><span class="line"><span class="comment"># 实际：输出$var1_xyz=abc</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;继续输出: <span class="variable">$&#123;var1&#125;</span>_xyz&quot;</span>    <span class="comment"># 成功</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="declare-与-set"><a href="#declare-与-set" class="headerlink" title="declare 与 set"></a>declare 与 set</h3><p><code>declare</code>命令用于声明和设置变量的属性。</p>
@@ -243,7 +243,7 @@
 <p>反引号容易与其他引号产生歧义，而<code>$()</code>没有这个问题。在嵌套命令时，反引号需要反斜杠转义，而<code>$()</code>不需要，因此更推荐使用<code>$()</code>。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_IP_1=`<span class="built_in">cat</span> /etc/hosts | grep \`hostname\` | awk <span class="string">&#x27;&#123;print $1&#125;&#x27;</span>`</span><br><span class="line">LOCAL_IP_2=$(<span class="built_in">cat</span> /etc/hosts | grep $(hostname) | awk <span class="string">&#x27;&#123;print $1&#125;&#x27;</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;\$LOCAL_IP_1=<span class="variable">$LOCAL_IP_1</span>, \$LOCAL_IP_2=<span class="variable">$LOCAL_IP_2</span>&quot;</span></span><br><span class="line"><span class="comment"># 二者输出一致</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="数组的定义与长度"><a href="#数组的定义与长度" class="headerlink" title="数组的定义与长度"></a>数组的定义与长度</h3><p>使用<code>$&#123;array[@]&#125;</code>或<code>$&#123;array[*]&#125;</code>表示整个数组。<code>$&#123;array[i]&#125;</code>表示第i个元素。数组变量前加<code>#</code>表示数组或其中某个元素的长度。</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="数组的定义与长度"><a href="#数组的定义与长度" class="headerlink" title="数组的定义与长度"></a>数组的定义与长度</h3><p>使用<code>${array[@]}</code>或<code>${array[*]}</code>表示整个数组。<code>${array[i]}</code>表示第i个元素。数组变量前加<code>#</code>表示数组或其中某个元素的长度。</p>
 <blockquote>
 <p><code>*</code>通常表示将整个数组作为一个整体。当使用<code>*</code>作为索引时，它会展开为数组的所有元素，每个元素之间用空格分隔。这意味着将数组视为单个参数，而不是逐个处理数组的元素。</p>
 <p><code>@</code>表示数组的所有元素，每个元素都是独立的。使用<code>@</code>作为索引时，它会将数组的每个元素视为一个独立的实体，可以逐个处理。</p>
@@ -337,11 +337,11 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">str3=<span class="string">&quot;Hi World! Hello World! Hello Seres!&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;str3/Hello/Goodbye&#125;</span>      <span class="comment"># Hi World! Goodbye World! Hello Seres!</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;str3//Hello/Goodbye&#125;</span>     <span class="comment"># Hi World! Goodbye World! Goodbye Seres!</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;str3/#Hi/Goodbye&#125;</span>        <span class="comment"># Goodbye World! Hello World! Hello Seres!</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;str3/%Seres!/China!&#125;</span>     <span class="comment"># Hi World! Hello World! Hello China!</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h3><ul>
-<li><p><code>$&#123;param:-default&#125;</code>：如果变量<code>param</code>定义且不为空，则返回<code>param</code>的值；否则返回<code>default</code>。</p>
+<li><p><code>${param:-default}</code>：如果变量<code>param</code>定义且不为空，则返回<code>param</code>的值；否则返回<code>default</code>。</p>
 </li>
-<li><p><code>$&#123;param:+default&#125;</code>：如果变量<code>param</code>定义且不为空，则返回<code>default</code>；否则返回空字符串。</p>
+<li><p><code>${param:+default}</code>：如果变量<code>param</code>定义且不为空，则返回<code>default</code>；否则返回空字符串。</p>
 </li>
-<li><p><code>$&#123;param:?default&#125;</code>：如果变量<code>param</code>定义且不为空，则返回<code>param</code>的值；否则显示错误信息<code>param: default</code>并终止脚本执行。</p>
+<li><p><code>${param:?default}</code>：如果变量<code>param</code>定义且不为空，则返回<code>param</code>的值；否则显示错误信息<code>param: default</code>并终止脚本执行。</p>
 </li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">str4=<span class="string">&quot;123&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;str4:-&quot;abc&quot;&#125;</span>     <span class="comment"># 123</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;str5:-&quot;abc&quot;&#125;</span>     <span class="comment"># abc</span></span><br><span class="line"></span><br><span class="line">str6=<span class="string">&quot;123&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;str6:+abc&#125;</span>       <span class="comment"># abc</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;str7:+abc&#125;</span>       <span class="comment"># 空串</span></span><br><span class="line"></span><br><span class="line">str8=<span class="string">&quot;123&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;str8:?abc&#125;</span>       <span class="comment"># 123</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;str9:?abc&#125;</span>       <span class="comment"># 返回 str9: abc 并终止</span></span><br></pre></td></tr></table></figure>
@@ -468,25 +468,25 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array=(xx  abc  <span class="string">&quot;hello,      world&quot;</span>   12)</span><br></pre></td></tr></table></figure>
 
 <ol>
-<li><p>遍历<code>$&#123;array[@]&#125;</code></p>
+<li><p>遍历<code>${array[@]}</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="variable">$&#123;array[@]&#125;</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$i</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 
 <p>输出：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">xx</span><br><span class="line">abc</span><br><span class="line">hello,</span><br><span class="line">world</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>遍历<code>&quot;$&#123;array[@]&#125;&quot;</code></p>
+<li><p>遍历<code>&quot;${array[@]}&quot;</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">&quot;<span class="variable">$&#123;array[@]&#125;</span>&quot;</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$i</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 
 <p>输出：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">xx</span><br><span class="line">abc</span><br><span class="line">hello,      world</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>遍历<code>$&#123;array[*]&#125;</code></p>
+<li><p>遍历<code>${array[*]}</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="variable">$&#123;array[*]&#125;</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$i</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 
 <p>输出：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">xx</span><br><span class="line">abc</span><br><span class="line">hello,</span><br><span class="line">world</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>遍历<code>&quot;$&#123;array[*]&#125;&quot;</code></p>
+<li><p>遍历<code>&quot;${array[*]}&quot;</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">&quot;<span class="variable">$&#123;array[*]&#125;</span>&quot;</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$i</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 
 <p>输出：</p>
@@ -674,7 +674,7 @@
     
         
         <p class="footer-copyright">
-            Copyright © 2025 <a href="/">Harvey Li</a>
+            Copyright © 2026 <a href="/">Harvey Li</a>
         </p>
     
     
