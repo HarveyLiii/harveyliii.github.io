@@ -34,15 +34,16 @@
     <!-- OpenGraph -->
 
 
+
     
 <link rel="stylesheet" href="/css/style/main.css">
  
 
     
     
-        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/atom-one-light.css" media="none" >
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/highlight.css" media="none" >
         
-            <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight/atom-one-dark.css" media="none">
+            <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight/highlight.dark.css" media="none">
         
     
 
@@ -175,12 +176,11 @@
 </li>
 </ul>
 <h2 id="Contact"><a href="#Contact" class="headerlink" title="Contact"></a>Contact</h2><ul>
-<li>Email: <a href="mailto:&#x37;&#x31;&#50;&#x36;&#x35;&#x39;&#x30;&#51;&#48;&#49;&#50;&#x40;&#115;&#116;&#x75;&#46;&#101;&#99;&#x6e;&#117;&#46;&#x65;&#x64;&#117;&#46;&#x63;&#x6e;">71265903012@stu.ecnu.edu.cn</a></li>
+<li>Email: <a href="mailto:&#x37;&#x31;&#50;&#54;&#53;&#x39;&#48;&#x33;&#x30;&#49;&#x32;&#64;&#x73;&#x74;&#x75;&#x2e;&#x65;&#99;&#x6e;&#117;&#x2e;&#101;&#100;&#x75;&#46;&#x63;&#110;">71265903012@stu.ecnu.edu.cn</a></li>
 </ul>
 
     </div>
-    
- 
+     
     <div class="post-footer__meta"><p>更新于 2023-09-26</p></div> 
     <div class="post-entry__tags"></div> 
 </article>
@@ -248,7 +248,7 @@
                     }
                 },
                 tex: {
-                    inlineMath: { '[+]': [['$', '$']] },
+                    inlineMath: {'[+]': [['$', '$']]},
                     tags: 'ams'
                 },
                 options: {
@@ -259,8 +259,8 @@
                                 const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
                                 const text = document.createTextNode('');
                                 node.parentNode.replaceChild(text, node);
-                                math.start = { node: text, delim: '', n: 0 };
-                                math.end = { node: text, delim: '', n: 0 };
+                                math.start = {node: text, delim: '', n: 0};
+                                math.end = {node: text, delim: '', n: 0};
                                 doc.math.push(math);
                             });
                         }, '', false],
@@ -277,7 +277,7 @@
             };
             (function () {
                 var script = document.createElement('script');
-                script.src = "https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/3.2.0/es5/tex-mml-chtml.js";
+                script.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
                 script.defer = true;
                 document.head.appendChild(script);
             })();
@@ -287,7 +287,7 @@
             MathJax.typeset();
         }
     </script>
-     
+ 
 
  
 
